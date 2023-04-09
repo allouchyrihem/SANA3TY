@@ -60,11 +60,6 @@
                   <Font size="14.0" />
                </font>
             </Text>
-            <Text fx:id="Réclamation" fill="#d19c97" layoutX="305.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Réclamation">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Text>
             <Text fx:id="Seconnecter" fill="#d19c97" layoutX="424.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Se connecter">
                <font>
                   <Font size="14.0" />
@@ -75,6 +70,7 @@
                   <Font size="14.0" />
                </font>
             </Text>
+            <Button fx:id="btn_add" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="8.0" layoutX="315.0" layoutY="5.0" mnemonicParsing="false" text="Reclamation" textFill="#d19c97" />
          </children>
       </Pane>
       <Pane layoutY="144.0" prefHeight="200.0" prefWidth="600.0" style="-fx-background-color: #FFFFFF;">
