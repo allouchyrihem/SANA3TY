@@ -77,7 +77,7 @@ public class AfficherProductController implements Initializable {
         back.setOnAction(event -> {
 
             try {
-                Parent page1 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/Accueil.fxml"));
+                Parent page1 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/Dashboard.fxml"));
                 Scene scene = new Scene(page1);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);

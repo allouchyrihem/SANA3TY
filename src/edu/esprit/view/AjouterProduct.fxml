@@ -29,7 +29,6 @@
             <TextField id="stock" fx:id="stock" layoutX="150.0" layoutY="229.0" />
             <Button fx:id="addImage" layoutX="150.0" layoutY="287.0" mnemonicParsing="false" onAction="#SingleImage" text="Browse" />
             <ImageView id="ImageView" fx:id="ImageView" fitHeight="59.0" fitWidth="61.0" layoutX="268.0" layoutY="283.0" pickOnBounds="true" preserveRatio="true" />
-            <ComboBox fx:id="category" layoutX="149.0" layoutY="330.0" prefWidth="150.0" />
 
          </children>
       </Pane>

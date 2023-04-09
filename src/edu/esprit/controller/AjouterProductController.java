@@ -106,12 +106,11 @@ public class AjouterProductController  implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO     
+        
         btn.setOnAction((ActionEvent event) -> {
-            categories=listdata.getcatByname();
-            category.setItems((ObservableList<String>) categories);
             Product p;
             try {
-                p = new Product(name.getText(), description.getText(),price.getText(),stock.getText(),imageEncoderDecoder(f.getAbsolutePath()), (Category) categories);
+                p = new Product(name.getText(), description.getText(),price.getText(),stock.getText(),imageEncoderDecoder(f.getAbsolutePath()));
                 ProductDao pdao = ProductDao.getInstance();
                 pdao.insert(p);
             } catch (IOException ex) {
@@ -129,7 +128,6 @@ public class AjouterProductController  implements Initializable {
         stock.setText("");
         addImage.setText("");
         ImageView.setImage(null);
-        category.setItems(null);
         });
        
         lstFile = new ArrayList<>();

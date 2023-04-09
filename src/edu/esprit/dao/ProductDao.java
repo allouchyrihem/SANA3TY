@@ -44,7 +44,7 @@ public class ProductDao implements Idao<Product>{
 
     @Override
     public void insert(Product o) {
-        String req="insert into product (name,description,price,stock,image) values ('"+o.getName()+"','"+o.getDescription()+"','"+o.getPrice()+"','"+o.getStock()+"','"+o.getImage()+"','"+o.getCategory()+"')";
+        String req="insert into product (name,description,price,stock,image) values ('"+o.getName()+"','"+o.getDescription()+"','"+o.getPrice()+"','"+o.getStock()+"','"+o.getImage()+"')";
         try {
             st.executeUpdate(req);
         } catch (SQLException ex) {

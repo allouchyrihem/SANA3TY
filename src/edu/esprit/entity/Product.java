@@ -22,28 +22,27 @@ public class Product {
     private SimpleStringProperty price;
     private SimpleStringProperty stock;
     private SimpleStringProperty image;
-    private Category category;
 
 
     public Product() {
     }
 
-    public Product(int id, String name, String description, String price, String stock, String image,Category category) {
+    public Product(int id, String name, String description, String price, String stock, String image) {
         this.id = new SimpleIntegerProperty(id);
         this.name = new SimpleStringProperty(name);
         this.description = new SimpleStringProperty(description);
         this.price = new SimpleStringProperty(price);
         this.stock = new SimpleStringProperty(stock);
         this.image = new SimpleStringProperty(image);
-        this.category = new Category();    }
+         }
 
-    public Product(String name, String description, String price, String stock, String image,Category category) {
+    public Product(String name, String description, String price, String stock, String image) {
         this.name = new SimpleStringProperty(name);
         this.description = new SimpleStringProperty(description);
         this.price = new SimpleStringProperty(price);
         this.stock = new SimpleStringProperty(stock);
         this.image = new SimpleStringProperty(image);
-        this.category = new Category();    
+       
     }
     public int getId() {
         return id.get();
@@ -92,12 +91,7 @@ public class Product {
     public void setImage(String image) {
         this.image = new SimpleStringProperty(image);
     }
-      public String getCategory(){
-        return category.getName();
-    }
-     public void setCategory(Category category){
-         this.category=category;
-     }
+
 
     public SimpleStringProperty getNameProperty(){
         return name;
@@ -115,13 +109,11 @@ public class Product {
     public SimpleStringProperty getImageProperty(){
         return image;
     }
-    public Category getCategoryProperty(){
-        return category;
-    }
+
     
     @Override
     public String toString() {
-        return "Product{" + "id=" + id + ", name=" + name + ", description=" + description + ", price=" + price + ", stock=" + stock + ", image=" + image +", category="+category+'}';
+        return "Product{" + "id=" + id + ", name=" + name + ", description=" + description + ", price=" + price + ", stock=" + stock + ", image=" + image +'}';
     }
     
     

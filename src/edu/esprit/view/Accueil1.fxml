@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.SVGPath?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="816.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+  <content>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="804.0" prefWidth="600.0">
+         <children>
+            <Pane prefHeight="24.0" prefWidth="600.0" style="-fx-background-color: #d2f9ff;">
+               <children>
+                  <Text fx:id="text1" fill="#ababab" layoutX="214.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="On livre sur toute la tunisie" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
+            <Pane layoutY="24.0" prefHeight="84.0" prefWidth="600.0" style="-fx-background-color: #FFFFFF;">
+               <children>
+                  <ImageView fx:id="imageView" fitHeight="70.0" fitWidth="77.0" layoutX="14.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/ogo.png" />
+                     </image>
+                  </ImageView>
+                  <TextField fx:id="search" layoutX="144.0" layoutY="30.0" prefHeight="25.0" prefWidth="312.0" style="-fx-background-color: #e1e0e0;" />
+                  <Button fx:id="buttonSearch" layoutX="474.0" layoutY="30.0" mnemonicParsing="false" text="Search" textFill="#d7b2b2" />
+               </children>
+            </Pane>
+            <Pane layoutY="108.0" prefHeight="36.0" prefWidth="600.0" style="-fx-background-color: #FFFFFF;">
+               <children>
+                  <Separator layoutX="2.0" layoutY="1.0" prefHeight="1.0" prefWidth="600.0" />
+                  <Text fx:id="Acceuil" fill="#d7b2b2" layoutX="28.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Acceuil">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="Boutique" fill="#d7b2b2" layoutX="97.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Boutique">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="Details" fill="#d7b2b2" layoutX="178.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Détails">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="Contact" fill="#d19c97" layoutX="244.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contact">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="Réclamation" fill="#d19c97" layoutX="305.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Réclamation">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="Seconnecter" fill="#d19c97" layoutX="424.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Se connecter">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="Sinscrire" fill="#d19c97" layoutX="522.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="S'inscrire">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
+            <Pane layoutY="144.0" prefHeight="735.0" prefWidth="600.0" style="-fx-background-color: #FFFFFF;">
+               <children>
+                  <Separator layoutY="-1.0" prefHeight="3.0" prefWidth="600.0" />
+                  <ComboBox fx:id="catbox" layoutX="14.0" layoutY="44.0" prefWidth="150.0" promptText="Catégorie" style="-fx-background-color: #D19C97;" />
+                  <ImageView fx:id="img" fitHeight="150.0" fitWidth="362.0" layoutX="226.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/dreaccatcherdeco.jpg" />
+                     </image>
+                  </ImageView>
+                  <VBox layoutX="19.0" layoutY="284.0" prefHeight="131.0" prefWidth="141.0" style="-fx-background-color: #FFFFFF;">
+                     <children>
+                        <Label text="Tote bag">
+                           <font>
+                              <Font name="System Italic" size="13.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="102.0" fitWidth="142.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/totebagsmile.jpg" />
+                           </image>
+                           <VBox.margin>
+                              <Insets left="20.0" />
+                           </VBox.margin>
+                        </ImageView>
+                        <Label text="tote bag en lain">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox layoutX="230.0" layoutY="284.0" prefHeight="131.0" prefWidth="141.0" style="-fx-background-color: #FFFFFF;">
+                     <children>
+                        <Label text="dreamcatcher">
+                           <font>
+                              <Font name="System Italic" size="13.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="102.0" fitWidth="142.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/dreamcatcher.jpg" />
+                           </image>
+                           <VBox.margin>
+                              <Insets left="20.0" />
+                           </VBox.margin>
+                        </ImageView>
+                        <Label text="dream catcher voiture">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox layoutX="428.0" layoutY="284.0" prefHeight="131.0" prefWidth="141.0" style="-fx-background-color: #FFFFFF;">
+                     <children>
+                        <Label text="Bougie">
+                           <font>
+                              <Font name="System Italic" size="13.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="102.0" fitWidth="142.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/bougie2.jpg" />
+                           </image>
+                           <VBox.margin>
+                              <Insets left="20.0" />
+                           </VBox.margin>
+                        </ImageView>
+                        <Label text="Bougie lavande">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox layoutX="19.0" layoutY="462.0" prefHeight="131.0" prefWidth="141.0" style="-fx-background-color: #FFFFFF;">
+                     <children>
+                        <Label text="Savon">
+                           <font>
+                              <Font name="System Italic" size="13.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="102.0" fitWidth="142.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/savon1.jpg" />
+                           </image>
+                           <VBox.margin>
+                              <Insets left="20.0" />
+                           </VBox.margin>
+                        </ImageView>
+                        <Label text="Savon fleur">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox layoutX="230.0" layoutY="462.0" prefHeight="131.0" prefWidth="141.0" style="-fx-background-color: #FFFFFF;">
+                     <children>
+                        <Label text="Totebag">
+                           <font>
+                              <Font name="System Italic" size="13.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="102.0" fitWidth="142.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/tote.jpg" />
+                           </image>
+                           <VBox.margin>
+                              <Insets left="20.0" />
+                           </VBox.margin>
+                        </ImageView>
+                        <Label text="Tote bag">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox layoutX="428.0" layoutY="462.0" prefHeight="131.0" prefWidth="141.0" style="-fx-background-color: #FFFFFF;">
+                     <children>
+                        <Label text="earing">
+                           <font>
+                              <Font name="System Italic" size="13.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="102.0" fitWidth="142.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/earings.jpg" />
+                           </image>
+                           <VBox.margin>
+                              <Insets left="20.0" />
+                           </VBox.margin>
+                        </ImageView>
+                        <Label text="Earing inoxydable">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </Label>
+                     </children>
+                  </VBox>
+               </children>
+            </Pane>
+            <Pane layoutY="344.0" prefHeight="70.0" prefWidth="600.0" style="-fx-background-color: #FFFFFF;">
+               <children>
+                  <SVGPath content="M0 26.016v-20q0-2.496 1.76-4.256t4.256-1.76h20q2.464 0 4.224 1.76t1.76 4.256v20q0 2.496-1.76 4.224t-4.224 1.76h-20q-2.496 0-4.256-1.76t-1.76-4.224zM4 26.016q0 0.832 0.576 1.408t1.44 0.576h20q0.8 0 1.408-0.576t0.576-1.408v-20q0-0.832-0.576-1.408t-1.408-0.608h-20q-0.832 0-1.44 0.608t-0.576 1.408v20zM7.584 16q0-0.832 0.608-1.408t1.408-0.576 1.408 0.576l2.848 2.816 7.072-7.040q0.576-0.608 1.408-0.608t1.408 0.608 0.608 1.408-0.608 1.408l-8.48 8.48q-0.576 0.608-1.408 0.608t-1.408-0.608l-4.256-4.256q-0.608-0.576-0.608-1.408z" fill="#d19c97" layoutX="23.0" layoutY="19.0" />
+                  <SVGPath content="m -29,488.01367 c -3.301857,0 -6,2.69815 -6,6 0,1.76801 0.774349,3.36262 2,4.46289 V 510 a 1.0001,1.0001 0 0 0 1,1 h 2.173828 c 0.415693,1.16039 1.530816,2 2.826172,2 1.295356,0 2.410479,-0.83961 2.826172,-2 H -17 h 2.173828 c 0.415693,1.16039 1.530816,2 2.826172,2 1.295356,0 2.4104792,-0.83961 2.8261719,-2 H -6 a 1.0001,1.0001 0 0 0 1,-1 v -7 a 1.0001,1.0001 0 0 0 -0.21875,-0.625 l -4,-5 A 1.0001,1.0001 0 0 0 -10,497 h -6 v -2 a 1.0001,1.0001 0 0 0 -1,-1 h -6 c -0.0075,-3.29562 -2.702712,-5.98633 -6,-5.98633 z m 0,2 c 2.220979,0 4,1.77902 4,4 0,2.22098 -1.779021,4 -4,4 -0.83092,0 -1.601098,-0.24778 -2.238281,-0.67578 a 1,1 0 0 0 -0.347657,-0.26562 C -32.452151,496.34047 -33,495.24535 -33,494.01367 c 0,-2.22098 1.779021,-4 4,-4 z M -23.341797,496 H -18 v 13 h -6.173828 c -0.415693,-1.16039 -1.530816,-2 -2.826172,-2 -1.295356,0 -2.410479,0.83961 -2.826172,2 H -31 v -9.33203 c 0.626269,0.22297 1.29935,0.3457 2,0.3457 2.606182,0 4.834183,-1.68167 5.658203,-4.01367 z M -16,499 h 2 v 5 a 1.0001,1.0001 0 0 0 1,1 h 6 v 4 H -9.1738281 C -9.5895208,507.83961 -10.704644,507 -12,507 c -1.295356,0 -2.410479,0.83961 -2.826172,2 H -16 Z m 4,0 h 1.519531 l 3.199219,4 H -12 Z m -15,10 c 0.564128,0 1,0.43587 1,1 0,0.56413 -0.435872,1 -1,1 -0.564128,0 -1,-0.43587 -1,-1 0,-0.56413 0.435872,-1 1,-1 z m 15,0 c 0.564128,0 1,0.43587 1,1 0,0.56413 -0.435872,1 -1,1 -0.564128,0 -1,-0.43587 -1,-1 0,-0.56413 0.435872,-1 1,-1 z" fill="#d19c97" layoutX="258.0" layoutY="-466.0" />
+                  <Text layoutX="65.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Produit de qualité ">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="271.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Livraison gratuite">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Text>
+                  <SVGPath content="M8.194 1.156c1.169 1.612 2.563 3.694 4.175 6.237 0.406 0.688 0.344 1.512-0.181 2.481-0.2 0.406-0.706 1.331-1.512 2.787 0.887 1.25 2.238 2.787 4.056 4.6s3.331 3.169 4.538 4.056c1.45-0.85 2.381-1.369 2.788-1.575 0.525-0.281 1.031-0.425 1.512-0.425 0.363 0 0.688 0.081 0.969 0.244 1.856 1.131 3.956 2.525 6.294 4.175 0.444 0.325 0.694 0.769 0.756 1.331 0.063 0.569-0.113 1.169-0.512 1.819-0.2 0.281-0.525 0.694-0.969 1.244-0.444 0.544-1.113 1.231-2 2.056s-1.613 1.244-2.181 1.244h-0.063c-4.269-0.169-9.531-3.369-15.762-9.6-6.237-6.238-9.438-11.494-9.6-15.769 0-0.563 0.412-1.3 1.244-2.212 0.825-0.906 1.506-1.563 2.025-1.969 0.525-0.4 0.969-0.725 1.331-0.969 0.444-0.325 0.95-0.481 1.513-0.481 0.694 0 1.212 0.244 1.581 0.725zM6.194 2.425c-0.85 0.606-1.644 1.287-2.394 2.031-0.744 0.75-1.181 1.3-1.3 1.662 0.163 3.756 3.156 8.537 8.988 14.35s10.625 8.819 14.375 9.019c0.325-0.119 0.856-0.563 1.606-1.331s1.425-1.575 2.025-2.419c0.119-0.163 0.163-0.3 0.119-0.425-2.419-1.694-4.438-3.044-6.056-4.056-0.163 0-0.363 0.063-0.606 0.181-0.363 0.2-1.269 0.706-2.725 1.512l-1.031 0.606-1.031-0.669c-1.331-0.925-2.944-2.363-4.844-4.3-1.894-1.894-3.306-3.512-4.238-4.844l-0.725-0.969 0.606-1.088c0.806-1.45 1.313-2.363 1.512-2.725 0.119-0.244 0.181-0.444 0.181-0.606-1.438-2.294-2.769-4.313-3.981-6.050h-0.063c-0.156 0-0.3 0.044-0.419 0.119z" fill="#d19c97" layoutX="402.0" layoutY="18.0" />
+                  <Text layoutX="451.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Disponible 24/7">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
+         </children></AnchorPane>
+    
+  </content>
+</ScrollPane>
