@@ -87,6 +87,48 @@ public class AfficherPromotionTotaleController implements Initializable {
 
     @FXML
     private void updatebtn(ActionEvent event) {
+        
+   
+
+    // Get selected Event from the table
+    PromotionTotale selectedPromo = personsTable.getSelectionModel().getSelectedItem();
+   PromotionTotaleDao promoDao = new PromotionTotaleDao();
+    if (selectedPromo != null) {
+        try {
+            // Create the FXMLLoader
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/esprit/view/UpdatePromotionTotale.fxml"));
+
+            // Load the UpdateEvents view
+            Parent root = loader.load();
+
+            // Get the UpdateEvents controller
+            UpdatePromotionTotaleController updatePromoController = loader.getController();
+
+            // Pass the selected Event to the controller
+            updatePromoController.setPromo(selectedPromo);
+
+            // Create a new scene and set it on the stage
+            Scene updatePromoScene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(updatePromoScene);
+            stage.show();
+            
+            personsTable.refresh();
+             personsTable.getSelectionModel().clearSelection();
+        evnmdata.clear();
+    evnmdata.addAll(promoDao.displayAll());
+    personsTable.setItems(evnmdata);
+            
+
+           /* // Refresh the table after updating the Event
+            eventsdata.setAll(evd.displayAll()); */
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
+       
+    }
     }
 
     @FXML

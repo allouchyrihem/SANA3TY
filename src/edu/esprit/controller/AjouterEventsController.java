@@ -104,7 +104,7 @@ public class AjouterEventsController implements Initializable {
             errorMessage += "Le nom de l'événement est requis.\n";
         } 
          if (nameid.getText().length() < 2 || nameid.getText().length() > 20) {
-    errorMessage += "La longueur du nom doit être entre 2 et 20 caractères.\n";
+    errorMessage += "La longueur du nom doit être entre 2 et 50 caractères.\n";
 }
          if (adresseid.getText() == null || adresseid.getText().isEmpty()) {
             errorMessage += "L'adresse de l'événement est requis.\n";

@@ -138,7 +138,7 @@ try {
 
     @Override
     public void delete(PromotionTotale o) {
-String req="delete from event where id="+o.getId();
+String req="delete from discount_totale where id="+o.getId();
         PromotionTotale p=displayById(o.getId());
         
           if(p!=null)
