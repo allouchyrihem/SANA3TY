@@ -2,6 +2,8 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -13,7 +15,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="614.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controller.AjouterCommentController">
     <children>
-      <Pane fx:id="BoutonValiderC" layoutX="15.0" layoutY="17.0" prefHeight="367.0" prefWidth="571.0" style="-fx-background-color: ivory; -fx-border-width: 2px; -fx-border-color: black;" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="17.0">
+      <Pane fx:id="BoutonValiderC" layoutY="17.0" prefHeight="384.0" prefWidth="600.0" style="-fx-background-color: ivory; -fx-border-width: 2px; -fx-border-color: black;" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="17.0">
          <children>
             <Button id="valider" fx:id="btnC" layoutX="177.0" layoutY="299.0" mnemonicParsing="false" text="Commenter" textFill="#502920">
                <font>
@@ -35,6 +37,13 @@
                   <Image url="@../assets/totebagsmile.jpg" />
                </image>
             </ImageView>
+            <TableView fx:id="categoryTable" layoutX="350.0" layoutY="82.0" prefHeight="181.0" prefWidth="221.0">
+               <columns>
+                  <TableColumn fx:id="description" prefWidth="109.0" text="Les Commentaires" />
+               </columns>
+            </TableView>
+            <Button fx:id="supprimer" layoutX="473.0" layoutY="299.0" mnemonicParsing="false" onMouseClicked="#supprimer" prefHeight="30.0" prefWidth="98.0" text="supprimer" />
+            <Button fx:id="updatec" layoutX="473.0" layoutY="335.0" mnemonicParsing="false" onMouseClicked="#supprimer" prefHeight="30.0" prefWidth="98.0" text="modifier " />
          </children>
       </Pane>
       <Label layoutX="31.0" layoutY="106.0" text="tote bag en lain">
@@ -42,7 +51,7 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d19c97" height="64.0" layoutX="17.0" layoutY="17.0" stroke="#d19c97" strokeType="INSIDE" width="585.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d19c97" height="70.0" layoutX="17.0" layoutY="17.0" stroke="#d19c97" strokeType="INSIDE" width="585.0" />
       <ImageView fx:id="imageView" fitHeight="64.0" fitWidth="65.0" layoutX="13.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../../../../../SANA3TY/src/edu/esprit/assets/ogo.png" />

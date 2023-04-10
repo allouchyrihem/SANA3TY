@@ -17,9 +17,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 
 /**
@@ -40,7 +45,9 @@ public class AjouterCommentController implements Initializable {
     @FXML
     private ImageView imageView1;
     @FXML
-    private ListView<Comment> listcomment;
+    private TableView<Comment> categoryTable;
+    @FXML
+    private TableColumn<Comment, String> description;
     
     /**
      * Initializes the controller class.
@@ -52,13 +59,21 @@ public class AjouterCommentController implements Initializable {
     /**
      * Initializes the controller class.
      */
+    private ListData1 listdata = new ListData1();
+    @FXML
+    private Button supprimer;
+    @FXML
+    private Button updatec;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-       
+          categoryTable.setItems(listdata.getcomments());
+        description.setCellValueFactory(new PropertyValueFactory<>("description"));
+        
          btnC.setOnAction((ActionEvent event) -> {
             
              if ( isInputValid() ){
+                 
                  Comment p = new Comment( descriptionC.getText());
             CommentDao cdao = CommentDao.getInstance();
             cdao.insert(p);
@@ -82,8 +97,8 @@ public class AjouterCommentController implements Initializable {
          if (descriptionC.getText() == null || descriptionC.getText().isEmpty()) {
             errorMessage += "ne laisser pas ce champ vide.\n";
         }
-         if (descriptionC.getText().length() < 2 || descriptionC.getText().length() > 20) {
-    errorMessage += "vous  devez ajouter entre  entre 2 et 20 caractères.\n";
+         if (descriptionC.getText().length() < 2 || descriptionC.getText().length() > 50) {
+    errorMessage += "vous  devez ajouter entre  entre 2 et 50 caractères.\n";
 }
         
          if (errorMessage.isEmpty()) {
@@ -100,4 +115,18 @@ public class AjouterCommentController implements Initializable {
             return false;
         }
      }
+
+      public void delete(){
+    CommentDao cdao =new CommentDao();
+    cdao.delete(categoryTable.getSelectionModel().getSelectedItem().getId());
+    System.out.println(categoryTable.getSelectionModel().getSelectedItem().getId());
+    }
+@FXML
+    public void supprimer(javafx.scene.input.MouseEvent event) {
+   delete();
+   categoryTable.getItems().removeAll(categoryTable.getSelectionModel().getSelectedItem());
+   System.out.println(categoryTable);
+          
+    }
+       
 }

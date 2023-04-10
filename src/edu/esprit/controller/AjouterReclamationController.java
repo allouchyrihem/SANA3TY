@@ -83,8 +83,8 @@ public class AjouterReclamationController  implements Initializable {
          if (description.getText() == null || description.getText().isEmpty()) {
             errorMessage += "ne laisser pas ce champ vide.\n";
         }
-         if (description.getText().length() < 2 || description.getText().length() > 20) {
-    errorMessage += "vous  devez ajouter entre  entre 2 et 20 caractères.\n";
+         if (description.getText().length() < 2 || description.getText().length() > 100) {
+    errorMessage += "vous  devez ajouter entre  entre 2 et 100 caractères.\n";
 }
         
          if (errorMessage.isEmpty()) {

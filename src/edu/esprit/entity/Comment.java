@@ -32,6 +32,10 @@ public class Comment {
         this.date = date;
     }
 
+    public Comment(int id, String description) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
    
 
   
