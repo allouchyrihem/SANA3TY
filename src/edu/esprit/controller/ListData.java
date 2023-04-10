@@ -7,9 +7,10 @@ package edu.esprit.controller;
 
 import edu.esprit.dao.CategoryDao;
 import edu.esprit.dao.ProductDao;
+import edu.esprit.dao.UserDao;
 import edu.esprit.entity.Category;
 import edu.esprit.entity.Product;
-import java.util.List;
+import edu.esprit.entity.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -26,12 +27,16 @@ public class ListData {
     private ObservableList<Product> products=FXCollections.observableArrayList();
     private ObservableList<Category> categories=FXCollections.observableArrayList();
     private ObservableList<String> cat=FXCollections.observableArrayList();
+    private ObservableList<User> persons=FXCollections.observableArrayList();
     public ListData() {
         
         ProductDao pdao=ProductDao.getInstance();
         CategoryDao cdao=CategoryDao.getInstance();
+        UserDao udao=UserDao.getInstance();
         products= (ObservableList<Product>)pdao.displayAll();
         categories= (ObservableList<Category>)cdao.displayAll();
+        persons= udao.displayAll();
+       
     }
     
     public ObservableList<Product> getProducts(){
@@ -39,5 +44,9 @@ public class ListData {
     }
     public ObservableList<Category> getcategories(){
         return categories;
+    }
+    
+     public ObservableList<User> getPersons(){
+        return persons;
     }
 }
