@@ -40,7 +40,7 @@ public class NavbarBackofficeController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       loadPage("/edu/esprit/view/AfficherEvents");
+       //loadPage("/edu/esprit/view/AfficherEvents");
         // TODO
     }    
 
@@ -53,7 +53,7 @@ public class NavbarBackofficeController implements Initializable {
 
     @FXML
     private void promotionNavBarbtn(ActionEvent event) {
-        loadPage("/edu/esprit/view/Accueil1");
+        loadPage("/edu/esprit/view/AfficherPromotionTotale");
     }
     
     private void loadPage(String page){

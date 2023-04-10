@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controller.AfficherEventsController">
-   <children>
+     <children>
       <Pane prefHeight="400.0" prefWidth="602.0">
          <children>
             <VBox prefHeight="200.0" prefWidth="100.0" />
@@ -38,4 +38,8 @@
          </children>
       </Pane>
    </children>
+    
+    
+    
+    
 </AnchorPane>
