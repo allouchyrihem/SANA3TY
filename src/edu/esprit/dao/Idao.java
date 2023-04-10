@@ -14,8 +14,11 @@ import java.util.List;
 public interface Idao <T> {
     public void insert(T o);
     public void delete(int id);
+    
     public List<T> displayAll();
     public T displayById(int id);
     
-    public boolean update(T os);
+    //public boolean update(T os);
+  public void update(T o);
+    public void delete(T o);
 }

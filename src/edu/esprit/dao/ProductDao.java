@@ -134,9 +134,9 @@ public class ProductDao implements Idao<Product>{
     return p;
     }
 
-    @Override
+   /* @Override
     public boolean update(Product p) {
-        String qry="UPDATE product SET name = "+p.getName()+"',description ="+p.getDescription()+"', price ="+p.getPrice()+"', stock ="+p.getStock()+"', image ="+p.getImage()+"' WHERE id ="+p.getId();
+       /* String qry="UPDATE product SET name = "+p.getName()+"',description ="+p.getDescription()+"', price ="+p.getPrice()+"', stock ="+p.getStock()+"', image ="+p.getImage()+"' WHERE id ="+p.getId();
         try {
             if (st.executeUpdate(qry) > 0) {
                 return true;
@@ -145,8 +145,18 @@ public class ProductDao implements Idao<Product>{
         } catch (SQLException ex) {
             Logger.getLogger(ProductDao.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return false;
+        return false;*/
+
+    @Override
+    public void update(Product o) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public void delete(Product o) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
 
     
     
