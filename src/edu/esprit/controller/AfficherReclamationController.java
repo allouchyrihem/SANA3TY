@@ -40,22 +40,12 @@ public class AfficherReclamationController implements Initializable {
     @FXML
     private TableView<Reclamation> productTable;
     @FXML
-    private TableColumn<Reclamation, Integer> id;
-    @FXML
     private TableColumn<Reclamation, String> name;
     @FXML
     private TableColumn<Reclamation, String> description;
     
-        @FXML
-    private Button update;
          @FXML
     private Button supprimer;
- @FXML
-    private Button btn;
-    @FXML
-    private TextField nameU;
-    @FXML
-    private TextField descriptionU;
    
     private ListData1 listdata = new ListData1();
 
@@ -64,13 +54,11 @@ public class AfficherReclamationController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         productTable.setItems(listdata.getReclamations());
-        id.setCellValueFactory(new PropertyValueFactory<>("id"));
         name.setCellValueFactory(new PropertyValueFactory<>("sujet"));
         description.setCellValueFactory(new PropertyValueFactory<>("description"));
      
     } 
     
-        @FXML
         public void update(javafx.scene.input.MouseEvent event) {
 
         ReclamationDao pdao=new ReclamationDao();

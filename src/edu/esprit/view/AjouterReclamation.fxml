@@ -45,6 +45,7 @@
                   <Image url="@../assets/ogo.png" />
                </image>
             </ImageView>
+            <Button fx:id="back" layoutX="535.0" layoutY="350.0" mnemonicParsing="false" text="back" />
 
          </children>
       </Pane>

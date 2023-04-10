@@ -56,6 +56,8 @@ public class AccueilController implements Initializable{
     private ImageView img;
     @FXML
     private Button btn_add;
+    @FXML
+    private Button btn_addc;
      /**
      * Initializes the controller class.
      */
@@ -76,6 +78,18 @@ public class AccueilController implements Initializable{
                 Logger.getLogger(AccueilController.class.getName()).log(Level.SEVERE, null, ex);
             }
             
+        });
+        btn_addc.setOnAction(event -> {
+
+            try {
+                Parent page1 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/AjouterComment.fxml"));
+                Scene scene = new Scene(page1);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(AccueilController.class.getName()).log(Level.SEVERE, null, ex);
+            }
         });
         
            

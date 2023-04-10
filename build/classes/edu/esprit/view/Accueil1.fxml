@@ -235,6 +235,7 @@
                         </Label>
                      </children>
                   </VBox>
+                  <Button fx:id="btn_addc" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="8.0" layoutX="39.0" layoutY="426.0" mnemonicParsing="false" text="Commenter" />
                </children>
             </Pane>
             <Pane layoutY="344.0" prefHeight="70.0" prefWidth="600.0" style="-fx-background-color: #FFFFFF;">

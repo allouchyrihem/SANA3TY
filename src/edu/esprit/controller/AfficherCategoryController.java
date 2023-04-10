@@ -43,6 +43,12 @@ public class AfficherCategoryController implements Initializable {
     private ListData listdata = new ListData();
     @FXML
     private Button back;
+    @FXML
+    private TableColumn<?, ?> operation;
+    @FXML
+    private Button supprimer;
+    @FXML
+    private Button updateC;
     /**
      * Initializes the controller class.
      */
