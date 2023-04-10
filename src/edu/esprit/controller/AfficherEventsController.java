@@ -94,7 +94,7 @@ public class AfficherEventsController implements Initializable {
     void addbtn(ActionEvent event) {
         
             try {
-                Parent page1 = FXMLLoader.load(getClass().getResource("/javafxapplication30/view/AjouterEvents.fxml"));
+                Parent page1 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/AjouterEvents.fxml"));
                 Scene scene = new Scene(page1);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);

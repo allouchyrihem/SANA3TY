@@ -77,9 +77,9 @@ public class AjouterEventsController implements Initializable {
             pdao.insert(p); */
        
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Information Dialog");
+        alert.setTitle("Message");
         alert.setHeaderText(null);
-        alert.setContentText("Personne insérée avec succés!");
+        alert.setContentText("Événement ajouté avec succés!");
         alert.show();
         nameid.setText("");
         adresseid.setText("");
@@ -87,7 +87,7 @@ public class AjouterEventsController implements Initializable {
         descriptionid.setText("");
         dateid.setValue(null);
         
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("affiche.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/esprit/view/NavbarBackoffice.fxml"));
         Parent root = loader.load();
           Scene scene = new Scene(root);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -142,7 +142,7 @@ if (selectedDate != null && selectedDate.isBefore(LocalDate.now())) {
      
      @FXML
 private void retourmainbtn(ActionEvent event) throws IOException {
-    FXMLLoader loader = new FXMLLoader(getClass().getResource("/javafxapplication30/view/AfficherEvents.fxml"));
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/esprit/view/NavbarBackoffice.fxml"));
     Parent root = loader.load();
 
     Scene scene = new Scene(root);

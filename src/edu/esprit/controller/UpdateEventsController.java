@@ -84,7 +84,12 @@ public void setEvent(Events events){
         Events event1 = new Events(events.getId(),name, adresse, date, description, link);
         eventsDao.update(event1);
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("L'évenement est modifié avec succès");
+        alert.setTitle("Message");
+
+            alert.setHeaderText("Événement modifié avec succès!");
+         
+
+        
         alert.showAndWait();
         
     }}
