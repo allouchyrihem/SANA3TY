@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -11,42 +12,66 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controller.AjouterProductController">
+<AnchorPane id="AnchorPane" prefHeight="436.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controller.AjouterProductController">
    <children>
-      <Pane fx:id="BoutonValider" prefHeight="435.0" prefWidth="600.0" style="-fx-background-color: #FFFFFF;" AnchorPane.bottomAnchor="-35.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <Pane fx:id="BoutonValider" prefHeight="495.0" prefWidth="600.0" style="-fx-background-color: #FFFFFF;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label layoutX="74.0" layoutY="172.0" prefHeight="17.0" prefWidth="80.0" text="Name :" textAlignment="CENTER" />
-            <Label layoutX="74.0" layoutY="209.0" text="Description :" />
-            <Label layoutX="74.0" layoutY="250.0" prefHeight="17.0" prefWidth="80.0" text="Price :" textAlignment="CENTER" />
-            <Label layoutX="74.0" layoutY="283.0" text="stock :" />
-            <Label layoutX="70.0" layoutY="327.0" prefHeight="17.0" prefWidth="80.0" text="image :" textAlignment="CENTER" />
+            <Label layoutX="167.0" layoutY="165.0" prefHeight="17.0" prefWidth="80.0" text="Name :" textAlignment="CENTER" />
+            <Label layoutX="167.0" layoutY="202.0" text="Description :" />
+            <Label layoutX="167.0" layoutY="243.0" prefHeight="17.0" prefWidth="80.0" text="Price :" textAlignment="CENTER" />
+            <Label layoutX="167.0" layoutY="276.0" text="stock :" />
+            <Label layoutX="163.0" layoutY="320.0" prefHeight="17.0" prefWidth="80.0" text="image :" textAlignment="CENTER" />
             <Button id="valider" fx:id="btn" layoutX="403.0" layoutY="320.0" mnemonicParsing="false" text="Valider">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <TextField id="name" fx:id="name" layoutX="150.0" layoutY="160.0" />
-            <TextField id="description" fx:id="description" layoutX="150.0" layoutY="205.0" />
-            <TextField id="price" fx:id="price" layoutX="150.0" layoutY="246.0" />
-            <TextField id="stock" fx:id="stock" layoutX="150.0" layoutY="288.0" />
-            <Button fx:id="addImage" layoutX="150.0" layoutY="323.0" mnemonicParsing="false" onAction="#SingleImage" text="Browse" />
+            <TextField id="name" fx:id="name" layoutX="243.0" layoutY="153.0" />
+            <TextField id="description" fx:id="description" layoutX="243.0" layoutY="198.0" />
+            <TextField id="price" fx:id="price" layoutX="243.0" layoutY="239.0" />
+            <TextField id="stock" fx:id="stock" layoutX="243.0" layoutY="281.0" />
+            <Button fx:id="addImage" layoutX="243.0" layoutY="316.0" mnemonicParsing="false" onAction="#SingleImage" text="Browse" />
             <ImageView id="ImageView" fx:id="ImageView" fitHeight="59.0" fitWidth="61.0" layoutX="268.0" layoutY="283.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fitHeight="88.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/ogo.png" />
-               </image>
-            </ImageView>
             <Text fill="#d19c97" layoutX="177.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajouter produit">
                <font>
                   <Font name="System Bold Italic" size="30.0" />
                </font>
             </Text>
-            <Label layoutX="70.0" layoutY="367.0" text="Catégorie" />
-            <ComboBox fx:id="cat" layoutX="149.0" layoutY="363.0" prefWidth="150.0" promptText="choisir une catégorie" style="-fx-background-color: #d19c97;" />
-            <Button fx:id="listp" layoutX="85.0" layoutY="25.0" mnemonicParsing="false" style="-fx-background-color: #F1F1F1;" text="Liste des produits" textFill="#d19c97" />
+            <Label layoutX="163.0" layoutY="360.0" text="Catégorie" />
+            <ComboBox fx:id="cat" layoutX="242.0" layoutY="356.0" prefWidth="150.0" promptText="choisir une catégorie" style="-fx-background-color: #d19c97;" />
+            <Button fx:id="listp" layoutX="122.0" layoutY="27.0" mnemonicParsing="false" style="-fx-background-color: #F1F1F1;" text="Liste des produits" textFill="#d19c97" />
+            <Button fx:id="back" layoutX="523.0" layoutY="27.0" mnemonicParsing="false" style="-fx-background-color: #F1F1F1;" text="Retour" textFill="#d19c97" />
 
          </children>
       </Pane>
-      <Button fx:id="back" layoutX="532.0" layoutY="24.0" mnemonicParsing="false" style="-fx-background-color: #F1F1F1;" text="Retour" textFill="#d19c97" />
+      <Pane layoutY="-2.0" prefHeight="497.0" prefWidth="84.0" style="-fx-background-color: #D19C97;">
+         <children>
+            <ImageView fitHeight="90.0" fitWidth="73.0" layoutX="6.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/ogo.png" />
+               </image>
+            </ImageView>
+            <Hyperlink fx:id="dashboard" layoutX="5.0" layoutY="156.0" text="Dashboard" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Hyperlink>
+            <Hyperlink fx:id="product" layoutX="13.0" layoutY="226.0" text="Product" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Hyperlink>
+            <Hyperlink fx:id="category" layoutX="7.0" layoutY="299.0" text="Catégorie" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Hyperlink>
+            <Hyperlink fx:id="accueil" layoutX="19.0" layoutY="455.0" text="Back" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Hyperlink>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

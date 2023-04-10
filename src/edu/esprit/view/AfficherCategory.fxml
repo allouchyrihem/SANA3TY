@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -9,6 +10,8 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controller.AfficherCategoryController">
     <children>
@@ -16,24 +19,47 @@
          <children>
             <TableView fx:id="categoryTable" layoutX="143.0" layoutY="73.0" prefHeight="181.0" prefWidth="391.0">
                <columns>
-                  <TableColumn fx:id="id" prefWidth="66.0" text="id" />
                   <TableColumn fx:id="name" prefWidth="86.0" text="Name" />
                   <TableColumn fx:id="description" prefWidth="238.0" text="Description" />
                </columns>
             </TableView>
             <HBox alignment="TOP_CENTER" layoutX="525.0" layoutY="14.0" />
             <Button fx:id="supprimer" layoutX="485.0" layoutY="256.0" mnemonicParsing="false" onMouseClicked="#supprimer" prefHeight="30.0" prefWidth="98.0" style="-fx-background-color: #F1F1F1;" text="supprimer" textFill="#d19c97" />
-            <Label layoutX="37.0" layoutY="333.0" text="Name" />
-            <Label layoutX="39.0" layoutY="373.0" text="Description" />
-            <TextField id="nameU" layoutX="125.0" layoutY="329.0" />
-            <TextField id="descriptionU" layoutX="125.0" layoutY="369.0" />
-            <Button id="updateC" fx:id="updateC" layoutX="247.0" layoutY="407.0" mnemonicParsing="false" onMouseClicked="#update" style="-fx-background-color: #F1F1F1;" text="Update" textFill="#d19c97" />
-            <Button fx:id="back" layoutX="534.0" layoutY="14.0" mnemonicParsing="false" style="-fx-background-color: #F1F1F1;" text="Retour" textFill="#d19c97" />
-            <ImageView fitHeight="107.0" fitWidth="112.0" layoutX="5.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../assets/ogo.png" />
-               </image>
-            </ImageView>
+            <Label layoutX="143.0" layoutY="333.0" text="Name" />
+            <Label layoutX="145.0" layoutY="373.0" text="Description" />
+            <TextField id="nameU" layoutX="231.0" layoutY="329.0" />
+            <TextField id="descriptionU" layoutX="231.0" layoutY="369.0" />
+            <Button id="updateC" fx:id="updateC" layoutX="353.0" layoutY="407.0" mnemonicParsing="false" onMouseClicked="#update" style="-fx-background-color: #F1F1F1;" text="Update" textFill="#d19c97" />
+            <Button fx:id="back" layoutX="457.0" layoutY="14.0" mnemonicParsing="false" style="-fx-background-color: #F1F1F1;" text="Ajouter catégorie" textFill="#d19c97" />
+            <Pane prefHeight="497.0" prefWidth="84.0" style="-fx-background-color: #D19C97;">
+               <children>
+                  <ImageView fitHeight="90.0" fitWidth="73.0" layoutX="6.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/ogo.png" />
+                     </image>
+                  </ImageView>
+                  <Hyperlink fx:id="dashboard" layoutX="5.0" layoutY="156.0" text="Dashboard" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Hyperlink>
+                  <Hyperlink fx:id="product" layoutX="13.0" layoutY="226.0" text="Product" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Hyperlink>
+                  <Hyperlink fx:id="category" layoutX="7.0" layoutY="299.0" text="Catégorie" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Hyperlink>
+                  <Hyperlink fx:id="accueil" layoutX="16.0" layoutY="454.0" text="Back" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Hyperlink>
+               </children>
+            </Pane>
          </children>
          
       </AnchorPane>

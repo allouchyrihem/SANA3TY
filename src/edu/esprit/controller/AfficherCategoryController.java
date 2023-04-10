@@ -21,6 +21,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -35,14 +36,24 @@ public class AfficherCategoryController implements Initializable {
 @FXML
     private TableView<Category> categoryTable;
     @FXML
-    private TableColumn<Category, Integer> id;
-    @FXML
     private TableColumn<Category, String> name;
     @FXML
     private TableColumn<Category, String> description;
     private ListData listdata = new ListData();
     @FXML
     private Button back;
+    @FXML
+    private Button supprimer;
+    @FXML
+    private Button updateC;
+    @FXML
+    private Hyperlink dashboard;
+    @FXML
+    private Hyperlink product;
+    @FXML
+    private Hyperlink category;
+    @FXML
+    private Hyperlink accueil;
     /**
      * Initializes the controller class.
      */
@@ -50,6 +61,50 @@ public class AfficherCategoryController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
          // TODO
+             accueil.setOnAction(e -> {
+        try {
+                Parent page1 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/Accueil1.fxml"));
+                Scene scene = new Scene(page1);
+                Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(Accueil1Controller.class.getName()).log(Level.SEVERE, null, ex);
+            }
+});
+         dashboard.setOnAction(e -> {
+        try {
+                Parent page1 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/Dashboard.fxml"));
+                Scene scene = new Scene(page1);
+                Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(Accueil1Controller.class.getName()).log(Level.SEVERE, null, ex);
+            }
+});
+    product.setOnAction(e -> {
+        try {
+                Parent page1 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/AfficherProduct.fxml"));
+                Scene scene = new Scene(page1);
+                Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(Accueil1Controller.class.getName()).log(Level.SEVERE, null, ex);
+            }
+});
+    category.setOnAction(e -> {
+        try {
+                Parent page1 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/AfficherCategory.fxml"));
+                Scene scene = new Scene(page1);
+                Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(Accueil1Controller.class.getName()).log(Level.SEVERE, null, ex);
+            }
+});
          back.setOnAction(event -> {
 
             try {
@@ -63,7 +118,6 @@ public class AfficherCategoryController implements Initializable {
             }
         });
         categoryTable.setItems(listdata.getcategories());
-        id.setCellValueFactory(new PropertyValueFactory<>("id"));
         name.setCellValueFactory(new PropertyValueFactory<>("name"));
         description.setCellValueFactory(new PropertyValueFactory<>("description"));
         
@@ -93,7 +147,6 @@ public class AfficherCategoryController implements Initializable {
           
     }
 
-    @FXML
     private void EXIT(javafx.scene.input.MouseEvent event) {
         Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
         stage.close();

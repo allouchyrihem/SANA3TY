@@ -46,12 +46,12 @@
                                 <Font size="14.0" />
                             </font>
                         </Hyperlink>
-                        <Hyperlink fx:id="link" layoutX="100.0" layoutY="5.0" text="Boutique" textFill="#d7b2b2">
+                        <Hyperlink layoutX="100.0" layoutY="5.0" text="Boutique" textFill="#d7b2b2">
                             <font>
                                 <Font size="14.0" />
                             </font>
                         </Hyperlink>
-                        <Hyperlink fx:id="cateAdd" layoutX="176.0" layoutY="4.0" text="Détails" textFill="#d7b2b2">
+                        <Hyperlink layoutX="176.0" layoutY="4.0" text="Détails" textFill="#d7b2b2">
                             <font>
                                 <Font size="14.0" />
                             </font>
@@ -71,7 +71,7 @@
                                 <Font size="14.0" />
                             </font>
                         </Hyperlink>
-                        <Hyperlink layoutX="415.0" layoutY="5.0" text="Se connecter" textFill="#d7b2b2">
+                        <Hyperlink fx:id="dashboard" layoutX="415.0" layoutY="5.0" text="Se connecter" textFill="#d7b2b2">
                             <font>
                                 <Font size="14.0" />
                             </font>

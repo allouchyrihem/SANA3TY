@@ -23,6 +23,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -45,6 +46,14 @@ public class AjouterCategoryController implements Initializable {
     private TextField description;
     @FXML
     private Button listc;
+    @FXML
+    private Hyperlink dashboard;
+    @FXML
+    private Hyperlink product;
+    @FXML
+    private Hyperlink category;
+    @FXML
+    private Hyperlink accueil;
     /**
      * Initializes the controller class.
      *
@@ -58,10 +67,54 @@ public class AjouterCategoryController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+            accueil.setOnAction(e -> {
+        try {
+                Parent page1 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/Accueil1.fxml"));
+                Scene scene = new Scene(page1);
+                Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(Accueil1Controller.class.getName()).log(Level.SEVERE, null, ex);
+            }
+});
+        dashboard.setOnAction(e -> {
+        try {
+                Parent page1 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/Dashboard.fxml"));
+                Scene scene = new Scene(page1);
+                Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(Accueil1Controller.class.getName()).log(Level.SEVERE, null, ex);
+            }
+});
+    product.setOnAction(e -> {
+        try {
+                Parent page1 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/AfficherProduct.fxml"));
+                Scene scene = new Scene(page1);
+                Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(Accueil1Controller.class.getName()).log(Level.SEVERE, null, ex);
+            }
+});
+    category.setOnAction(e -> {
+        try {
+                Parent page1 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/AfficherCategory.fxml"));
+                Scene scene = new Scene(page1);
+                Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(Accueil1Controller.class.getName()).log(Level.SEVERE, null, ex);
+            }
+});
        back.setOnAction(event -> {
 
             try {
-                Parent page1 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/Accueil1.fxml"));
+                Parent page1 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/AfficherCategory.fxml"));
                 Scene scene = new Scene(page1);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
