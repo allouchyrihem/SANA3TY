@@ -24,6 +24,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 /**
@@ -35,11 +36,13 @@ public class AjouterCategoryController implements Initializable {
   @FXML
     private Button btnC;
     @FXML
-    private TextField nameC;
-    @FXML
-    private TextField descriptionC;
-    @FXML
     private Button back;
+    @FXML
+    private Pane BoutonValider;
+    @FXML
+    private TextField name;
+    @FXML
+    private TextField description;
     /**
      * Initializes the controller class.
      *
@@ -53,26 +56,66 @@ public class AjouterCategoryController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-       
-         btnC.setOnAction((ActionEvent event) -> {
-            
-            Category p = new Category(nameC.getText(), descriptionC.getText());
-            CategoryDao cdao = CategoryDao.getInstance();
-            cdao.insert(p);
-        
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Information Dialog");
-        alert.setHeaderText(null);
-        alert.setContentText("Category insérée avec succés!");
-        alert.show();
-        nameC.setText("");
-        descriptionC.setText("");
+       back.setOnAction(event -> {
 
+            try {
+                Parent page1 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/Accueil1.fxml"));
+                Scene scene = new Scene(page1);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(Accueil1Controller.class.getName()).log(Level.SEVERE, null, ex);
+            }
         });
+         btnC.setOnAction((ActionEvent event) -> {
+            if (name.getText().isEmpty()) {
+                showAlert("entrer une nom",false);
+            } else if (!name.getText().matches("[a-zA-Z ]+")) {
+                showAlert("le nom de la catégorie doit contenir que des lettres ou espace",false);
+            }
+            else if (description.getText().isEmpty()) {
+                showAlert("entrer une description",false);
+            } else if (!description.getText().matches("[a-zA-Z ]+")) {
+                showAlert("la description doit contenir que des lettres ou espace",false);
+            }
+            else{
+                Category p = new Category(name.getText(), description.getText());
+                CategoryDao cdao = CategoryDao.getInstance();
+                cdao.insert(p);
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/esprit/view/Accueil1.fxml"));
+                Parent root = null;
+                try {
+                    root = loader.load();
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+                showAlert("Insertion terminée", true);
+                name.getScene().setRoot(root);
+            
+        
+        name.setText("");
+        description.setText("");
+
+        }});
         
         
     
 
-    }    
+    }  
+    
+      private void showAlert(String message ,boolean b) {
+        Alert alert;
+        if (b)
+            alert = new Alert(Alert.AlertType.INFORMATION);
+        else
+            alert = new Alert(Alert.AlertType.ERROR);
+
+
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+
+    }
     
 }

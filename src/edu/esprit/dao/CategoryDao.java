@@ -74,6 +74,7 @@ public class CategoryDao implements Cdao<Category>{
         ObservableList<Category> list=FXCollections.observableArrayList();       
         
         try {
+            
             rs=st.executeQuery(req);
             while(rs.next()){
                 Category p=new Category();
@@ -89,25 +90,41 @@ public class CategoryDao implements Cdao<Category>{
         return list;
     }
 
-    public List<Category> displayAllList() {
-        String req="select * from category";
-        List<Category> list=new ArrayList<>();
-        
+    @Override
+    public ObservableList<String> displayName() {
+        String req="select * from category";     
+        ObservableList<String> options = FXCollections.observableArrayList();
+
         try {
             rs=st.executeQuery(req);
             while(rs.next()){
-                Category p=new Category();
-                p.setId(rs.getInt(1));
-                p.setName(rs.getString("name"));
-                p.setDescription(rs.getString("description"));
-                list.add(p);
+                options.add(rs.getString("name"));
             }
             
         } catch (SQLException ex) {
             Logger.getLogger(ProductDao.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return list;
+        return options;
     }
+      @Override
+    public int displayIdByName(String name) {
+        String req="select id from category where name='"+name+"'";
+
+        int options = 0;
+
+        try {
+            rs=st.executeQuery(req);
+            while(rs.next()){
+                options=rs.getInt("id");
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ProductDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return options; 
+    }
+
+    
     @Override
     public Category displayById(int id) {
            String req="select * from category where id ="+id;
@@ -129,7 +146,6 @@ public class CategoryDao implements Cdao<Category>{
     @Override
     public boolean update(Category p) {
         String qry = "UPDATE category SET nom = '"+p.getName()+"','"+p.getDescription()+"')";
-        
         try {
             if (st.executeUpdate(qry) > 0) {
                 return true;
@@ -141,22 +157,7 @@ public class CategoryDao implements Cdao<Category>{
         return false;
     }
 
-    @Override
-    public List<String> displayName() {
-    String req="select name from category";
-        List<String> list=new ArrayList<>();
-        String k;
-        try {
-            rs=st.executeQuery(req);
-            while(rs.next()){
-                k=rs.getString("name");
-                list.add(k);
-            }
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(ProductDao.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return list;    }
+  
 
     
     

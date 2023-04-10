@@ -32,6 +32,7 @@ public class ListData {
         CategoryDao cdao=CategoryDao.getInstance();
         products= (ObservableList<Product>)pdao.displayAll();
         categories= (ObservableList<Category>)cdao.displayAll();
+        cat=(ObservableList<String>)cdao.displayName();
     }
     
     public ObservableList<Product> getProducts(){
@@ -40,4 +41,9 @@ public class ListData {
     public ObservableList<Category> getcategories(){
         return categories;
     }
+    public ObservableList<String> getNames(){
+        return cat;
+    }
+
+    
 }

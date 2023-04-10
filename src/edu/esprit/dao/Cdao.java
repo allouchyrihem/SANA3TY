@@ -19,6 +19,7 @@ public interface Cdao <T> {
     public List<T> displayAll();
     public T displayById(int id);
     public List<String>displayName();
+    public int displayIdByName(String name);
     
     public boolean update(T os);
 }
