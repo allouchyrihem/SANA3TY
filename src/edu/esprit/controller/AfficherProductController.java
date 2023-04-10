@@ -51,24 +51,14 @@ public class AfficherProductController implements Initializable {
     private TableColumn<Product, String> stock;
         @FXML
     private TableColumn<Product, ImageView> image;
-        @FXML
-    private Button update;
          @FXML
     private Button supprimer;
  @FXML
     private Button back;
-    @FXML
-    private TextField nameU;
-    @FXML
-    private TextField descriptionU;
-    @FXML
-    private TextField priceU;
-    @FXML
-    private TextField stockU;
-    @FXML
-    private TextField imageU;
   
     private ListData listdata = new ListData();
+    @FXML
+    private Button updateU;
 
 
     @Override
@@ -77,7 +67,7 @@ public class AfficherProductController implements Initializable {
         back.setOnAction(event -> {
 
             try {
-                Parent page1 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/Dashboard.fxml"));
+                Parent page1 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/AjouterProduct.fxml"));
                 Scene scene = new Scene(page1);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
@@ -125,7 +115,6 @@ public class AfficherProductController implements Initializable {
           
     }
 
-    @FXML
     public void EXIT(javafx.scene.input.MouseEvent event) {
         Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
         stage.close();

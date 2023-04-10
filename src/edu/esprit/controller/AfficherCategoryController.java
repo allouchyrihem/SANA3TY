@@ -53,7 +53,7 @@ public class AfficherCategoryController implements Initializable {
          back.setOnAction(event -> {
 
             try {
-                Parent page1 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/Dashboard.fxml"));
+                Parent page1 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/AjouterCategory.fxml"));
                 Scene scene = new Scene(page1);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);

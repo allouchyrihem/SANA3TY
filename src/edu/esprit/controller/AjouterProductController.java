@@ -75,6 +75,8 @@ public class AjouterProductController  implements Initializable {
     private ObservableList<String> categories=FXCollections.observableArrayList();
     @FXML
     private Button back;
+    @FXML
+    private Button listp;
 
     /**
      * Initializes the controller class.
@@ -125,6 +127,18 @@ public class AjouterProductController  implements Initializable {
 
             try {
                 Parent page1 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/Accueil1.fxml"));
+                Scene scene = new Scene(page1);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(Accueil1Controller.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+          listp.setOnAction(event -> {
+
+            try {
+                Parent page1 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/AfficherProduct.fxml"));
                 Scene scene = new Scene(page1);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);

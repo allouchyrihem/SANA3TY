@@ -21,14 +21,15 @@
             </Button>
             <TextField id="name" fx:id="name" layoutX="150.0" layoutY="160.0" />
             <TextField id="description" fx:id="description" layoutX="150.0" layoutY="205.0" />
-            <Button fx:id="back" layoutX="522.0" layoutY="14.0" mnemonicParsing="false" style="-fx-background-color: #F1F1F1;" text="Retour" textFill="#d19c97" />
+            <Button fx:id="back" layoutX="526.0" layoutY="28.0" mnemonicParsing="false" style="-fx-background-color: #F1F1F1;" text="Retour" textFill="#d19c97" />
+            <Button fx:id="listc" layoutX="80.0" layoutY="27.0" mnemonicParsing="false" style="-fx-background-color: #F1F1F1;" text="Liste des catégories" textFill="#d19c97" />
+            <ImageView fitHeight="88.0" fitWidth="100.0" layoutX="-8.0" layoutY="-4.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/ogo.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
-      <ImageView fitHeight="88.0" fitWidth="100.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../assets/ogo.png" />
-         </image>
-      </ImageView>
       <Text fill="#d19c97" layoutX="187.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajouter une catégorie">
          <font>
             <Font name="System Bold Italic" size="30.0" />

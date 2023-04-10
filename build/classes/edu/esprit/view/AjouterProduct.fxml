@@ -43,6 +43,7 @@
             </Text>
             <Label layoutX="70.0" layoutY="367.0" text="Catégorie" />
             <ComboBox fx:id="cat" layoutX="149.0" layoutY="363.0" prefWidth="150.0" promptText="choisir une catégorie" style="-fx-background-color: #d19c97;" />
+            <Button fx:id="listp" layoutX="85.0" layoutY="25.0" mnemonicParsing="false" style="-fx-background-color: #F1F1F1;" text="Liste des produits" textFill="#d19c97" />
 
          </children>
       </Pane>

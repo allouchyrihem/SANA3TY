@@ -5,14 +5,16 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 
 <AnchorPane id="AnchorPane" prefHeight="395.0" prefWidth="759.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controller.AfficherProductController">
    <children>
-      <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="487.0" prefWidth="600.0">
+      <AnchorPane layoutX="-1.0" prefHeight="497.0" prefWidth="759.0" style="-fx-background-color: #FFFFFF;">
          <children>
-            <TableView fx:id="productTable" layoutX="69.0" prefHeight="181.0" prefWidth="600.0">
+            <TableView fx:id="productTable" layoutX="141.0" layoutY="78.0" prefHeight="181.0" prefWidth="600.0">
                <columns>
                   <TableColumn fx:id="id" prefWidth="66.0" text="id" />
                   <TableColumn fx:id="name" prefWidth="86.0" text="Name" />
@@ -23,7 +25,7 @@
                </columns>
             </TableView>
             <HBox alignment="TOP_CENTER" layoutX="525.0" layoutY="14.0" />
-            <Button fx:id="supprimer" layoutX="27.0" layoutY="202.0" mnemonicParsing="false" onMouseClicked="#supprimer" prefHeight="30.0" prefWidth="98.0" text="supprimer" />
+            <Button fx:id="supprimer" layoutX="626.0" layoutY="260.0" mnemonicParsing="false" onMouseClicked="#supprimer" prefHeight="30.0" prefWidth="98.0" style="-fx-background-color: #F1F1F1;" text="supprimer" textFill="#d19c97" />
             <Label layoutX="37.0" layoutY="275.0" text="Name" />
             <Label layoutX="39.0" layoutY="315.0" text="Description" />
             <Label layoutX="40.0" layoutY="360.0" text="Price" />
@@ -34,16 +36,17 @@
             <TextField id="priceU" layoutX="125.0" layoutY="356.0" />
             <TextField id="stockU" layoutX="125.0" layoutY="398.0" />
             <TextField id="imageU" layoutX="125.0" layoutY="437.0" />
-            <Button id="updateU" fx:id="updateU" layoutX="386.0" layoutY="446.0" mnemonicParsing="false" onMouseClicked="#update" text="Update" />
-            <Button fx:id="back" layoutX="11.0" layoutY="14.0" mnemonicParsing="false" text="Button" />
+            <Button id="updateU" fx:id="updateU" layoutX="386.0" layoutY="446.0" mnemonicParsing="false" onMouseClicked="#update" style="-fx-background-color: #F1F1F1;" text="Update" textFill="#d19c97" />
+            <Button fx:id="back" layoutX="693.0" layoutY="33.0" mnemonicParsing="false" style="-fx-background-color: #F1F1F1;" text="Retour" textFill="#d19c97" />
+            <ImageView fitHeight="107.0" fitWidth="112.0" layoutX="5.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/ogo.png" />
+               </image>
+            </ImageView>
          </children>
          
       </AnchorPane>
-      <HBox layoutX="685.9000244140625" layoutY="10.899999618530273" AnchorPane.rightAnchor="14.399999999999977" AnchorPane.topAnchor="14.0">
-         <children>
-            <Button fx:id="exit" minWidth="38.0" mnemonicParsing="false" onMouseClicked="#EXIT" prefHeight="24.0" prefWidth="38.0" text="X" />
-         </children>
-      </HBox>
+      <HBox layoutX="685.9000244140625" layoutY="10.899999618530273" AnchorPane.rightAnchor="14.399999999999977" AnchorPane.topAnchor="14.0" />
    </children>
    
 </AnchorPane>
