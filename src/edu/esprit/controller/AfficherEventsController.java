@@ -125,14 +125,15 @@ void deletebtn(ActionEvent event) {
 
 @FXML
 void updatebtn(ActionEvent event) {
+   
 
     // Get selected Event from the table
     Events selectedEvent = personsTable.getSelectionModel().getSelectedItem();
-
+   EventsDao eventsdao = new EventsDao();
     if (selectedEvent != null) {
         try {
             // Create the FXMLLoader
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/javafxapplication30/view/UpdateEvent.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/esprit/view/UpdateEvent.fxml"));
 
             // Load the UpdateEvents view
             Parent root = loader.load();
@@ -148,7 +149,13 @@ void updatebtn(ActionEvent event) {
             Stage stage = new Stage();
             stage.setScene(updateEventsScene);
             stage.show();
+            
             personsTable.refresh();
+             personsTable.getSelectionModel().clearSelection();
+        evnmdata.clear();
+    evnmdata.addAll(eventsdao.displayAll());
+    personsTable.setItems(evnmdata);
+            
 
            /* // Refresh the table after updating the Event
             eventsdata.setAll(evd.displayAll()); */
@@ -156,6 +163,8 @@ void updatebtn(ActionEvent event) {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        
+       
     }
 }
 

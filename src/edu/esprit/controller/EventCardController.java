@@ -31,7 +31,7 @@ public class EventCardController {
     @FXML
     private VBox box;
     
-    private String[] colors = {"B9E5FF", "BDB2FE", "FB9AA8", "FF5056"};
+    private String[] colors = {"E8B298", "EDCC8B", "BDD1C5", "A26360"};
     
     public void setData(Events events) {
         DonTitle.setText(events.getName());

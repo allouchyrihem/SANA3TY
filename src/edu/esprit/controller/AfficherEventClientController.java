@@ -91,7 +91,7 @@ public class AfficherEventClientController implements Initializable {
                 eventCardController.setData(event);
                 cardlayout.getChildren().add(card);
 
-                if(column ==3){
+                if(column ==2){
                     column = 0;
                     ++row;
                 }
