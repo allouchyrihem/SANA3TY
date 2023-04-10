@@ -70,6 +70,7 @@ valueid.setText(Float.toString(promos.getValue()));
     
     @FXML
     private void UpdatePromotionTbtn(ActionEvent event) {
+        if (isInputValid()) {
         String name = nameid.getText();
         Float value = Float.parseFloat(valueid.getText()) ;
         
@@ -88,6 +89,57 @@ valueid.setText(Float.toString(promos.getValue()));
         
         alert.showAndWait();
         
-    }
+    }}
     
+    private boolean isInputValid() {
+        String errorMessage = "";
+         if (nameid.getText() == null || nameid.getText().isEmpty()) {
+            errorMessage += "Le nom du code promo est requis.\n";
+        } 
+         if (nameid.getText().length() < 2 || nameid.getText().length() > 20) {
+    errorMessage += "La longueur du nom doit être entre 2 et 20 caractères.\n";
+}
+         if (valueid.getText() == null || valueid.getText().isEmpty()) {
+    errorMessage += "La valeur du code promo est requise.\n";
+} else {
+    try {
+        float value = Float.parseFloat(valueid.getText());
+        if (value < 0 || value > 100) {
+            errorMessage += "La valeur du code promo doit être un nombre entre 0 et 100.\n";
+        }
+    } catch (NumberFormatException e) {
+        errorMessage += "La valeur du code promo doit être un nombre.\n";
+    }
+}
+         
+         if (datedid.getValue() == null || datedid.getValue().toString().isEmpty()) {
+            errorMessage += "La date de l'activation est requis.\n";
+         }
+         if (datefid.getValue() == null || datefid.getValue().toString().isEmpty()) {
+            errorMessage += "La date de désactivation est requis.\n";
+         }
+        
+          LocalDate selectedDate = datedid.getValue();
+if (selectedDate != null && selectedDate.isBefore(LocalDate.now())) {
+    errorMessage += "La date sélectionnée ne peut pas être antérieure à la date du jour.\n";
+}
+
+if (datedid.getValue() != null && datefid.getValue() != null
+                && datefid.getValue().isBefore(datedid.getValue())) {
+            errorMessage += "La date de désactivation doit etre ultérieure à la date d'activation.\n";
+        }
+         if (errorMessage.isEmpty()) {
+            return true;
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+
+            alert.setTitle("Des champs invalides");
+            alert.setHeaderText("Veuillez corriger les champs invalides");
+            alert.setContentText(errorMessage);
+
+            alert.showAndWait();
+
+            return false;
+        }
+     }
 }

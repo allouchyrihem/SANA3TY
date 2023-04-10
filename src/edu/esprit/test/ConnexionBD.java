@@ -13,6 +13,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+//    "/edu/esprit/view/NavbarBackoffice.fxml"
+//    "/edu/esprit/view/AfficherPromotionTotale.fxml"
+
 /**
  *
  * @author asus

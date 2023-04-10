@@ -111,14 +111,17 @@ if (isInputValid()) {
     errorMessage += "La longueur du nom doit être entre 2 et 20 caractères.\n";
 }
          if (valueid.getText() == null || valueid.getText().isEmpty()) {
-            errorMessage += "La valeur du code promo est requis.\n";
-        } else {
-            try {
-                Integer.parseInt(valueid.getText());
-            } catch (NumberFormatException e) {
-                errorMessage += "la valeur du code promo est un nombre.\n";
-            }
+    errorMessage += "La valeur du code promo est requise.\n";
+} else {
+    try {
+        float value = Float.parseFloat(valueid.getText());
+        if (value < 0 || value > 100) {
+            errorMessage += "La valeur du code promo doit être un nombre entre 0 et 100.\n";
         }
+    } catch (NumberFormatException e) {
+        errorMessage += "La valeur du code promo doit être un nombre.\n";
+    }
+}
          
          if (datedid.getValue() == null || datedid.getValue().toString().isEmpty()) {
             errorMessage += "La date de l'activation est requis.\n";

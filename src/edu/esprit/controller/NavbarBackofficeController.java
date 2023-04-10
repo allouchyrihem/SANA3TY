@@ -34,6 +34,10 @@ public class NavbarBackofficeController implements Initializable {
     private Button eventNavBarid;
     @FXML
     private Button promotionNavBarid;
+    
+    
+    @FXML
+    private Button mainbacofficeid;
 
     /**
      * Initializes the controller class.
@@ -44,7 +48,10 @@ public class NavbarBackofficeController implements Initializable {
         // TODO
     }    
 
-  
+     @FXML
+    void mainbacofficebtn(ActionEvent event) {
+loadPage("/edu/esprit/view/AfficherEvents");
+    }
     
     @FXML
     private void eventNavBarbtn(ActionEvent event) {

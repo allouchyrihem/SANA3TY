@@ -17,11 +17,11 @@
                <font>
                   <Font name="Microsoft YaHei" size="12.0" />
                </font></Label>
-            <Label layoutX="64.0" layoutY="175.0" text="L'adresse">
+            <Label layoutX="63.0" layoutY="178.0" text="La valeur ">
                <font>
                   <Font name="Microsoft YaHei" size="12.0" />
                </font></Label>
-            <Label layoutX="70.0" layoutY="320.0" text="La date">
+            <Label layoutX="24.0" layoutY="320.0" text="La date d'expiration">
                <font>
                   <Font name="Microsoft YaHei" size="12.0" />
                </font></Label>
@@ -36,7 +36,12 @@
                 <ToolBar prefHeight="59.0" prefWidth="600.0" style="-fx-background-color: #A26360;">
                
             </ToolBar>
-            <DatePicker fx:id="datedid" layoutX="133.0" layoutY="257.0" />
+            <DatePicker fx:id="datedid" layoutX="146.0" layoutY="262.0" />
+            <Label layoutX="24.0" layoutY="266.0" text="La date d'activation">
+               <font>
+                  <Font name="Microsoft YaHei" size="12.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
    </children>

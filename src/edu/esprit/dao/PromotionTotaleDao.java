@@ -120,7 +120,7 @@ String req="select * from discount_totale where id ="+id;
 
     @Override
     public void update(PromotionTotale o) {
-       String requete = "UPDATE discount_totale SET code_promo=?, value_promo=?, date_debut=?, date_fin=?";
+       String requete = "UPDATE discount_totale SET code_promo=?, value_promo=?, date_debut=?, date_fin=? WHERE id=?";
 try {
     PreparedStatement pstmt = MyConnection.getInstance().getCnx().prepareStatement(requete);
     pstmt.setString(1, o.getName());
