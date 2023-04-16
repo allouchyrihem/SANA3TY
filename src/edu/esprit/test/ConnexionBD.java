@@ -14,7 +14,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 //    "/edu/esprit/view/NavbarBackoffice.fxml"
-//    "/edu/esprit/view/AfficherPromotionTotale.fxml"
+//    "/edu/esprit/view/NavbarBackoffice.fxml"
 
 /**
  *
@@ -28,7 +28,7 @@ public class ConnexionBD extends Application {
     public void start(Stage primaryStage) throws IOException {
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("Sana3ty");
-        parentPage = FXMLLoader.load(getClass().getResource("/edu/esprit/view/NavbarBackoffice.fxml"));
+        parentPage = FXMLLoader.load(getClass().getResource("/edu/esprit/view/AfficherEventClient.fxml"));
         Scene scene = new Scene(parentPage);
         this.primaryStage.setScene(scene);
         this.primaryStage.show();

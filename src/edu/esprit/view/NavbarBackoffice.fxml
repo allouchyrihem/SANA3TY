@@ -9,7 +9,10 @@
 
 <BorderPane fx:id="bp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controller.NavbarBackofficeController">
    <top>
-      <ToolBar prefHeight="52.0" prefWidth="600.0" style="-fx-background-color: #A26360;" BorderPane.alignment="CENTER" />
+      <ToolBar prefHeight="52.0" prefWidth="600.0" style="-fx-background-color: #A26360;" BorderPane.alignment="CENTER">
+         <items>
+            <Button fx:id="retournb" mnemonicParsing="false" onAction="#retournb" text="Button" />
+         </items></ToolBar>
    </top>
    <left>
       <VBox prefHeight="360.0" prefWidth="117.0" style="-fx-background-color: #D4A29C;" BorderPane.alignment="CENTER">

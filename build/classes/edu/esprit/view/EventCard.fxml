@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -16,15 +16,29 @@
         </Label>
       <Pane prefHeight="136.0" prefWidth="218.0">
          <children>
-            <ImageView fitHeight="114.0" fitWidth="111.0" layoutX="54.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+             <StackPane fx:id="qrCodePane" xmlns="http://javafx.com/javafx">
+</StackPane>
+            <!--ImageView fitHeight="114.0" fitWidth="111.0" layoutX="54.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/Eventicon.png" />
                </image>
-            </ImageView>
+            </ImageView-->
          </children>
+         <VBox.margin>
+            <Insets left="20.0" right="20.0" />
+         </VBox.margin>
       </Pane>
-        <Label fx:id="DonAmount" alignment="CENTER" contentDisplay="CENTER" lineSpacing="10.0" prefHeight="100.0" prefWidth="218.0" text="Description" textFill="WHITE" />
+        <Label fx:id="DonAmount" alignment="CENTER" contentDisplay="CENTER" lineSpacing="10.0" prefHeight="100.0" prefWidth="218.0" text="Description" textAlignment="CENTER" textFill="WHITE">
+         <VBox.margin>
+            <Insets top="20.0" />
+         </VBox.margin>
+         <padding>
+            <Insets top="20.0" />
+         </padding></Label>
         <Label fx:id="DonDesc" alignment="CENTER" contentDisplay="CENTER" prefHeight="29.0" prefWidth="218.0" text="Adresse" textAlignment="CENTER" textFill="WHITE" />
-        <Label fx:id="DonExp" alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="231.0" text="date" textFill="WHITE" />
+        <Label fx:id="DonExp" alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="231.0" text="date" textFill="WHITE">
+         <padding>
+            <Insets bottom="20.0" />
+         </padding></Label>
     </children>
 </VBox>

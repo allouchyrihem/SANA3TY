@@ -18,7 +18,10 @@ import javafx.scene.layout.BorderPane;
 import javafx.fxml.FXMLLoader;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 
 /**
@@ -27,6 +30,8 @@ import javafx.scene.input.MouseEvent;
  * @author rouao
  */
 public class NavbarBackofficeController implements Initializable {
+     @FXML
+    private Button retournb;
 
     @FXML
     private BorderPane bp;
@@ -73,5 +78,15 @@ loadPage("/edu/esprit/view/AfficherEvents");
     }
 }
 
+     @FXML
+    void retournb(ActionEvent event) throws IOException {
+ FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/esprit/view/NavbarBackoffice.fxml"));
+    Parent root = loader.load();
+
+    Scene scene = new Scene(root);
+    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    stage.setScene(scene);
+    stage.show();
+    }
     
 }

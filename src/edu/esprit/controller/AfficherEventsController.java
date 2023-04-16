@@ -55,7 +55,7 @@ public class AfficherEventsController implements Initializable {
     private TableColumn<Events, LocalDate> DateColonne;
          @FXML
     private Button deletebuttonid;
-
+      
    
     @FXML
     private Button updatebuttonid;
@@ -167,7 +167,7 @@ void updatebtn(ActionEvent event) {
        
     }
 }
-
+ 
 
 
     }
