@@ -43,7 +43,7 @@
                </columns>
             </TableView>
             <Button fx:id="supprimer" layoutX="473.0" layoutY="299.0" mnemonicParsing="false" onMouseClicked="#supprimer" prefHeight="30.0" prefWidth="98.0" text="supprimer" />
-            <Button fx:id="updatec" layoutX="473.0" layoutY="335.0" mnemonicParsing="false" onMouseClicked="#supprimer" prefHeight="30.0" prefWidth="98.0" text="modifier " />
+            <Button fx:id="updatebuttonid" layoutX="473.0" layoutY="335.0" mnemonicParsing="false" onAction="#updatebtn" prefHeight="30.0" prefWidth="98.0" text="modifier " />
          </children>
       </Pane>
       <Label layoutX="31.0" layoutY="106.0" text="tote bag en lain">

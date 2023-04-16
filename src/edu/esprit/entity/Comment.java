@@ -33,7 +33,14 @@ public class Comment {
     }
 
     public Comment(int id, String description) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.id = id;
+        this.description = description;
+    }
+
+   
+
+    public Comment(int id) {
+        this.id = id;
     }
 
    

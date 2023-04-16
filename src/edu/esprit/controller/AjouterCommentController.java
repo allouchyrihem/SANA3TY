@@ -10,11 +10,18 @@ import edu.esprit.dao.ReclamationDao;
 import edu.esprit.entity.Category;
 import edu.esprit.entity.Comment;
 import edu.esprit.entity.Product;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -26,6 +33,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -63,7 +71,7 @@ public class AjouterCommentController implements Initializable {
     @FXML
     private Button supprimer;
     @FXML
-    private Button updatec;
+    private Button updatebuttonid;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -86,12 +94,11 @@ public class AjouterCommentController implements Initializable {
         descriptionC.setText("");
 }
         });
-         
-        
-        
-    
+          
 
-    }    
+    } 
+    
+    
     private boolean isInputValid() {
         String errorMessage = "";
          if (descriptionC.getText() == null || descriptionC.getText().isEmpty()) {
@@ -128,5 +135,53 @@ public class AjouterCommentController implements Initializable {
    System.out.println(categoryTable);
           
     }
+   
+ 
+private CommentDao evd= new CommentDao() ;
+    private ObservableList<Comment> evnmdata = FXCollections.observableArrayList();
+  
+@FXML
+void updatebtn(ActionEvent event) {
+   
+
+    // Get selected Event from the table
+    Comment selectedComment = categoryTable.getSelectionModel().getSelectedItem();
+   CommentDao commentsdao = new CommentDao();
+    if (selectedComment != null) {
+        try {
+            // Create the FXMLLoader
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/esprit/view/modifierComment.fxml"));
+
+            // Load the UpdateEvents view
+            Parent root = loader.load();
+
+            // Get the UpdateEvents controller
+            ModifierCommentController updateCommentsController = loader.getController();
+
+            // Pass the selected Event to the controller
+            updateCommentsController.setComment(selectedComment);
+
+            // Create a new scene and set it on the stage
+            Scene updateEventsScene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(updateEventsScene);
+            stage.show();
+            
+            categoryTable.refresh();
+             categoryTable.getSelectionModel().clearSelection();
+        evnmdata.clear();
+    evnmdata.addAll(commentsdao.displayAll());
+    categoryTable.setItems(evnmdata);
+            
+
+           /* // Refresh the table after updating the Event
+            eventsdata.setAll(evd.displayAll()); */
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
        
+    }
+}
 }

@@ -9,6 +9,7 @@ import edu.esprit.dao.Cdao1;
 import edu.esprit.entity.Category;
 import edu.esprit.entity.Comment;
 import edu.esprit.util.MyConnection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -124,20 +125,26 @@ public class CommentDao implements Cdao1<Comment>{
     return p;
     }
 
-    public boolean update(Comment p) {
-        String qry = "UPDATE comment SET description = '"+p.getDescription()+"')";
-        
-        try {
-            if (st.executeUpdate(qry) > 0) {
-                return true;
-            }
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(CommentDao.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return false;
-    }
+    /**
+     *
+     * @param c
+     */
+    @Override
+    public void update(Comment c){
+       String requete = "UPDATE comment SET description=? WHERE id=?";
+try {
+    PreparedStatement pstmt = MyConnection.getInstance().getCnx().prepareStatement(requete);
+    
+    
+    pstmt.setString(1, c.getDescription());
+    pstmt.setInt(2, c.getId());
+  
+    pstmt.executeUpdate();
+} catch (SQLException ex) {
+    Logger.getLogger(CommentDao.class.getName()).log(Level.SEVERE, null, ex);
+}
 
+    }
   
 
     

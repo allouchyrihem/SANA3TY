@@ -19,5 +19,5 @@ public interface Cdao1 <T> {
     public List<T> displayAll();
     public T displayById(int id);
     
-    public boolean update(T os);
+    public void update(T o);
 }

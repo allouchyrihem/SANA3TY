@@ -2,6 +2,13 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/nada/SANA3TY/src/edu/esprit/dao/CommentDao.java</file>
+            <file>file:/C:/Users/nada/SANA3TY/src/edu/esprit/controller/AfficherCommentController.java</file>
+            <file>file:/C:/Users/nada/SANA3TY/src/edu/esprit/controller/ModifierCommentController.java</file>
+            <file>file:/C:/Users/nada/SANA3TY/src/edu/esprit/controller/AjouterReclamationController.java</file>
+            <file>file:/C:/Users/nada/SANA3TY/src/edu/esprit/controller/AjouterCommentController.java</file>
+            <file>file:/C:/Users/nada/SANA3TY/src/edu/esprit/controller/ListData1.java</file>
+        </group>
     </open-files>
 </project-private>
