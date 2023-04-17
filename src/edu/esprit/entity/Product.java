@@ -5,9 +5,13 @@
  */
 package edu.esprit.entity;
 
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -23,9 +27,17 @@ public class Product {
     private SimpleStringProperty stock;
     private SimpleStringProperty image;
 
-
+     public static ObservableList<Product> getProducts() {
+        ObservableList<Product> products = FXCollections.observableArrayList();
+        // retrieve products from database or other data source
+        // add each Product object to the products list
+        return products;
+    }
     public Product() {
     }
+
+ 
+    
 
     public Product(int id, String name, String description, String price, String stock, String image) {
         this.id = new SimpleIntegerProperty(id);

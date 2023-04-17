@@ -36,6 +36,7 @@
             <TextField id="imageU" layoutX="125.0" layoutY="437.0" />
             <Button id="updateU" fx:id="updateU" layoutX="386.0" layoutY="446.0" mnemonicParsing="false" onMouseClicked="#update" text="Update" />
             <Button fx:id="back" layoutX="11.0" layoutY="14.0" mnemonicParsing="false" text="Button" />
+            <Button layoutX="618.0" layoutY="182.0" mnemonicParsing="false" text="Acheter" />
          </children>
          
       </AnchorPane>

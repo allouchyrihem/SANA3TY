@@ -27,7 +27,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-
+import java.util.ArrayList;
 /**
  *
  * @author asus
@@ -51,27 +51,20 @@ public class AfficherProductController implements Initializable {
     private TableColumn<Product, String> stock;
         @FXML
     private TableColumn<Product, ImageView> image;
-        @FXML
-    private Button update;
          @FXML
     private Button supprimer;
  @FXML
     private Button back;
-    @FXML
-    private TextField nameU;
-    @FXML
-    private TextField descriptionU;
-    @FXML
-    private TextField priceU;
-    @FXML
-    private TextField stockU;
-    @FXML
-    private TextField imageU;
   
     private ListData listdata = new ListData();
-
-
-    @Override
+    @FXML
+    private Button updateU;
+    @FXML
+    private Button exit;
+    @FXML
+    private Button Acheter;
+    
+     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         back.setOnAction(event -> {

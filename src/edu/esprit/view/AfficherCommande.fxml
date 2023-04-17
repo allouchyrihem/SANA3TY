@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="bp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controller.AfficherCmdController">
+   <left>
+      <VBox prefHeight="352.0" prefWidth="92.0" style="-fx-background-color: #D4A29C;" BorderPane.alignment="CENTER">
+         <children>
+               <ImageView fx:id="imageView" fitHeight="59.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/ogo.png" />
+               </image>
+            </ImageView>
+         
+      <Button fx:id="back" mnemonicParsing="false" opacity="0.28" prefHeight="25.0" prefWidth="30.0" style="-fx-background-color: #D4A29C;" text="&lt;-" />
+            <Button fx:id="" mnemonicParsing="false" prefHeight="43.0" prefWidth="118.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 1px 0px;" text="Événement" textFill="WHITE">
+               <font>
+                  <Font name="Calibri" size="12.0" />
+               </font>
+            </Button>
+            <Button fx:id="promotionNavBarid" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="118.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 1px 0px;" text="Promotion" textFill="WHITE">
+               <font>
+                  <Font name="Calibri" size="12.0" />
+               </font>
+            </Button>
+            <Button layoutX="10.0" layoutY="53.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="118.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 1px 0px;" text="Commandes" textFill="WHITE">
+               <font>
+                  <Font name="Calibri" size="12.0" />
+               </font>
+            </Button>
+            <Button layoutX="10.0" layoutY="96.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="118.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 1px 0px;" text="Produit" textFill="WHITE">
+               <font>
+                  <Font name="Calibri" size="12.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
+   </left>
+   <center>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="343.0" prefWidth="498.0">
+         <children>
+            <TableView fx:id="commandeTable" layoutX="9.0" layoutY="36.0" prefHeight="174.0" prefWidth="475.0">
+               <columns>
+                  <TableColumn fx:id="adresse" prefWidth="63.19995403289795" text="Adresse" />
+                  <TableColumn fx:id="description" prefWidth="84.7999267578125" text="Description" />
+                  <TableColumn fx:id="etat" prefWidth="74.40000915527344" text="Etat" />
+                        <TableColumn fx:id="totale" prefWidth="52.79997253417969" text="Totale" />
+                        <TableColumn fx:id="datecmd" prefWidth="94.39996337890625" text="Date" />
+                        <TableColumn fx:id="produit" prefWidth="104.79998779296875" text="Produit" />
+               </columns>
+            </TableView>
+            <HBox alignment="TOP_CENTER" layoutX="525.0" layoutY="14.0" />
+            <Button fx:id="supprimer" layoutX="405.0" layoutY="210.0" mnemonicParsing="false" onMouseClicked="#supprimer" prefHeight="26.0" prefWidth="78.0" style="-fx-background-color: #D4A29C;" text="supprimer" />
+            <Label layoutX="30.0" layoutY="279.0" text="Etat" />
+            <Button id="updateU" fx:id="updateU" layoutX="241.0" layoutY="275.0" mnemonicParsing="false" onMouseClicked="#update" style="-fx-background-color: #D4A29C;" text="Update" />
+            <Button fx:id="exit" alignment="TOP_CENTER" contentDisplay="RIGHT" layoutX="478.0" layoutY="2.0" minWidth="38.0" mnemonicParsing="false" onMouseClicked="#EXIT" prefHeight="24.0" prefWidth="38.0" style="-fx-background-color: #ffdfdf;" text="X" textAlignment="RIGHT">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Button>
+                  <ComboBox fx:id="etatC" layoutX="91.0" layoutY="275.0" prefWidth="150.0" promptText="en attente" />
+         </children>
+         
+      </AnchorPane>
+      <HBox layoutX="685.9000244140625" layoutY="10.899999618530273" AnchorPane.rightAnchor="14.399999999999977" AnchorPane.topAnchor="14.0" />
+         </children>
+      </VBox>
+   </center>
+</BorderPane>

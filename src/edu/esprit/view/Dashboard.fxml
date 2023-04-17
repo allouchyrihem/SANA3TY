@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="edu.esprit.controller.DashboardController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controller.DashboardController">
     <children>
       <VBox alignment="CENTER" layoutX="104.0" layoutY="50.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="398.0" style="-fx-border-color: blue; -fx-background-color: white;" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="104.0" AnchorPane.rightAnchor="128.0" AnchorPane.topAnchor="50.0">
          <children>
@@ -13,16 +13,21 @@
             <HBox prefHeight="100.0" prefWidth="395.0">
              
                <children>
+                  <Button fx:id="btn_addc" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="8.0" mnemonicParsing="false" text="Ajouter catégorie" />
                   <Button fx:id="btn_display" mnemonicParsing="false" text="Afficher produits" />
+                  <Button fx:id="btn_displayC" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="8.0" mnemonicParsing="false" text="Afficher catégorie" />
                </children>
             </HBox>
             <HBox prefHeight="98.0" prefWidth="444.0" spacing="40.0">
              
                <children>
-                  <Button fx:id="btn_addc" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="8.0" mnemonicParsing="false" text="Ajouter catégorie" />
+                     <Button fx:id="btn_addcmd" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="8.0" mnemonicParsing="false" text="Ajouter cmd" />
+                  <Button fx:id="btn_displayS" mnemonicParsing="false" text="sessionPanier" />
+               
                </children>
             </HBox>
-            <Button fx:id="btn_displayC" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="8.0" mnemonicParsing="false" text="Afficher catégorie" />
+            <Button fx:id="btn_displayCmd" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="8.0" mnemonicParsing="false" text="Afficher commande" />
+         
          </children>
       </VBox>
    </children>

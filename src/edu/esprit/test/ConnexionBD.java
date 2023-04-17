@@ -25,17 +25,16 @@ public class ConnexionBD extends Application {
     public void start(Stage primaryStage) throws IOException {
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("Sana3ty");
-        parentPage = FXMLLoader.load(getClass().getResource("/edu/esprit/view/Accueil1.fxml"));
+        parentPage = FXMLLoader.load(getClass().getResource("/edu/esprit/view/Dashboard.fxml"));
         Scene scene = new Scene(parentPage);
         this.primaryStage.setScene(scene);
         this.primaryStage.show();
 
     }
-
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+  public static void main(String[] args) {
         launch(args);
     }
 

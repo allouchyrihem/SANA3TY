@@ -32,7 +32,13 @@ public class DashboardController implements Initializable {
     @FXML
     private Button btn_addc;
     @FXML
+    private Button btn_addcmd;
+    @FXML
     private Button btn_displayC;
+    @FXML
+    private Button btn_displayCmd;
+    @FXML
+    private Button btn_displayS; 
     /**
      * Initializes the controller class.
      */
@@ -68,6 +74,21 @@ public class DashboardController implements Initializable {
             }
         });
         
+        btn_displayS.setOnAction(event -> {
+            try {//FXMLLoader loader = new FXMLLoader();
+                //loader.setLocation(getClass().getResource("/com/esprit/view/Accueil.fxml"));
+                Parent page2 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/SessionPanier.fxml"));
+                // Give the controller access to the main app.
+//                AfficherPersonneController controller =loader.getController();
+//                controller.setListData(new ListData());
+                Scene scene = new Scene(page2);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(AccueilController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
         
         btn_addc.setOnAction(event -> {
 
@@ -81,11 +102,37 @@ public class DashboardController implements Initializable {
                 Logger.getLogger(AccueilController.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
+        btn_addcmd.setOnAction(event -> {
 
+            try {
+                Parent page1 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/Panier.fxml"));
+                Scene scene = new Scene(page1);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(AccueilController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
         btn_displayC.setOnAction(event -> {
             try {//FXMLLoader loader = new FXMLLoader();
                 //loader.setLocation(getClass().getResource("/com/esprit/view/Accueil.fxml"));
                 Parent page2 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/AfficherCategory.fxml"));
+                // Give the controller access to the main app.
+//                AfficherPersonneController controller =loader.getController();
+//                controller.setListData(new ListData());
+                Scene scene = new Scene(page2);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(AccueilController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+        btn_displayCmd.setOnAction(event -> {
+            try {//FXMLLoader loader = new FXMLLoader();
+                //loader.setLocation(getClass().getResource("/com/esprit/view/Accueil.fxml"));
+                Parent page2 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/AfficherCommande.fxml"));
                 // Give the controller access to the main app.
 //                AfficherPersonneController controller =loader.getController();
 //                controller.setListData(new ListData());
