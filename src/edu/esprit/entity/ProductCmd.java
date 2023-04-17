@@ -25,6 +25,14 @@ public ProductCmd(Commande commande, Product product) {
          this.commande = new SimpleObjectProperty<>(commande);
         this.product = new SimpleObjectProperty<>(product);
     }
+public ProductCmd(Product product,Commande commande) {
+         this.commande = new SimpleObjectProperty<>(commande);
+        this.product = new SimpleObjectProperty<>(product);
+    }
+
+    public ProductCmd() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
      public Commande getCommande() {
         return commande.get();
     }

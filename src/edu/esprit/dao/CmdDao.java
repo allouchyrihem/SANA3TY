@@ -69,10 +69,10 @@ public class CmdDao implements ICmd<Commande>{
             instance=new CmdDao();
         return instance;
     }
-
+    
     @Override
     public void insert(Commande o) {
-        String req="insert into commande (adresse,description,etat,datecmd) values ('"+o.getAdresse()+"','"+o.getDescription()+"','"+"en attente"+"','"+java.sql.Date.valueOf(LocalDate.now())+"')";
+        String req="insert into commande (adresse,description,etat,datecmd) values ('"+o.getAdresse()+"','"+"description"+"','"+"en attente"+"','"+java.sql.Date.valueOf(LocalDate.now())+"')";
         try {
             st.executeUpdate(req);
         } catch (SQLException ex) {
