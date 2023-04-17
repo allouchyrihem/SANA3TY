@@ -5,8 +5,10 @@
  */
 package edu.esprit.dao;
 
+import edu.esprit.entity.Category;
 import edu.esprit.entity.Product;
 import edu.esprit.util.MyConnection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -44,7 +46,7 @@ public class ProductDao implements Idao<Product>{
 
     @Override
     public void insert(Product o) {
-        String req="insert into product (name,description,price,stock,image,category_id) values ('"+o.getName()+"','"+o.getDescription()+"','"+o.getPrice()+"','"+o.getStock()+"','"+o.getImage()+"','"+o.getCategory()+"')";
+        String req="insert into product (name,description,price,stock,image,category_id) values ('"+o.getName()+"','"+o.getDescription()+"','"+o.getPrice()+"','"+o.getStock()+"','"+o.getImage()+"','"+o.getCategory().getId()+"')";
         try {
             st.executeUpdate(req);
         } catch (SQLException ex) {
@@ -67,29 +69,35 @@ public class ProductDao implements Idao<Product>{
         }else System.out.println("n'existe pas");
     }
 
-    @Override
-    public ObservableList<Product> displayAll() {
-        String req="select * from product";
-        ObservableList<Product> list=FXCollections.observableArrayList();       
-        
-        try {
-            rs=st.executeQuery(req);
-            while(rs.next()){
-                Product p=new Product();
-                p.setId(rs.getInt("id"));
-                p.setName(rs.getString("name"));
-                p.setDescription(rs.getString("description"));
-                p.setPrice(rs.getString("price"));
-                p.setStock(rs.getString("stock"));
-                p.setImage(rs.getString("image"));
-                list.add(p);
-            }
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(ProductDao.class.getName()).log(Level.SEVERE, null, ex);
+  @Override
+public ObservableList<Product> displayAll() {
+    String req="SELECT p.id, p.name, p.description, p.price, p.stock, p.image, c.name AS category_name " +
+               "FROM product p " +
+               "JOIN category c ON p.category_id = c.id";
+    ObservableList<Product> list=FXCollections.observableArrayList();
+
+    try {
+        rs=st.executeQuery(req);
+        while(rs.next()){
+            Product p=new Product();
+            p.setId(rs.getInt("id"));
+            p.setName(rs.getString("name"));
+            p.setDescription(rs.getString("description"));
+            p.setPrice(rs.getString("price"));
+            p.setStock(rs.getString("stock"));
+            p.setImage(rs.getString("image"));
+            Category category = new Category();
+            category.setName(rs.getString("category_name"));
+            p.setCategory(category);
+            list.add(p);
         }
-        return list;
+
+    } catch (SQLException ex) {
+        Logger.getLogger(ProductDao.class.getName()).log(Level.SEVERE, null, ex);
     }
+    return list;
+}
+
 
     public List<Product> displayAllList() {
         String req="select * from product";
@@ -135,19 +143,25 @@ public class ProductDao implements Idao<Product>{
     }
 
     @Override
-    public boolean update(Product p) {
-        String qry="UPDATE product SET name = "+p.getName()+"',description ="+p.getDescription()+"', price ="+p.getPrice()+"', stock ="+p.getStock()+"', image ="+p.getImage()+"' WHERE id ="+p.getId();
-        try {
-            if (st.executeUpdate(qry) > 0) {
-                return true;
-            }
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(ProductDao.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return false;
-    }
+    public void update(Product p){
+       String requete = "UPDATE product SET name=?, description=?, price=?, stock=?, image=?, category_id=? WHERE id=?";
+try {
+    PreparedStatement pstmt = MyConnection.getInstance().getCnx().prepareStatement(requete);
+    pstmt.setString(1, p.getName());
+    pstmt.setString(2, p.getDescription());
+    pstmt.setString(3, p.getPrice());
+    pstmt.setString(4, p.getStock());
+    pstmt.setString(5, p.getImage());
+    pstmt.setInt(6,p.getCategory().getId());
+    pstmt.setInt(7,p.getId());
+    pstmt.executeUpdate();
+} catch (SQLException ex) {
+    Logger.getLogger(ProductDao.class.getName()).log(Level.SEVERE, null, ex);
+}
 
+}
+    
+    
     
     
 }

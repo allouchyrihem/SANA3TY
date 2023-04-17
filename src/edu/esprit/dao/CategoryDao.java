@@ -8,6 +8,7 @@ package edu.esprit.dao;
 import edu.esprit.entity.Category;
 import edu.esprit.entity.Product;
 import edu.esprit.util.MyConnection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -92,13 +93,14 @@ public class CategoryDao implements Cdao<Category>{
 
     @Override
     public ObservableList<String> displayName() {
-        String req="select * from category";     
+        String req="select name from category";     
         ObservableList<String> options = FXCollections.observableArrayList();
-
         try {
             rs=st.executeQuery(req);
             while(rs.next()){
-                options.add(rs.getString("name"));
+                String ch="";
+                ch=rs.getString("name");
+                options.add(ch);
             }
             
         } catch (SQLException ex) {
@@ -143,22 +145,37 @@ public class CategoryDao implements Cdao<Category>{
     return p;
     }
 
+    
     @Override
-    public boolean update(Category p) {
-        String qry = "UPDATE category SET nom = '"+p.getName()+"','"+p.getDescription()+"')";
+    public String displayNameById(int id) {
+           String req="select name from category where id="+id;
+           String name="";
         try {
-            if (st.executeUpdate(qry) > 0) {
-                return true;
-            }
-            
+            rs=st.executeQuery(req);
+           // while(rs.next()){
+            rs.next();
+                name=rs.getString("name");
+            //}  
         } catch (SQLException ex) {
             Logger.getLogger(ProductDao.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return false;
+    return name;
     }
-
-  
-
     
+    @Override
+    public void update(Category p) {
+        String qry = "UPDATE category SET name=?,description=? WHERE id=?";
+        try {
+        PreparedStatement ps = MyConnection.getInstance().getCnx().prepareStatement(qry);
+        ps.setString(1,p.getName());
+        ps.setString(2,p.getDescription());
+        ps.setInt(3, p.getId());
+        ps.executeUpdate();
+        System.out.println("category updated successfully.");
+    } catch (SQLException ex) {
+        System.out.println("Error updating category: " + ex.getMessage());
+    }   
+    
+}
     
 }

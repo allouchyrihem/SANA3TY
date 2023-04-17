@@ -21,7 +21,7 @@
             <Label layoutX="167.0" layoutY="243.0" prefHeight="17.0" prefWidth="80.0" text="Price :" textAlignment="CENTER" />
             <Label layoutX="167.0" layoutY="276.0" text="stock :" />
             <Label layoutX="163.0" layoutY="320.0" prefHeight="17.0" prefWidth="80.0" text="image :" textAlignment="CENTER" />
-            <Button id="valider" fx:id="btn" layoutX="403.0" layoutY="320.0" mnemonicParsing="false" text="Valider">
+            <Button id="valider" fx:id="btn" layoutX="421.0" layoutY="393.0" mnemonicParsing="false" text="Valider">
                <font>
                   <Font size="14.0" />
                </font>
@@ -31,7 +31,7 @@
             <TextField id="price" fx:id="price" layoutX="243.0" layoutY="239.0" />
             <TextField id="stock" fx:id="stock" layoutX="243.0" layoutY="281.0" />
             <Button fx:id="addImage" layoutX="243.0" layoutY="316.0" mnemonicParsing="false" onAction="#SingleImage" text="Browse" />
-            <ImageView id="ImageView" fx:id="ImageView" fitHeight="59.0" fitWidth="61.0" layoutX="268.0" layoutY="283.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView id="ImageView" fx:id="ImageView" fitHeight="59.0" fitWidth="61.0" layoutX="415.0" layoutY="312.0" pickOnBounds="true" preserveRatio="true" />
             <Text fill="#d19c97" layoutX="177.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajouter produit">
                <font>
                   <Font name="System Bold Italic" size="30.0" />

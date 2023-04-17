@@ -63,17 +63,17 @@ public class AjouterProductController  implements Initializable {
     @FXML
     private Button addImage;
     private File f = null;
+        List<String> lstFile;
+
     @FXML
     private ImageView ImageView;
-    List<String> lstFile;
-    private ListData listdata = new ListData();
     @FXML
     private Pane BoutonValider;
     @FXML
-    private ComboBox<String> cat;
-    private ObservableList<String> observableOptions ;
+    private ComboBox<Category> cat;
+    private ObservableList<Category> observableOptions ;
     private ListData listData = new ListData(); // initialize listData
-    private ObservableList<String> categories=FXCollections.observableArrayList();
+    private ObservableList<Category> categories=FXCollections.observableArrayList();
     @FXML
     private Button back;
     @FXML
@@ -200,8 +200,7 @@ public class AjouterProductController  implements Initializable {
                 Logger.getLogger(Accueil1Controller.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
-        categories = listData.getNames();
-        CategoryDao cdao =new CategoryDao();
+        categories = listData.getcategories();
         observableOptions = FXCollections.observableArrayList(categories);
         cat.setItems(observableOptions);
         btn.setOnAction((ActionEvent event) -> {
@@ -232,9 +231,10 @@ public class AjouterProductController  implements Initializable {
 
             }else {
 
-            try {
-                int id = cdao.displayIdByName(cat.getValue());
-                p = new Product(name.getText(), description.getText(),price.getText(),stock.getText(),imageEncoderDecoder(f.getAbsolutePath()),id);
+              
+                                try {
+
+                p = new Product(name.getText(), description.getText(),price.getText(),stock.getText(),imageEncoderDecoder(f.getAbsolutePath()),cat.getValue());
                 ProductDao pdao = ProductDao.getInstance();
                 pdao.insert(p);
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/esprit/view/Accueil1.fxml"));
@@ -282,6 +282,12 @@ public class AjouterProductController  implements Initializable {
         alert.showAndWait();
 
     }
+
+    @FXML
+    private void valider(ActionEvent event) {
+    }
+
+
 
    
 

@@ -26,6 +26,7 @@ public class ListData {
     private ObservableList<Product> products=FXCollections.observableArrayList();
     private ObservableList<Category> categories=FXCollections.observableArrayList();
     private ObservableList<String> cat=FXCollections.observableArrayList();
+
     public ListData() {
         
         ProductDao pdao=ProductDao.getInstance();
@@ -43,7 +44,7 @@ public class ListData {
     }
     public ObservableList<String> getNames(){
         return cat;
+    
     }
-
     
 }

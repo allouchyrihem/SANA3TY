@@ -12,8 +12,12 @@ import edu.esprit.entity.Product;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.function.Predicate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -24,6 +28,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
@@ -54,6 +59,10 @@ public class AfficherCategoryController implements Initializable {
     private Hyperlink category;
     @FXML
     private Hyperlink accueil;
+    
+    private ObservableList<Category> catdata = FXCollections.observableArrayList();
+    @FXML
+    private TextField searchC;
     /**
      * Initializes the controller class.
      */
@@ -117,12 +126,26 @@ public class AfficherCategoryController implements Initializable {
                 Logger.getLogger(AccueilController.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
+      
         categoryTable.setItems(listdata.getcategories());
+        categoryTable.getSortOrder().add(name); // add the column to sort by
+name.setSortType(TableColumn.SortType.ASCENDING); // set the sort type
+categoryTable.sort(); 
         name.setCellValueFactory(new PropertyValueFactory<>("name"));
         description.setCellValueFactory(new PropertyValueFactory<>("description"));
-        
+           searchC.textProperty().addListener((observable, oldValue, newValue) -> {
+            // Create filter Predicate
+            Predicate<Category> filter = item -> {
+                // Implement filter logic here
+                String query = newValue.toLowerCase();
+                return item.getName().toLowerCase().contains(query)||item.getDescription().toLowerCase().contains(query);
+            };
+
+            // Apply filter to data and update TableView
+            categoryTable.setItems(listdata.getcategories().filtered(filter));
+        });
     }
-    @FXML
+                 
         public void update(javafx.scene.input.MouseEvent event) {
 
         CategoryDao cdao=new CategoryDao();
@@ -130,9 +153,7 @@ public class AfficherCategoryController implements Initializable {
         p=categoryTable.getSelectionModel().getSelectedItem();
         p.setName(categoryTable.getSelectionModel().getSelectedItem().getName());
         p.setDescription(categoryTable.getSelectionModel().getSelectedItem().getDescription());
-        cdao.update(p);
-              
-        
+        cdao.update(p);           
     }
     public void delete(){
     CategoryDao cdao =new CategoryDao();
@@ -151,7 +172,54 @@ public class AfficherCategoryController implements Initializable {
         Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
         stage.close();
     }
+
+    @FXML
+    void updatebtn(ActionEvent event) {
    
+
+    // Get selected Event from the table
+    Category selectedcategory = categoryTable.getSelectionModel().getSelectedItem();
+    CategoryDao cdao = new CategoryDao();
+    if (selectedcategory != null) {
+        try {
+            // Create the FXMLLoader
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/esprit/view/UpdateCategory.fxml"));
+
+            // Load the UpdateEvents view
+            Parent root = loader.load();
+
+            // Get the UpdateEvents controller
+            UpdateCategoryController updatecategoriesController = loader.getController();
+
+            // Pass the selected Event to the controller
+            updatecategoriesController.setCategory(selectedcategory);
+
+            // Create a new scene and set it on the stage
+            Scene updatecategoryScene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(updatecategoryScene);
+            stage.show();
+            
+            categoryTable.refresh();
+             categoryTable.getSelectionModel().clearSelection();
+        catdata.clear();
+    catdata.addAll(cdao.displayAll());
+    categoryTable.setItems(catdata);
+            
+
+           /* // Refresh the table after updating the Event
+            eventsdata.setAll(evd.displayAll()); */
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
+       
+    }
+}
+
+
     }    
+   
     
 

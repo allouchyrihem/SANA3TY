@@ -8,45 +8,51 @@ package edu.esprit.entity;
 import java.util.Objects;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
-
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 /**
  *
  * @author asus
  */
 public class Product {
     
-    
+     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private SimpleIntegerProperty id;
     private SimpleStringProperty name;
     private SimpleStringProperty description;   
     private SimpleStringProperty price;
     private SimpleStringProperty stock;
     private SimpleStringProperty image;
-    private SimpleIntegerProperty category;
-
-
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
+    
     public Product() {
     }
 
-    public Product(int id, String name, String description, String price, String stock, String image,int category) {
+    public Product(int id, String name, String description, String price, String stock, String image,Category category) {
         this.id = new SimpleIntegerProperty(id);
         this.name = new SimpleStringProperty(name);
         this.description = new SimpleStringProperty(description);
         this.price = new SimpleStringProperty(price);
         this.stock = new SimpleStringProperty(stock);
         this.image = new SimpleStringProperty(image);
-        this.category = new SimpleIntegerProperty(category);
+        this.category = category;
          }
-
-    public Product(String name, String description, String price, String stock, String image,int category) {
+    public Product(String name, String description, String price, String stock, String image,Category category) {
         this.name = new SimpleStringProperty(name);
         this.description = new SimpleStringProperty(description);
         this.price = new SimpleStringProperty(price);
         this.stock = new SimpleStringProperty(stock);
         this.image = new SimpleStringProperty(image);
-        this.category = new SimpleIntegerProperty(category);
+        this.category = category;
        
     }
+
     public int getId() {
         return id.get();
     }
@@ -94,16 +100,14 @@ public class Product {
     public void setImage(String image) {
         this.image = new SimpleStringProperty(image);
     }
-    
-    public int getCategory() {
-        return category.get();
+
+    public Category getCategory() {
+        return category;
     }
 
-    public void setCategory(int category) {
-        this.category = new SimpleIntegerProperty(category);
+    public void setCategory(Category category) {
+        this.category = category;
     }
-
-
     public SimpleStringProperty getNameProperty(){
         return name;
     }
@@ -120,10 +124,9 @@ public class Product {
     public SimpleStringProperty getImageProperty(){
         return image;
     }
-    public SimpleIntegerProperty getCategoryProperty(){
+    public Category getCategoryProperty(){
         return category;
     }
-    
     @Override
     public String toString() {
         return "Product{" + "id=" + id + ", name=" + name + ", description=" + description + ", price=" + price + ", stock=" + stock + ", image=" + image +", category=" + category +'}';
@@ -154,6 +157,10 @@ public class Product {
             return false;
         }
         return true;
+    }
+
+    public void categoryProperty() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 

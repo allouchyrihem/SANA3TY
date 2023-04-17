@@ -16,6 +16,6 @@ public interface Idao <T> {
     public void delete(int id);
     public List<T> displayAll();
     public T displayById(int id);
-    
-    public boolean update(T os);
+    public void update(T o);
+    //public boolean update(T os);
 }

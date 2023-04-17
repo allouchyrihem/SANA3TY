@@ -1,6 +1,7 @@
 package edu.esprit.dao;
 
 
+import edu.esprit.entity.Category;
 import java.util.List;
 
 /*
@@ -20,6 +21,6 @@ public interface Cdao <T> {
     public T displayById(int id);
     public List<String>displayName();
     public int displayIdByName(String name);
-    
-    public boolean update(T os);
+    public String displayNameById(int id);
+    public void update(T os);
 }

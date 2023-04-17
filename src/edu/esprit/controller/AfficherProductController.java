@@ -5,13 +5,20 @@
  */
 package edu.esprit.controller;
 
+import edu.esprit.dao.CategoryDao;
 import edu.esprit.dao.ProductDao;
+import edu.esprit.entity.Category;
 import edu.esprit.entity.Product;
 import java.io.IOException;
 import java.net.URL;
+import static java.util.Optional.empty;
 import java.util.ResourceBundle;
+import java.util.function.Predicate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -22,6 +29,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -52,6 +60,8 @@ public class AfficherProductController implements Initializable {
     @FXML
     private TableColumn<Product, ImageView> image;
     @FXML
+    private TableColumn<Product, String> categoryname;
+    @FXML
     private Button back;
   
     private ListData listdata = new ListData();
@@ -59,14 +69,22 @@ public class AfficherProductController implements Initializable {
     private Hyperlink dashboard;
     @FXML
     private Hyperlink product;
-    @FXML
-    private Hyperlink category;
+    
     @FXML
     private Button supprimer;
     @FXML
     private Button updateU;
     @FXML
     private Hyperlink accueil;
+    private ProductDao pdao= new ProductDao() ;
+    private CategoryDao cdao= new CategoryDao() ;
+    private ObservableList<Product> productdata = FXCollections.observableArrayList();
+        Product p;
+    @FXML
+    private Hyperlink categoryy;
+    @FXML
+    private TextField searchP;
+
 
 
     @Override
@@ -105,7 +123,7 @@ public class AfficherProductController implements Initializable {
                 Logger.getLogger(Accueil1Controller.class.getName()).log(Level.SEVERE, null, ex);
             }
 });
-    category.setOnAction(e -> {
+    categoryy.setOnAction(e -> {
         try {
                 Parent page1 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/AfficherCategory.fxml"));
                 Scene scene = new Scene(page1);
@@ -129,32 +147,38 @@ public class AfficherProductController implements Initializable {
             }
         });
         productTable.setItems(listdata.getProducts());
+productTable.getSortOrder().add(name); // add the column to sort by
+name.setSortType(TableColumn.SortType.ASCENDING); // set the sort type
+productTable.sort(); 
         name.setCellValueFactory(new PropertyValueFactory<>("name"));
         description.setCellValueFactory(new PropertyValueFactory<>("description"));
         price.setCellValueFactory(new PropertyValueFactory<>("price"));
         stock.setCellValueFactory(new PropertyValueFactory<>("stock"));
         image.setCellValueFactory(new PropertyValueFactory<>("image"));
-        
+        categoryname.setCellValueFactory(cellData -> {
+    SimpleStringProperty property = new SimpleStringProperty();
+    if (cellData.getValue() != null && cellData.getValue().getCategory() != null) {
+        property.setValue(cellData.getValue().getCategory().getName());
+    }
+    return property;
+});
+
+        searchP.textProperty().addListener((observable, oldValue, newValue) -> {
+            // Create filter Predicate
+            Predicate<Product> filter = item -> {
+                // Implement filter logic here
+                String query = newValue.toLowerCase();
+                return item.getName().toLowerCase().contains(query)||item.getDescription().toLowerCase().contains(query)||item.getPrice().toLowerCase().contains(query)||item.getStock().toLowerCase().contains(query);
+            };
+
+            // Apply filter to data and update TableView
+            productTable.setItems(listdata.getProducts().filtered(filter));
+        });
     } 
     
-    @FXML
-        public void update(javafx.scene.input.MouseEvent event) {
 
-        ProductDao pdao=new ProductDao();
-        Product p=new Product();
-        p=productTable.getSelectionModel().getSelectedItem();
-        p.setName(productTable.getSelectionModel().getSelectedItem().getName());
-        p.setDescription(productTable.getSelectionModel().getSelectedItem().getDescription());
-        p.setPrice(productTable.getSelectionModel().getSelectedItem().getPrice());
-        p.setStock(productTable.getSelectionModel().getSelectedItem().getStock());
-        p.setImage(productTable.getSelectionModel().getSelectedItem().getImage());
-        pdao.update(p);
-              
-        
-    }
         
     public void delete(){
-    ProductDao pdao =new ProductDao();
     pdao.delete(productTable.getSelectionModel().getSelectedItem().getId());
     System.out.println(productTable.getSelectionModel().getSelectedItem().getId());
     }
@@ -170,5 +194,50 @@ public class AfficherProductController implements Initializable {
         Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
         stage.close();
     }
+
+   @FXML
+    void updatebtn(ActionEvent event) {
    
+
+    // Get selected Event from the table
+    Product selectedproduct = productTable.getSelectionModel().getSelectedItem();
+    CategoryDao cdao = new CategoryDao();
+    if (selectedproduct != null) {
+        try {
+            // Create the FXMLLoader
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/esprit/view/UpdateProduct.fxml"));
+
+            // Load the UpdateEvents view
+            Parent root = loader.load();
+
+            // Get the UpdateEvents controller
+            UpdateProductController updateproductsController = loader.getController();
+
+            // Pass the selected Event to the controller
+            updateproductsController.setProduct(selectedproduct);
+
+            // Create a new scene and set it on the stage
+            Scene updatecategoryScene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(updatecategoryScene);
+            stage.show();
+            
+            productTable.refresh();
+             productTable.getSelectionModel().clearSelection();
+        productdata.clear();
+    productdata.addAll(pdao.displayAll());
+    productTable.setItems(productdata);
+            
+
+           /* // Refresh the table after updating the Event
+            eventsdata.setAll(evd.displayAll()); */
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
+       
+    }
 }
+        
+  }

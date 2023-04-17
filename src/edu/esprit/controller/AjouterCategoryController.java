@@ -34,7 +34,6 @@ import javafx.stage.Stage;
  * @author asus
  */
 public class AjouterCategoryController implements Initializable {
-  @FXML
     private Button btnC;
     @FXML
     private Button back;
@@ -54,6 +53,8 @@ public class AjouterCategoryController implements Initializable {
     private Hyperlink category;
     @FXML
     private Hyperlink accueil;
+    @FXML
+    private Button valider;
     /**
      * Initializes the controller class.
      *
