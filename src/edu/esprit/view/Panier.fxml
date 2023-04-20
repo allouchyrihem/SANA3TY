@@ -11,9 +11,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controller.AjouterCmdController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controller.AjouterCmdController">
     <children>
-      <Pane layoutX="-1.0" prefHeight="84.0" prefWidth="600.0" style="-fx-background-color: #FFFFFF;">
+      <Pane layoutX="-1.0" prefHeight="84.0" prefWidth="900.0" style="-fx-background-color: #FFFFFF;">
          <children>
             <ImageView fx:id="imageView" fitHeight="59.0" fitWidth="56.0" layoutX="14.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -22,7 +22,7 @@
             </ImageView>
             <TextField fx:id="search" layoutX="126.0" layoutY="18.0" prefHeight="25.0" prefWidth="312.0" style="-fx-background-color: #e1e0e0;" />
             <Button fx:id="buttonSearch" layoutX="458.0" layoutY="18.0" mnemonicParsing="false" text="Search" textFill="#d7b2b2" />
-            <Pane layoutX="-18.0" layoutY="61.0" prefHeight="36.0" prefWidth="600.0" style="-fx-background-color: #FFFFFF;">
+            <Pane layoutX="-18.0" layoutY="61.0" prefHeight="36.0" prefWidth="920.0" style="-fx-background-color: #FFFFFF;">
                <children>
                   <Separator layoutX="2.0" layoutY="1.0" prefHeight="1.0" prefWidth="600.0" />
                   <Text fx:id="Acceuil" fill="#d7b2b2" layoutX="28.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Acceuil">

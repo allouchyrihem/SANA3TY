@@ -39,8 +39,15 @@ public class Commande {
     }
 
     public Commande() {
-         produits = FXCollections.observableArrayList();
-    }
+    this.id = new SimpleIntegerProperty(0);
+    this.adresse = new SimpleStringProperty("");
+    this.description = new SimpleStringProperty("");
+    this.etat = new SimpleStringProperty("");
+    this.totale = new SimpleFloatProperty(0.0f);
+    this.datecmd = null;
+    this.produits = FXCollections.observableArrayList();
+}
+
     public ObservableList<ProductCmd> getProducts() {
         return produits;
     }
@@ -83,10 +90,15 @@ public class Commande {
     public void setCommandeProducts(ObservableList<ProductCmd> commandeProducts) {
         this.produits = commandeProducts;
     }
+    
+
 public Commande(String adresse, String description) {
         this.adresse = new SimpleStringProperty(adresse);
         this.description = new SimpleStringProperty(description);}
-    
+public Commande(int id) {
+        this.id = new SimpleIntegerProperty(id);
+       }
+        
     public int getId() {
         return id.get();
     }
@@ -94,7 +106,7 @@ public Commande(String adresse, String description) {
     public void setId(int id) {
         this.id = new SimpleIntegerProperty(id);
     }
-
+   
     public String getAdresse() {
         return adresse.get();
     }

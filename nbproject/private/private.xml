@@ -4,12 +4,13 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/HP/Desktop/sem1Ing/projet/javafx/SANA3TY/src/edu/esprit/entity/ProductCmd.java</file>
-            <file>file:/C:/Users/HP/Desktop/sem1Ing/projet/javafx/SANA3TY/src/edu/esprit/test/ConnexionBD.java</file>
-            <file>file:/C:/Users/HP/Desktop/sem1Ing/projet/javafx/SANA3TY/src/edu/esprit/controller/AfficherProductController.java</file>
+            <file>file:/C:/Users/HP/Desktop/sem1Ing/projet/javafx/SANA3TY/src/edu/esprit/controller/SessionPanierController.java</file>
+            <file>file:/C:/Users/HP/Desktop/sem1Ing/projet/javafx/SANA3TY/src/edu/esprit/view/Panier.fxml</file>
             <file>file:/C:/Users/HP/Desktop/sem1Ing/projet/javafx/SANA3TY/src/edu/esprit/dao/CmdDao.java</file>
-            <file>file:/C:/Users/HP/Desktop/sem1Ing/projet/javafx/SANA3TY/src/edu/esprit/controller/AfficherCmdController.java</file>
+            <file>file:/C:/Users/HP/Desktop/sem1Ing/projet/javafx/SANA3TY/src/edu/esprit/view/SessionPanier.fxml</file>
+            <file>file:/C:/Users/HP/Desktop/sem1Ing/projet/javafx/SANA3TY/src/edu/esprit/entity/Product.java</file>
+            <file>file:/C:/Users/HP/Desktop/sem1Ing/projet/javafx/SANA3TY/src/edu/esprit/dao/ProductDao.java</file>
             <file>file:/C:/Users/HP/Desktop/sem1Ing/projet/javafx/SANA3TY/src/edu/esprit/entity/Commande.java</file>
-            <file>file:/C:/Users/HP/Desktop/sem1Ing/projet/javafx/SANA3TY/src/edu/esprit/view/AfficherCategory.fxml</file>
         </group>
     </open-files>
 </project-private>

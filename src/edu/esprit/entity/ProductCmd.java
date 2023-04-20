@@ -5,6 +5,8 @@
  */
 package edu.esprit.entity;
 
+import edu.esprit.dao.CmdDao;
+import edu.esprit.dao.ProductDao;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -25,6 +27,13 @@ public ProductCmd(Commande commande, Product product) {
          this.commande = new SimpleObjectProperty<>(commande);
         this.product = new SimpleObjectProperty<>(product);
     }
+public ProductCmd(int productId, int commandeId) {
+    Product produit = ProductDao.getInstance().find(productId);
+    Commande commande = CmdDao.getInstance().find(commandeId);
+    this.product = new SimpleObjectProperty<>(produit);
+    this.commande = new SimpleObjectProperty<>(commande);
+}
+
 public ProductCmd(Product product,Commande commande) {
          this.commande = new SimpleObjectProperty<>(commande);
         this.product = new SimpleObjectProperty<>(product);
@@ -60,7 +69,7 @@ public ProductCmd(Product product,Commande commande) {
             for (Product product : products) {
                 commandeProducts.add(new ProductCmd(commande, product, 0));
             }
-        }
+        } 
         
         return commandeProducts;
     }

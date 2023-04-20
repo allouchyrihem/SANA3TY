@@ -7,6 +7,8 @@ package edu.esprit.dao;
 
 import edu.esprit.entity.Product;
 import edu.esprit.util.MyConnection;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -41,6 +43,31 @@ public class ProductDao implements Idao<Product>{
             instance=new ProductDao();
         return instance;
     }
+public static Product find(int productId, List<Product> productList) {
+    for (Product product : productList) {
+        if (product.getId() == productId) {
+            return product;
+        }
+    }
+    return null;
+}
+public Product find(int id) {
+    Product product = null;
+    try {
+        Connection connection = MyConnection.getInstance().getCnx();
+        PreparedStatement statement = connection.prepareStatement("SELECT * FROM product WHERE id=?");
+        statement.setInt(1, id);
+        ResultSet result = statement.executeQuery();
+        if (result.next()) {
+            product = new Product(result.getInt("id"), result.getString("name"));
+        }
+        statement.close();
+    } catch (SQLException ex) {
+        System.out.println("Error while finding product with id " + id + ": " + ex.getMessage());
+    }
+    return product;
+}
+
 
     @Override
     public void insert(Product o) {

@@ -56,6 +56,10 @@ public class Product {
         this.image = new SimpleStringProperty(image);
        
     }
+    public Product(int id,String name) {
+        this.id = new SimpleIntegerProperty(id);
+        this.name = new SimpleStringProperty(name);
+    }
     public int getId() {
         return id.get();
     }

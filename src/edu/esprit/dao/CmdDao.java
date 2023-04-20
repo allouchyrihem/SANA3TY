@@ -10,6 +10,7 @@ import edu.esprit.entity.CommandeProduit;
 import edu.esprit.entity.Product;
 import edu.esprit.entity.ProductCmd;
 import edu.esprit.util.MyConnection;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -42,8 +43,18 @@ public class CmdDao implements ICmd<Commande>{
         }
     }
     public void addCommandeProduit(CommandeProduit commandeProduit) {
-        commandeProduits.add(commandeProduit);
+        commandeProduits.add(commandeProduit); 
     }
+public int getLastInsertedId() throws SQLException {
+    Connection connection = MyConnection.getInstance().getCnx();
+    PreparedStatement ps = connection.prepareStatement("SELECT LAST_INSERT_ID()");
+    ResultSet rs = ps.executeQuery();
+    if (rs.next()) {
+        return rs.getInt(1);
+    } else {
+        throw new SQLException("Unable to retrieve last inserted ID");
+    }
+}
 
     public List<CommandeProduit> getCommandeProduitsForCommande(Commande commande) {
         List<CommandeProduit> result = new ArrayList<>();
@@ -69,7 +80,15 @@ public class CmdDao implements ICmd<Commande>{
             instance=new CmdDao();
         return instance;
     }
-    
+    public static Commande find(int commandeId, List<Commande> productList) {
+    for (Commande product : productList) {
+        if (product.getId() == commandeId) {
+            return product;
+        }
+    }
+    return null;
+}
+
     @Override
     public void insert(Commande o) {
         String req="insert into commande (adresse,description,etat,datecmd) values ('"+o.getAdresse()+"','"+"description"+"','"+"en attente"+"','"+java.sql.Date.valueOf(LocalDate.now())+"')";
@@ -78,7 +97,123 @@ public class CmdDao implements ICmd<Commande>{
         } catch (SQLException ex) {
             Logger.getLogger(CmdDao.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }   
+    }
+    public void insertP(int commande_id, int product_id) {
+    MyConnection cs = MyConnection.getInstance();
+    try {
+        Connection connection = cs.getCnx();
+        // Check if the commande_id exists in the commande table
+        String checkCommande = "SELECT * FROM commande WHERE id = ?";
+        PreparedStatement checkCommandeStmt = connection.prepareStatement(checkCommande);
+        checkCommandeStmt.setInt(1, commande_id);
+        ResultSet commandeResult = checkCommandeStmt.executeQuery();
+        if (!commandeResult.next()) {
+            throw new SQLException("Commande with id " + commande_id + " does not exist");
+        }
+
+        // Check if the product_id exists in the product table
+        String checkProduct = "SELECT * FROM product WHERE id = ?";
+        PreparedStatement checkProductStmt = connection.prepareStatement(checkProduct);
+        checkProductStmt.setInt(1, product_id);
+        ResultSet productResult = checkProductStmt.executeQuery();
+        if (!productResult.next()) {
+            throw new SQLException("Product with id " + product_id + " does not exist");
+        }
+
+        // Insert the product into the product_commande table
+        String insertProduct = "INSERT INTO product_commande (product_id, commande_id) VALUES (?, ?)";
+        PreparedStatement insertProductStmt = connection.prepareStatement(insertProduct);
+        insertProductStmt.setInt(1, product_id);
+        insertProductStmt.setInt(2, commande_id);
+        insertProductStmt.executeUpdate();
+    } catch (SQLException ex) {
+        ex.printStackTrace();
+    }
+}
+
+public Commande find(int id) {
+    String query = "SELECT * FROM commande WHERE id = ?";
+    Commande commande = null;
+    try (PreparedStatement statement = MyConnection.getInstance().getCnx().prepareStatement(query)) {
+        statement.setInt(1, id);
+        ResultSet result = statement.executeQuery();
+        if (result.next()) {
+            int commandeId = result.getInt("id");
+            commande = new Commande(commandeId);
+        }
+    } catch (SQLException ex) {
+        Logger.getLogger(CmdDao.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    return commande;
+}
+public int getLastIdCommande() {
+    int lastId = 0;
+    MyConnection cs=MyConnection.getInstance();
+    try {
+        Connection conn = cs.getCnx();
+        Statement stmt = conn.createStatement();
+        ResultSet rs = stmt.executeQuery("SELECT MAX(id) FROM commande");
+        if (rs.next()) {
+            lastId = rs.getInt(1);
+        }
+        conn.close();
+    } catch (SQLException ex) {
+        System.out.println(ex.getMessage());
+    }
+    return lastId;
+}
+
+
+    public int getIdCommandeProduit(int idProduit, int idCommande) {
+    int idCommandeProduit = -1;
+    String req = "SELECT id_commande_produit FROM product_commande WHERE product_id = ? AND commande_id = ?";
+    try(Connection cnx = MyConnection.getInstance().getCnx();
+         PreparedStatement ps = cnx.prepareStatement(req)){
+        ps.setInt(1, idProduit); // le premier paramètre est le product_id
+        ps.setInt(2, idCommande); // le deuxième paramètre est le commande_id
+        try (ResultSet rs = ps.executeQuery()) {
+            if (rs.next()) {
+                idCommandeProduit = rs.getInt("id_commande_produit");
+            }
+        }
+    } catch (SQLException ex) {
+        System.err.println("Erreur lors de la récupération de l'identifiant du commande produit : " + ex.getMessage());
+    }
+    return idCommandeProduit;
+}
+
+
+
+public void insertPc(ProductCmd productCommande) {
+    Connection conn = null;
+    PreparedStatement ps = null;
+    try {
+        conn = MyConnection.getInstance().getCnx();
+        ps = conn.prepareStatement("INSERT INTO product_commande (product_id, commande_id) VALUES (?, ?)");
+        ps.setInt(1, productCommande.getProduct().getId());
+        ps.setInt(2, productCommande.getCommande().getId());
+        ps.executeUpdate();
+    } catch (SQLException ex) {
+        Logger.getLogger(CmdDao.class.getName()).log(Level.SEVERE, null, ex);
+    } finally {
+        if (ps != null) {
+            try {
+                ps.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(CmdDao.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        if (conn != null) {
+            try {
+                conn.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(CmdDao.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+}
+
+
 
     @Override
     public void delete(int id) {
@@ -223,5 +358,7 @@ public ObservableList<Commande> displayAll() {
    }
 
     }
+
+    
     
 }
