@@ -4,11 +4,15 @@
  * and open the template in the editor.
  */
 package edu.esprit.controller;
+import com.twilio.Twilio;
+import com.twilio.rest.api.v2010.account.Message;
+import com.twilio.type.PhoneNumber;
 
 import edu.esprit.dao.ReclamationDao;
 import edu.esprit.entity.Category;
 import edu.esprit.entity.Product;
 import edu.esprit.entity.Reclamation;
+import edu.esprit.entity.SendSMS;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -57,6 +61,7 @@ public class AjouterReclamationController  implements Initializable {
             Reclamation p = new Reclamation(name.getText(), description.getText());
             ReclamationDao pdao = ReclamationDao.getInstance();
             pdao.insert(p);
+            SendSMS.sendSms();
         
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Information Dialog");
