@@ -60,6 +60,8 @@ public class AfficherCmdController implements Initializable {
     private TableColumn<Commande, String> etat;
      @FXML
     private TableColumn<Commande, String> produit;
+    @FXML
+    private TableColumn<Commande, String> quantite;
 
     @FXML
     private Button supprimer;
@@ -110,6 +112,7 @@ public class AfficherCmdController implements Initializable {
         etat.setCellValueFactory(new PropertyValueFactory<>("etat"));
         totale.setCellValueFactory(new PropertyValueFactory<>("totale"));
         datecmd.setCellValueFactory(new PropertyValueFactory<>("datecmd"));
+        quantite.setCellValueFactory(new PropertyValueFactory<>("quantite"));
         produit.setCellFactory(column -> {
     return new TableCell<Commande, String>() {
         @Override

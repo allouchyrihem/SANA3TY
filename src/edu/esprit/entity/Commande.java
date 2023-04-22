@@ -30,7 +30,7 @@ public class Commande {
     private SimpleFloatProperty totale;
     private LocalDate datecmd;
     private ObservableList<ProductCmd> produits;
- 
+    private SimpleIntegerProperty quantite;
         public static ObservableList<Commande> getCommandes() {
         ObservableList<Commande> commandes = FXCollections.observableArrayList();
         // retrieve commandes from database or other data source
@@ -46,17 +46,19 @@ public class Commande {
     this.totale = new SimpleFloatProperty(0.0f);
     this.datecmd = null;
     this.produits = FXCollections.observableArrayList();
+    this.quantite = new SimpleIntegerProperty(0);
 }
 
     public ObservableList<ProductCmd> getProducts() {
         return produits;
     }
-    public Commande(int id, String adresse, String description, String etat, float totale) {
+    public Commande(int id, String adresse, String description, String etat, float totale,int quantite) {
         this.id = new SimpleIntegerProperty(id);
         this.adresse = new SimpleStringProperty(adresse);
         this.description = new SimpleStringProperty(description);
         this.etat = new SimpleStringProperty(etat);
         this.totale = new SimpleFloatProperty(totale);
+        this.quantite = new SimpleIntegerProperty(quantite);
   
     }
 
@@ -106,7 +108,13 @@ public Commande(int id) {
     public void setId(int id) {
         this.id = new SimpleIntegerProperty(id);
     }
-   
+   public int getQuantite() {
+        return quantite.get();
+    }
+
+    public void setQuantite(int quantite) {
+        this.quantite = new SimpleIntegerProperty(quantite);
+    }
     public String getAdresse() {
         return adresse.get();
     }
@@ -156,7 +164,7 @@ public void setDatecmd(LocalDate datecmd) {
     }
     @Override
     public String toString() {
-        return "Commande{" + "id=" + id + ", adresse=" + adresse + ", description="+description+"etat"+etat+"totale"+totale +"datecmd"+datecmd+'}';
+        return "Commande{" + "id=" + id + ", adresse=" + adresse + ", description="+description+"etat"+etat+"totale"+totale +"datecmd"+datecmd+"quantite"+quantite+'}';
     }
     
     

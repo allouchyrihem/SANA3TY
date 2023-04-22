@@ -89,15 +89,18 @@ public int getLastInsertedId() throws SQLException {
     return null;
 }
 
-    @Override
-    public void insert(Commande o) {
-        String req="insert into commande (adresse,description,etat,datecmd) values ('"+o.getAdresse()+"','"+"description"+"','"+"en attente"+"','"+java.sql.Date.valueOf(LocalDate.now())+"')";
-        try {
-            st.executeUpdate(req);
-        } catch (SQLException ex) {
-            Logger.getLogger(CmdDao.class.getName()).log(Level.SEVERE, null, ex);
-        }
+  @Override
+public void insert(Commande o) {
+    try {
+        // Insertion de la commande avec la quantité renseignée par le client
+        String req="INSERT INTO commande (adresse, description, etat, datecmd, quantity) VALUES ('"+o.getAdresse()+"', '"+o.getDescription()+"', 'en attente', '"+java.sql.Date.valueOf(LocalDate.now())+"', '"+o.getQuantite()+"')";
+        st.executeUpdate(req);
+    } catch (SQLException ex) {
+        Logger.getLogger(CmdDao.class.getName()).log(Level.SEVERE, null, ex);
     }
+}
+
+
     public void insertP(int commande_id, int product_id) {
     MyConnection cs = MyConnection.getInstance();
     try {
@@ -213,8 +216,6 @@ public void insertPc(ProductCmd productCommande) {
     }
 }
 
-
-
     @Override
     public void delete(int id) {
         String req="delete from commande where id="+id;
@@ -273,6 +274,7 @@ public ObservableList<Commande> displayAll() {
                 commande.setTotale(rs.getFloat("c.totale"));
                 commande.setDatecmd(rs.getDate("c.datecmd").toLocalDate());
                 commande.setCommandeProducts(FXCollections.observableArrayList());
+                commande.setQuantite(rs.getInt("c.quantity"));
                 list.add(commande);
             }
             

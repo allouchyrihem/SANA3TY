@@ -60,6 +60,8 @@
                         <TableColumn fx:id="totale" prefWidth="52.79997253417969" text="Totale" />
                         <TableColumn fx:id="datecmd" prefWidth="94.39996337890625" text="Date" />
                         <TableColumn fx:id="produit" prefWidth="104.79998779296875" text="Produit" />
+                        <TableColumn fx:id="quantite" prefWidth="104.79998779296875" text="Quantite" />
+               
                </columns>
             </TableView>
             <HBox alignment="TOP_CENTER" layoutX="525.0" layoutY="14.0" />

@@ -102,9 +102,25 @@ public class SessionPanierController implements Initializable {
         }
         String adresseLivraison = result.get();
 
+        //String qunatiteCmd = result.get();
+TextInputDialog quantiteDialog = new TextInputDialog();
+quantiteDialog.setTitle("Quantité");
+quantiteDialog.setHeaderText(null);
+quantiteDialog.setContentText("Entrez la quantité souhaitée:");
+Optional<String> quantiteResult = quantiteDialog.showAndWait();
+if (!quantiteResult.isPresent() || quantiteResult.get().isEmpty()) {
+    Alert alert = new Alert(AlertType.WARNING);
+    alert.setTitle("Quantité non valide");
+    alert.setContentText("Veuillez entrer une quantité valide avant de continuer");
+    alert.showAndWait();
+    return;
+}
+int quantite = Integer.parseInt(quantiteResult.get());
+
         // Créer la nouvelle commande
         Commande nouvelleCommande = new Commande();
         nouvelleCommande.setAdresse(adresseLivraison);
+        nouvelleCommande.setQuantite(quantite);
         nouvelleCommande.setCommandeProducts(FXCollections.observableList(new ArrayList<ProductCmd>()));
 
         // Ajouter les produits du panier à la nouvelle commande
