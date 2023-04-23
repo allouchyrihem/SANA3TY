@@ -13,12 +13,12 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="614.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controller.AjouterCommentController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="614.0" stylesheets="@stylecomment.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controller.AjouterCommentController">
     <children>
         
-      <Pane fx:id="BoutonValiderC" layoutY="17.0" prefHeight="384.0" prefWidth="600.0" style="-fx-background-color: ivory; -fx-border-width: 2px; -fx-border-color: black;" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="17.0">
+      <Pane fx:id="BoutonValiderC" layoutX="-2.0" layoutY="1.0" prefHeight="400.0" prefWidth="671.0" style="-fx-background-color: ivory; -fx-border-width: 2px; -fx-border-color: black;" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="-2.0" AnchorPane.rightAnchor="-5.0" AnchorPane.topAnchor="1.0">
          <children>
-            <Button id="valider" fx:id="btnC" layoutX="177.0" layoutY="299.0" mnemonicParsing="false" text="Commenter" textFill="#502920">
+            <Button id="valider" fx:id="btnC" layoutX="201.0" layoutY="295.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="106.0" text="Commenter" textFill="#502920">
                <font>
                   <Font name="Microsoft YaHei Light" size="12.0" />
                </font></Button>
@@ -33,38 +33,38 @@
                   <Image url="@../../../../../../../../SANA3TY/src/edu/esprit/assets/totebagsmile.jpg" />
                </image>
             </ImageView>
-            <ImageView fitHeight="102.0" fitWidth="142.0" layoutX="25.0" layoutY="121.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="122.0" fitWidth="173.0" layoutX="25.0" layoutY="127.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assets/totebagsmile.jpg" />
                </image>
             </ImageView>
-            <TableView fx:id="categoryTable" layoutX="350.0" layoutY="82.0" prefHeight="181.0" prefWidth="221.0">
+            <TableView fx:id="categoryTable" layoutX="329.0" layoutY="82.0" prefHeight="234.0" prefWidth="256.0">
                <columns>
-                  <TableColumn fx:id="description" prefWidth="109.0" text="Les Commentaires" />
+                  <TableColumn fx:id="description" prefWidth="198.0" text="Les Commentaires" />
                </columns>
             </TableView>
-            <Button fx:id="supprimer" layoutX="473.0" layoutY="299.0" mnemonicParsing="false" onMouseClicked="#supprimer" prefHeight="30.0" prefWidth="98.0" text="supprimer" />
+            <Button fx:id="supprimer" layoutX="594.0" layoutY="99.0" mnemonicParsing="false" onMouseClicked="#supprimer" prefHeight="43.0" prefWidth="98.0" text="supprimer" />
            
-            <Button fx:id="updatebuttonid" layoutX="473.0" layoutY="335.0" mnemonicParsing="false" onAction="#updatebtn" prefHeight="30.0" prefWidth="98.0" text="modifier " />
+            <Button fx:id="updatebuttonid" layoutX="595.0" layoutY="156.0" mnemonicParsing="false" onAction="#updatebtn" prefHeight="43.0" prefWidth="98.0" text="modifier " />
          </children>
       </Pane>
-      <Label layoutX="31.0" layoutY="106.0" text="tote bag en lain">
+      <Label layoutX="28.0" layoutY="101.0" text="tote bag en lain">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d19c97" height="70.0" layoutX="17.0" layoutY="17.0" stroke="#d19c97" strokeType="INSIDE" width="585.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d19c97" height="70.0" layoutY="-1.0" stroke="#d19c97" strokeType="INSIDE" width="699.0" />
       <ImageView fx:id="imageView" fitHeight="64.0" fitWidth="65.0" layoutX="13.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../../../../../SANA3TY/src/edu/esprit/assets/ogo.png" />
          </image>
       </ImageView>
-      <Text fill="#e5c2a8" layoutX="226.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="San3ty.tn">
+      <Text fill="#e5c2a8" layoutX="226.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="San3ty.tn">
          <font>
             <Font name="Cambria Bold" size="31.0" />
          </font>
       </Text>
-      <ImageView fx:id="imageView1" fitHeight="70.0" fitWidth="77.0" layoutX="17.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="imageView1" fitHeight="70.0" fitWidth="77.0" layoutX="12.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/ogo.png" />
          </image>
