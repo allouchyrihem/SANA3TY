@@ -8,12 +8,13 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="desktopSana3ty.jar" size="10645737" download="eager" />
+    <jar href="desktopSana3ty.jar" size="10648263" download="eager" />
     <jar href="lib\commons-codec-1.15.jar" size="353793" download="eager" />
     <jar href="lib\commons-io-2.7.jar" size="276413" download="eager" />
     <jar href="lib\commons-logging-1.2.jar" size="61829" download="eager" />
     <jar href="lib\httpclient-4.5.13.jar" size="780321" download="eager" />
     <jar href="lib\httpcore-4.4.13.jar" size="328593" download="eager" />
+    <jar href="lib\itextpdf-5.5.9.jar" size="2287148" download="eager" />
     <jar href="lib\jackson-annotations-2.14.0.jar" size="76091" download="eager" />
     <jar href="lib\jackson-core-2.14.0.jar" size="458975" download="eager" />
     <jar href="lib\jackson-databind-2.14.0.jar" size="1618273" download="eager" />

@@ -4,7 +4,13 @@
  * and open the template in the editor.
  */
 package edu.esprit.entity;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
 
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -107,7 +113,12 @@ public class Reclamation {
         return true;
     }
 
+    String getReclamation() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
      
-     
+
     
 }
+

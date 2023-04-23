@@ -7,6 +7,7 @@ package edu.esprit.controller;
 
 import edu.esprit.dao.ProductDao;
 import edu.esprit.entity.Product;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -111,7 +112,7 @@ public class AfficherProductController implements Initializable {
               
         
     }
-        
+File folder = new File("documents")   ;  
     public void delete(){
     ProductDao pdao =new ProductDao();
     pdao.delete(productTable.getSelectionModel().getSelectedItem().getId());
