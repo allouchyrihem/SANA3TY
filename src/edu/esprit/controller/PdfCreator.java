@@ -6,6 +6,7 @@
 package edu.esprit.controller;
 
 import com.itextpdf.text.BadElementException;
+import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Paragraph;
@@ -15,6 +16,9 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.FontFactory;
 import com.itextpdf.text.Image;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
@@ -32,11 +36,20 @@ public class PdfCreator {
     Document document = new Document();
     try {
         PdfWriter.getInstance(document, new FileOutputStream("reclamation.pdf"));
-        document.open();
+
+        document.open();           
+
          // Add image
         Image image = Image.getInstance("C:\\Users\\nada\\SANA3TY\\src\\edu\\esprit\\assets\\ogo.png");
         image.scaleAbsolute(200, 200); // Resize image if needed
         document.add(image);
+         // Add the title here
+    Paragraph title = new Paragraph("Rapport de  Reclamation", FontFactory.getFont(FontFactory.HELVETICA, 18, Font.BOLD, BaseColor.BLACK));
+    title.setAlignment(Element.ALIGN_CENTER);
+    document.add(title);
+     // Add an empty paragraph for spacing
+    document.add(new Paragraph(" "));
+    document.add(new Paragraph(" "));
         document.add(new Paragraph("Sujet: " + reclamation.getSujet()));
         document.add(new Paragraph("Description: " + reclamation.getDescription()));
          // Add current date
