@@ -50,3 +50,9 @@
 #AnchorPane {
     -fx-background-color: #FEEDF2;
 }
+.button-custom {
+  -fx-background-color: #d19c97;
+  -fx-text-fill: white;
+  -fx-pref-height: 30.0;
+  -fx-pref-width: 98.0;
+}
