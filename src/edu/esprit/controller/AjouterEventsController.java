@@ -30,7 +30,7 @@ import edu.esprit.entity.Events;
  * @author rouao
  */
 public class AjouterEventsController implements Initializable {
-
+    private SmsService smsService = new SmsService();
     @FXML
     private TextField nameid;
     @FXML
@@ -81,6 +81,8 @@ public class AjouterEventsController implements Initializable {
         alert.setHeaderText(null);
         alert.setContentText("Événement ajouté avec succés!");
         alert.show();
+        String message = "A new event has been added: " + name;
+        smsService.sendSms("+21656437457", message);
         nameid.setText("");
         adresseid.setText("");
         linkid.setText("");

@@ -28,7 +28,7 @@ public class ConnexionBD extends Application {
     public void start(Stage primaryStage) throws IOException {
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("Sana3ty");
-        parentPage = FXMLLoader.load(getClass().getResource("/edu/esprit/view/AfficherEventClient.fxml"));
+        parentPage = FXMLLoader.load(getClass().getResource("/edu/esprit/view/NavbarBackoffice.fxml"));
         Scene scene = new Scene(parentPage);
         this.primaryStage.setScene(scene);
         this.primaryStage.show();

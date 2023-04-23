@@ -25,6 +25,7 @@ import javafx.event.ActionEvent;
 
 public class AfficherEventClientController implements Initializable {
 
+
     @FXML
     private Button sortButton;
     

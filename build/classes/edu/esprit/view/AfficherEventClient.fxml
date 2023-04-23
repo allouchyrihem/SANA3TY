@@ -35,7 +35,7 @@
                      </image>
                   </ImageView>
                   <TextField fx:id="search" layoutX="104.0" layoutY="30.0" prefHeight="25.0" prefWidth="312.0" style="-fx-background-color: #e1e0e0;" />
-                  <Button fx:id="buttonSearch" layoutX="423.0" layoutY="30.0" onAction="#handleSearchButtonAction" style="-fx-background-color:  #d7b2b2" text="Cherche" textFill="white" />
+                  <Button fx:id="buttonSearch" layoutX="423.0" layoutY="30.0" onAction="#handleSearchButtonAction" style="-fx-background-color:  #d7b2b2" text="Recherche" textFill="white" />
                    <Button fx:id="sortButton" layoutX="528.0" layoutY="30.0" onAction="#sortEventsByDate" style="-fx-background-color: #d7b2b2;" text="ordre" />
                   <!--Button fx:id="buttonSearch" layoutX="474.0" layoutY="30.0" mnemonicParsing="false" text="Search" textFill="#d7b2b2" #A26360/-->
                </children>
