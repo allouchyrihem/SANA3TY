@@ -57,10 +57,10 @@
   -fx-pref-width: 98.0;
 }
 #searchP {
-    -fx-text-fill: blue;
+    -fx-text-fill: #d19c97;
     -fx-font-size: 14px;
     -fx-background-color: white;
-    -fx-border-color: blue;
+    -fx-border-color: #d19c97;
     -fx-border-width: 2px;
     -fx-border-radius: 5px;
 }
