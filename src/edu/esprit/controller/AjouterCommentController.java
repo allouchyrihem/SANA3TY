@@ -99,29 +99,45 @@ public class AjouterCommentController implements Initializable {
     } 
     
     
-    private boolean isInputValid() {
-        String errorMessage = "";
-         if (descriptionC.getText() == null || descriptionC.getText().isEmpty()) {
-            errorMessage += "ne laisser pas ce champ vide.\n";
-        }
-         if (descriptionC.getText().length() < 2 || descriptionC.getText().length() > 50) {
-    errorMessage += "vous  devez ajouter entre  entre 2 et 50 caractères.\n";
+  private boolean isInputValid() {
+    String errorMessage = "";
+    String comment = descriptionC.getText();
+
+    // Filtrer les gros mots dans le commentaire
+    String filteredComment = filterComments(comment);
+
+    // Vérifier si le commentaire filtré est identique au commentaire d'origine
+    if (!comment.equals(filteredComment)) {
+        errorMessage += "Le commentaire que vous avez soumis contient des mots inappropriés qui ne respectent pas les règles de langage approprié. Veuillez reformuler votre commentaire sans utiliser de langage vulgaire ou inapproprié. Merci de votre compréhension.\n";
+    }
+
+    if (comment == null || comment.isEmpty()) {
+        errorMessage += "Ne laisser pas ce champ vide.\n";
+    }
+    if (comment.length() < 2 || comment.length() > 50) {
+        errorMessage += "Vous devez ajouter entre 2 et 50 caractères.\n";
+    }
+
+    if (errorMessage.isEmpty()) {
+        return true;
+    } else {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+
+        alert.setTitle("Des champs invalides");
+        alert.setHeaderText("Veuillez corriger les champs invalides");
+        alert.setContentText(errorMessage);
+
+        alert.showAndWait();
+
+        return false;
+    }
 }
-        
-         if (errorMessage.isEmpty()) {
-            return true;
-        } else {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
 
-            alert.setTitle("Des champs invalides");
-            alert.setHeaderText("Veuillez corriger les champs invalides");
-            alert.setContentText(errorMessage);
+private String filterComments(String comment) {
+    String filteredComment = comment.replaceAll("(?i)\\b(gros mot 1|gros mot 2|gros mot 3|gros mot n)\\b", "");
+    return filteredComment;
+}
 
-            alert.showAndWait();
-
-            return false;
-        }
-     }
 
       public void delete(){
     CommentDao cdao =new CommentDao();
