@@ -15,7 +15,7 @@
 
 <ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1097.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controller.Accueil1Controller">
     <content>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1085.0" prefWidth="600.0">
+        <AnchorPane fx:id="anchor" minHeight="0.0" minWidth="0.0" prefHeight="1085.0" prefWidth="600.0">
             <children>
                 <Pane prefHeight="24.0" prefWidth="600.0" style="-fx-background-color: #ebf8fb;">
                     <children>

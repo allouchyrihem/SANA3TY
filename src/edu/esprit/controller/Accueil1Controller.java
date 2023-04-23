@@ -13,6 +13,7 @@ import java.util.ResourceBundle;
 import java.util.function.Predicate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.animation.FadeTransition;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
@@ -88,6 +89,8 @@ public class Accueil1Controller implements Initializable {
     private Hyperlink boutique;
     @FXML
     private Hyperlink accueil;
+    @FXML
+    private AnchorPane anchor;
 
     /**
      * Initializes the controller class.
@@ -127,6 +130,7 @@ public void initialize(URL url, ResourceBundle rb) {
                 Logger.getLogger(Accueil1Controller.class.getName()).log(Level.SEVERE, null, ex);
             }
 });
+     
     categories = listData.getNames();
 observableOptions = FXCollections.observableArrayList(categories);
 catbox.setItems(categories);
@@ -201,6 +205,15 @@ pagination.setPageFactory(pageIndex -> {
 });
 
 rootContainer.getChildren().addAll(pagination); // Add the pagination control to the rootContainer
+   Label messageLabel = new Label("Bienvenue chez Sana3ty!");
+        messageLabel.setStyle("-fx-background-color: #b21a7d; -fx-text-fill: white; -fx-padding: 10px;");
+        messageLabel.setAlignment(Pos.CENTER);
+        anchor.getChildren().add(messageLabel);
+        FadeTransition fadeTransition = new FadeTransition(Duration.seconds(10), messageLabel);
+        fadeTransition.setFromValue(1.0);
+        fadeTransition.setToValue(0.0);
+        fadeTransition.setOnFinished(event -> anchor.getChildren().remove(messageLabel));
+        fadeTransition.play();
 }
 private void goToProductDetailsPage(Product p) throws IOException {
     // Navigate to the product details page and pass the selected product as a parameter

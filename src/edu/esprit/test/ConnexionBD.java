@@ -11,10 +11,12 @@ import static javafx.application.Application.launch;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -30,6 +32,7 @@ public class ConnexionBD extends Application {
    
     @Override
     public void start(Stage primaryStage) throws IOException {
+
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("Sana3ty");
         parentPage = FXMLLoader.load(getClass().getResource("/edu/esprit/view/Accueil1.fxml"));
