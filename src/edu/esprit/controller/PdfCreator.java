@@ -5,6 +5,7 @@
  */
 package edu.esprit.controller;
 
+import com.itextpdf.text.BadElementException;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Paragraph;
@@ -14,23 +15,33 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Image;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 import java.io.FileOutputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.time.LocalDate;
 
 /**
  *
  * @author nada
  */
 public class PdfCreator {
-     public void createPDF(Reclamation reclamation) throws FileNotFoundException {
+     public void createPDF(Reclamation reclamation) throws FileNotFoundException, BadElementException, IOException {
     Document document = new Document();
     try {
         PdfWriter.getInstance(document, new FileOutputStream("reclamation.pdf"));
         document.open();
+         // Add image
+        Image image = Image.getInstance("C:\\Users\\nada\\SANA3TY\\src\\edu\\esprit\\assets\\ogo.png");
+        image.scaleAbsolute(200, 200); // Resize image if needed
+        document.add(image);
         document.add(new Paragraph("Sujet: " + reclamation.getSujet()));
         document.add(new Paragraph("Description: " + reclamation.getDescription()));
+         // Add current date
+        LocalDate currentDate = LocalDate.now();
+        document.add(new Paragraph("Date: " + currentDate));
         document.close();
     } catch (DocumentException | FileNotFoundException e) {
     }
