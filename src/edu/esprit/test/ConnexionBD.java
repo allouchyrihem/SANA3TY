@@ -14,7 +14,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 //    "/edu/esprit/view/NavbarBackoffice.fxml"
-//    "/edu/esprit/view/NavbarBackoffice.fxml"
+//    "/edu/esprit/view/AfficherEventClient.fxml"
 
 /**
  *

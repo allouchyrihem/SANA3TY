@@ -20,6 +20,7 @@ public class PromotionTotale {
     private LocalDate dateFin;
 
     public PromotionTotale() {
+        
     }
 
     public PromotionTotale(String name, float value, LocalDate dateDebut, LocalDate dateFin) {
@@ -37,6 +38,7 @@ public class PromotionTotale {
         this.value = value;
         this.dateDebut = dateDebut;
         this.dateFin = dateFin;
+        
     }
     
 

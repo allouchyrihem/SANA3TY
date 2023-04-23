@@ -15,10 +15,12 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 
 public class AfficherEventClientController implements Initializable {
 
@@ -104,5 +106,44 @@ public class AfficherEventClientController implements Initializable {
             e.printStackTrace();
         }
     }
+    @FXML
+private void handleSearchButtonAction(ActionEvent event) {
+    String name = search.getText().trim();
+    if (!name.isEmpty()) {
+        List<Events> events = eventsDao.searchByName(name);
+        loadEvents(events);
+    } else {
+        loadEvents();
+    }
+}
+
+private void loadEvents(List<Events> events) {
+    container.getChildren().clear(); // clear previous cards
+
+    int column = 0;
+    int row = 1;
+    try {
+        for (Events event : events) {
+            FXMLLoader cardLoader = new FXMLLoader(getClass().getResource("/edu/esprit/view/EventCard.fxml"));
+            Pane card = cardLoader.load();
+            EventCardController eventCardController = cardLoader.getController();
+            eventCardController.setData(event);
+            cardlayout.getChildren().add(card);
+
+            if(column ==2){
+                column = 0;
+                ++row;
+            }
+            container.add(card,column++, row);
+            GridPane.setMargin(card, new Insets(10));
+            card.setCursor(Cursor.HAND);
+
+        }
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}
+
+
 
 }

@@ -35,7 +35,9 @@
                      </image>
                   </ImageView>
                   <TextField fx:id="search" layoutX="144.0" layoutY="30.0" prefHeight="25.0" prefWidth="312.0" style="-fx-background-color: #e1e0e0;" />
-                  <Button fx:id="buttonSearch" layoutX="474.0" layoutY="30.0" mnemonicParsing="false" text="Search" textFill="#d7b2b2" />
+                  <Button fx:id="buttonSearch" layoutX="479.0" layoutY="29.0" onAction="#handleSearchButtonAction" style="-fx-background-color:  #d7b2b2" text="Search" textFill="white" />
+
+                  <!--Button fx:id="buttonSearch" layoutX="474.0" layoutY="30.0" mnemonicParsing="false" text="Search" textFill="#d7b2b2" #A26360/-->
                </children>
             </Pane>
             <Pane layoutY="108.0" prefHeight="36.0" prefWidth="600.0" style="-fx-background-color: #FFFFFF;">

@@ -135,25 +135,34 @@ try {
 }
 
     }
-    /*
-    public boolean update(Events o) {
-        String qry = "UPDATE event SET name = '"+o.getName()+"', adresse = '"+o.getAdresse()+"', date = '"+java.sql.Date.valueOf(o.getDate())+"', description = '"+o.getDescription()+"', link = '"+o.getLink()+"' WHERE id = "+o.getId();
-        
-        
-        try {
-            if (st.executeUpdate(qry) > 0) {
-                return true;
-            }
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(EventsDao.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return false;
-    }
-    */
+    
 
     @Override
     public void delete(int id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
+    
+    public List<Events> searchByName(String name) {
+    List<Events> events = new ArrayList<>();
+    try {
+        String query = "SELECT * FROM event WHERE name LIKE '%" + name + "%'";
+        ResultSet rs = st.executeQuery(query);
+        while (rs.next()) {
+            Events event = new Events();
+            event.setId(rs.getInt("id"));
+            event.setName(rs.getString("name"));
+            event.setDescription(rs.getString("description"));
+            event.setAdresse(rs.getString("adresse"));
+            event.setDate(rs.getDate("date").toLocalDate());
+            event.setLink(rs.getString("link"));
+            events.add(event);
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+    return events;
+}
+
+    
 }
