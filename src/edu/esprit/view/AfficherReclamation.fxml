@@ -6,27 +6,25 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 
-<AnchorPane id="AnchorPane" prefHeight="395.0" prefWidth="759.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controller.AfficherReclamationController">
+<AnchorPane id="AnchorPane" prefHeight="395.0" prefWidth="759.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controller.AfficherReclamationController" stylesheets="@style.css">
    <children>
       <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="487.0" prefWidth="600.0">
          <children>
-            <TableView fx:id="productTable" prefHeight="353.0" prefWidth="456.0">
+            <TableView fx:id="productTable" prefHeight="353.0" prefWidth="456.0" stylesheets="@style.css">
                <columns>
                   <TableColumn fx:id="name" prefWidth="152.0" text="Sujet" />
                   <TableColumn fx:id="description" prefWidth="303.0" text="Description" />
                </columns>
             </TableView>
             <HBox alignment="TOP_CENTER" layoutX="525.0" layoutY="14.0" />
-            <Button fx:id="supprimer" layoutX="494.0" layoutY="54.0" mnemonicParsing="false" onMouseClicked="#supprimer" prefHeight="30.0" prefWidth="98.0" text="supprimer" />
-          <Button fx:id="createPDFButton" layoutX="506.0" layoutY="170.0" onAction="#createPDFButtonClicked" text="Create PDF" />
-
-            <Button fx:id="PDF" layoutX="498.0" layoutY="89.0" mnemonicParsing="false" onMouseClicked="#supprimer" prefHeight="30.0" prefWidth="98.0" text="PDF" />
+            <Button fx:id="supprimer" layoutX="494.0" layoutY="54.0" mnemonicParsing="false" onMouseClicked="#supprimer" prefHeight="30.0" prefWidth="98.0" text="Supprimer" style="-fx-background-color: #d19c97; -fx-text-fill: white;" />
+<Button fx:id="createPDFButton" layoutX="506.0" layoutY="170.0" onAction="#createPDFButtonClicked" text="Create PDF" style="-fx-background-color: #d19c97; -fx-text-fill: white;" />
          </children>
          
       </AnchorPane>
       <HBox layoutX="685.9000244140625" layoutY="10.899999618530273" AnchorPane.rightAnchor="14.399999999999977" AnchorPane.topAnchor="14.0">
          <children>
-            <Button minWidth="38.0" mnemonicParsing="false" onMouseClicked="#EXIT" prefHeight="24.0" prefWidth="38.0" text="X" />
+            <Button minWidth="38.0" mnemonicParsing="false" onMouseClicked="#EXIT" prefHeight="24.0" prefWidth="38.0" text="X" style="-fx-background-color: #d19c97; -fx-text-fill: white;" />
          </children>
       </HBox>
    </children>

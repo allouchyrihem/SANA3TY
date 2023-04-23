@@ -1,0 +1,52 @@
+#productTable {
+  -fx-background-color: #d19c97;
+}
+
+/* Style pour la première colonne */
+#name {
+  -fx-alignment: CENTER_LEFT;
+  -fx-font-size: 16px;
+  -fx-font-weight: bold;
+  -fx-text-fill: #333;
+  -fx-background-color: #c8bcb1;
+}
+
+/* Style pour la deuxième colonne */
+#description {
+  -fx-alignment: CENTER_LEFT;
+  -fx-font-size: 14px;
+  -fx-font-weight: normal;
+  -fx-text-fill: #555;
+  -fx-background-color: #e4dacf
+;
+}
+
+/* Style pour les cellules sélectionnées */
+.table-row-cell:selected {
+  -fx-background-color: #b3d9ff;
+  -fx-text-fill: #333;
+}
+
+/* Style pour les cellules non sélectionnées */
+.table-row-cell {
+  -fx-background-color: transparent;
+  -fx-text-fill: #333;
+}
+
+/* Style pour les lignes paires */
+.table-row-cell:even {
+  -fx-background-color: #f4f4f4;
+}
+
+/* Style pour les lignes impaires */
+.table-row-cell:odd {
+  -fx-background-color: #e8e8e8;
+}
+
+/* Style pour la table vide */
+.table-view .placeholder {
+  -fx-text-fill: #555;
+}
+#AnchorPane {
+    -fx-background-color: #FEEDF2;
+}
