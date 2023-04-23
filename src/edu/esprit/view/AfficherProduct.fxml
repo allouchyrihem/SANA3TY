@@ -7,6 +7,9 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import java.net.URL?><?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Polygon?>
 
 <AnchorPane id="AnchorPane" prefHeight="395.0" prefWidth="759.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controller.AfficherProductController">
    <children>
@@ -45,5 +48,25 @@
          </children>
       </HBox>
    </children>
+  
    
+</AnchorPane>
+    <stylesheets>
+        <URL value="@rating.css" />
+    </stylesheets>
+    <HBox spacing="5.0">
+        <Polygon fx:id="star1" fill="#CCCCCC" stroke="#CCCCCC" strokeType="INSIDE" strokeWidth="2.0" />
+        <Polygon fx:id="star2" fill="#CCCCCC" stroke="#CCCCCC" strokeType="INSIDE" strokeWidth="2.0" />
+        <Polygon fx:id="star3" fill="#CCCCCC" stroke="#CCCCCC" strokeType="INSIDE" strokeWidth="2.0" />
+        <Polygon fx:id="star4" fill="#CCCCCC" stroke="#CCCCCC" strokeType="INSIDE" strokeWidth="2.0" />
+        <Polygon fx:id="star5" fill="#CCCCCC" stroke="#CCCCCC" strokeType="INSIDE" strokeWidth="2.0" />
+    </HBox>
+    <HBox spacing="5.0">
+        <Polygon fx:id="star6" fill="#CCCCCC" stroke="#CCCCCC" strokeType="INSIDE" strokeWidth="2.0" />
+        <Polygon fx:id="star7" fill="#CCCCCC" stroke="#CCCCCC" strokeType="INSIDE" strokeWidth="2.0" />
+        <Polygon fx:id="star8" fill="#CCCCCC" stroke="#CCCCCC" strokeType="INSIDE" strokeWidth="2.0" />
+        <Polygon fx:id="star9" fill="#CCCCCC" stroke="#CCCCCC" strokeType="INSIDE" strokeWidth="2.0" />
+        <Polygon fx:id="star10" fill="#CCCCCC" stroke="#CCCCCC" strokeType="INSIDE" strokeWidth="2.0" />
+    </HBox>
+
 </AnchorPane>

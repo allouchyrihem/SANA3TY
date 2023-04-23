@@ -5,6 +5,7 @@
  */
 package edu.esprit.controller;
 
+import com.itextpdf.text.BadElementException;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Paragraph;
@@ -78,7 +79,7 @@ public class AfficherReclamationController implements Initializable {
 
  
 @FXML
-private void createPDFButtonClicked(ActionEvent event) throws FileNotFoundException {
+private void createPDFButtonClicked(ActionEvent event) throws FileNotFoundException, BadElementException, IOException {
     Reclamation selectedReclamation = productTable.getSelectionModel().getSelectedItem();
     if (selectedReclamation != null) {
         PdfCreator pdfCreator = new PdfCreator();
