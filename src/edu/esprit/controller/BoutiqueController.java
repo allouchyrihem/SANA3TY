@@ -61,6 +61,9 @@ public class BoutiqueController implements Initializable {
     private ListData listData = new ListData(); // initialize listData
     private ObservableList<String> categories=FXCollections.observableArrayList();
     private ObservableList<Product> products=FXCollections.observableArrayList();
+    private ObservableList<Product> Filtredproducts=FXCollections.observableArrayList();
+    @FXML
+    private Hyperlink accueil;
     /**
      * Initializes the controller class.
      */
@@ -69,6 +72,17 @@ public class BoutiqueController implements Initializable {
       dashboard.setOnAction(e -> {
         try {
                 Parent page1 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/Dashboard.fxml"));
+                Scene scene = new Scene(page1);
+                Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(Accueil1Controller.class.getName()).log(Level.SEVERE, null, ex);
+            }
+});
+      accueil.setOnAction(e -> {
+        try {
+                Parent page1 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/Accueil1.fxml"));
                 Scene scene = new Scene(page1);
                 Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
                 stage.setScene(scene);
@@ -95,11 +109,11 @@ public class BoutiqueController implements Initializable {
 
     products = listData.getProducts();
    // Assume products is a List<Product> containing all the products to be displayed
-int productsPerPage = 3; // Number of products to display per page
+int productsPerPage = 9; // Number of products to display per page
 int numPages = (int) Math.ceil(products.size() / (double) productsPerPage); // Calculate the number of pages needed
 
-Pagination pagination = new Pagination(numPages, 0); // Create a new Pagination object with the correct number of pages
-pagination.setPageFactory(pageIndex -> {
+    Pagination pagination = new Pagination(numPages, 0); // Create a new Pagination object with the correct number of pages
+    pagination.setPageFactory(pageIndex -> {
     // Create a VBox to hold the products for the current page
     VBox vboxContainer = new VBox();
     vboxContainer.setSpacing(10);
@@ -122,7 +136,24 @@ pagination.setPageFactory(pageIndex -> {
                 ImageView img = new ImageView(image);
                 img.setFitWidth(180);
                 img.setFitHeight(180);
-                vbox.getChildren().addAll(new Label(p.getName()), img, new Label(p.getDescription()));
+                img.setOnMouseClicked(e -> {
+                    try {
+                        // Navigate to the product details page when the product name is clicked
+                        goToProductDetailsPage(p);
+                    } catch (IOException ex) {
+                        Logger.getLogger(Accueil1Controller.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                });
+                Label productNameLabel = new Label(p.getName());
+                productNameLabel.setOnMouseClicked(e -> {
+                    try {
+                        // Navigate to the product details page when the product name is clicked
+                        goToProductDetailsPage(p);
+                    } catch (IOException ex) {
+                        Logger.getLogger(Accueil1Controller.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                });
+                vbox.getChildren().addAll(productNameLabel, img, new Label(p.getDescription()));
             } catch (IOException ex) {
                 Logger.getLogger(Accueil1Controller.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -136,7 +167,62 @@ pagination.setPageFactory(pageIndex -> {
 });
 
 rootContainer.getChildren().addAll(pagination); // Add the pagination control to the rootContainer
+catbox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+    if (newValue != null) {
+        Filtredproducts=products.filtered(product -> product.getCategory().getName().equals(newValue));
+        pagination.setPageFactory(pageIndex -> {
+    // Create a VBox to hold the products for the current page
+        VBox vboxContainer = new VBox();
+        vboxContainer.setSpacing(10);
 
+    // Calculate the start and end index of the products for the current page
+        int startIndex = pageIndex * productsPerPage;
+        int endIndex = Math.min(startIndex + productsPerPage, Filtredproducts.size());
+    // Create an HBox to hold each row of products (3 per row)
+        for (int i = startIndex; i < endIndex; i += 3) {
+            HBox hbox = new HBox();
+            hbox.setSpacing(10);
+
+        // Create a VBox to hold each individual product
+        for (int j = i; j < Math.min(i + 3, endIndex); j++) {
+            Product p = Filtredproducts.get(j);
+            VBox vbox = new VBox();
+            try {
+                Image image = decodeBase64Image(p.getImage());
+                ImageView img = new ImageView(image);
+                img.setFitWidth(180);
+                img.setFitHeight(180);
+                img.setOnMouseClicked(e -> {
+                    try {
+                        // Navigate to the product details page when the product name is clicked
+                        goToProductDetailsPage(p);
+                    } catch (IOException ex) {
+                        Logger.getLogger(Accueil1Controller.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                });
+                Label productNameLabel = new Label(p.getName());
+                productNameLabel.setOnMouseClicked(e -> {
+                    try {
+                        // Navigate to the product details page when the product name is clicked
+                        goToProductDetailsPage(p);
+                    } catch (IOException ex) {
+                        Logger.getLogger(Accueil1Controller.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                });
+                vbox.getChildren().addAll(productNameLabel, img, new Label(p.getDescription()));
+            } catch (IOException ex) {
+                Logger.getLogger(Accueil1Controller.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            hbox.getChildren().add(vbox);
+        }
+
+        vboxContainer.getChildren().add(hbox);
+    }
+
+    return vboxContainer; // Return the VBox containing the products for the current page
+});
+    }
+});
     }
 
     public static Image decodeBase64Image(String imageString) throws IOException {
@@ -145,6 +231,19 @@ rootContainer.getChildren().addAll(pagination); // Add the pagination control to
     return new Image(stream);
 
 }
+    private void goToProductDetailsPage(Product p) throws IOException {
+    // Navigate to the product details page and pass the selected product as a parameter
+    // You can use a URL parameter or a session to pass the product information to the next page
+    // For example, you can use the following code to navigate to the product details page with a URL parameter:
+     Stage stage = (Stage) rootContainer.getScene().getWindow();
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/esprit/view/Detail.fxml"));
+    Scene scene = new Scene(loader.load());
+    stage.setScene(scene);
+    DetailController controller = loader.getController();
+    controller.setProduct(p);
+    stage.show();
+}
+
     }    
     
 

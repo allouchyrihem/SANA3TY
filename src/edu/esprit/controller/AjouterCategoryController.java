@@ -34,6 +34,7 @@ import javafx.stage.Stage;
  * @author asus
  */
 public class AjouterCategoryController implements Initializable {
+    @FXML
     private Button btnC;
     @FXML
     private Button back;
@@ -53,8 +54,6 @@ public class AjouterCategoryController implements Initializable {
     private Hyperlink category;
     @FXML
     private Hyperlink accueil;
-    @FXML
-    private Button valider;
     /**
      * Initializes the controller class.
      *
@@ -115,7 +114,7 @@ public class AjouterCategoryController implements Initializable {
        back.setOnAction(event -> {
 
             try {
-                Parent page1 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/AfficherCategory.fxml"));
+                Parent page1 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/AjouterCategory.fxml"));
                 Scene scene = new Scene(page1);
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
@@ -151,7 +150,7 @@ public class AjouterCategoryController implements Initializable {
                 Category p = new Category(name.getText(), description.getText());
                 CategoryDao cdao = CategoryDao.getInstance();
                 cdao.insert(p);
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/esprit/view/Accueil1.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/esprit/view/AfficherCategory.fxml"));
                 Parent root = null;
                 try {
                     root = loader.load();
@@ -170,7 +169,7 @@ public class AjouterCategoryController implements Initializable {
         
     
 
-    }  
+    } 
     
       private void showAlert(String message ,boolean b) {
         Alert alert;

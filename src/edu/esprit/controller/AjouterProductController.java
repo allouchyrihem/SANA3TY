@@ -237,7 +237,7 @@ public class AjouterProductController  implements Initializable {
                 p = new Product(name.getText(), description.getText(),price.getText(),stock.getText(),imageEncoderDecoder(f.getAbsolutePath()),cat.getValue());
                 ProductDao pdao = ProductDao.getInstance();
                 pdao.insert(p);
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/esprit/view/Accueil1.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/esprit/view/AfficherProduct.fxml"));
                 Parent root = null;
                 try {
                     root = loader.load();

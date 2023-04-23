@@ -15,7 +15,7 @@
 
 <ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1097.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controller.BoutiqueController">
    <content>
-      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1085.0" prefWidth="600.0">
+      <AnchorPane fx:id="root" minHeight="0.0" minWidth="0.0" prefHeight="1085.0" prefWidth="600.0">
          <children>
             <Pane prefHeight="24.0" prefWidth="600.0" style="-fx-background-color: #ebf8fb;">
                <children>
@@ -39,7 +39,7 @@
             <Pane layoutY="108.0" prefHeight="36.0" prefWidth="600.0" style="-fx-background-color: #FFFFFF;">
                <children>
                   <Separator layoutX="2.0" layoutY="1.0" prefHeight="1.0" prefWidth="600.0" />
-                  <Hyperlink layoutX="32.0" layoutY="4.0" text="Acceuil" textFill="#d7b2b2">
+                  <Hyperlink fx:id="accueil" layoutX="32.0" layoutY="4.0" text="Acceuil" textFill="#d7b2b2">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -79,8 +79,7 @@
             <Pane layoutY="144.0" prefHeight="953.0" prefWidth="600.0" style="-fx-background-color: #FFFFFF;">
                <children>
                   <Separator layoutY="-1.0" prefHeight="3.0" prefWidth="600.0" />
-                  <ComboBox fx:id="catbox" layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="139.0" promptText="Catégorie" style="-fx-background-color: #D19C97;" />
-                  <ImageView fx:id="img" fitHeight="144.0" fitWidth="163.0" layoutX="21.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="img" fitHeight="144.0" fitWidth="163.0" layoutX="21.0" layoutY="126.0" pickOnBounds="true" preserveRatio="true" />
                   <Pane layoutY="809.0" prefHeight="132.0" prefWidth="600.0" style="-fx-background-color: #ebf8fb;">
                      <children>
                         <ImageView fitHeight="57.0" fitWidth="71.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
@@ -116,6 +115,7 @@
                      </children>
                   </Pane>
                   <Pane fx:id="rootContainer" layoutX="33.0" layoutY="78.0" prefHeight="160.0" prefWidth="139.0" />
+                  <ComboBox fx:id="catbox" layoutX="21.0" layoutY="14.0" prefHeight="25.0" prefWidth="139.0" promptText="Catégorie" style="-fx-background-color: #D19C97;" />
                </children>
             </Pane>
          </children>

@@ -39,7 +39,7 @@
                 <Pane layoutY="108.0" prefHeight="36.0" prefWidth="600.0" style="-fx-background-color: #FFFFFF;">
                     <children>
                         <Separator layoutX="2.0" layoutY="1.0" prefHeight="1.0" prefWidth="600.0" />
-                        <Hyperlink layoutX="32.0" layoutY="4.0" text="Acceuil" textFill="#d7b2b2">
+                        <Hyperlink fx:id="accueil" layoutX="32.0" layoutY="4.0" text="Acceuil" textFill="#d7b2b2">
                             <font>
                                 <Font size="14.0" />
                             </font>
