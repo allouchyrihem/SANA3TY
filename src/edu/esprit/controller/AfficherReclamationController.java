@@ -20,6 +20,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
+import java.util.function.Predicate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.event.ActionEvent;
@@ -61,7 +62,9 @@ public class AfficherReclamationController implements Initializable {
    
     private ListData1 listdata = new ListData1();
     @FXML
-    private Button PDF;
+    private Button createPDFButton;
+    @FXML
+    private TextField searchP;
 
 
     @Override
@@ -72,7 +75,18 @@ public class AfficherReclamationController implements Initializable {
         description.setCellValueFactory(new PropertyValueFactory<>("description"));
          // Disable the button when no row is selected
         
-  
+   searchP.textProperty().addListener((observable, oldValue, newValue) -> {
+            // Create filter Predicate
+            Predicate<Reclamation> filter = (Reclamation item) -> {
+                // Implement filter logic here
+                String query = newValue.toLowerCase();
+                return item.getSujet().toLowerCase().contains(query)||item.getDescription().toLowerCase().contains(query);
+            };
+
+            // Apply filter to data and update TableView
+            productTable.setItems(listdata.getReclamations().filtered(filter));
+        });
+ 
      
     }
   
@@ -129,8 +143,8 @@ private void createPDFButtonClicked(ActionEvent event) throws FileNotFoundExcept
 public void PDF(javafx.scene.input.MouseEvent event) throws FileNotFoundException, DocumentException {
     productTable.getSelectionModel().select(productTable.getSelectionModel().getSelectedItem());
 }
-*/
- 
+*/ 
+   
 
 
     @FXML
@@ -138,5 +152,6 @@ public void PDF(javafx.scene.input.MouseEvent event) throws FileNotFoundExceptio
         Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
         stage.close();
     }
-   
-}
+    
+  
+    }
