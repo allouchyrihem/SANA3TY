@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.image.Image?>
@@ -30,28 +30,27 @@
                         <Image url="@../assets/ogo.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="buttonSearch" layoutX="479.0" layoutY="42.0" mnemonicParsing="false" text="Notifications" textFill="#d7b2b2" />
                </children>
             </Pane>
             <Pane layoutY="108.0" prefHeight="36.0" prefWidth="600.0" style="-fx-background-color: #FFFFFF;">
                <children>
                   <Separator layoutX="2.0" layoutY="1.0" prefHeight="1.0" prefWidth="600.0" />
-                  <Text fx:id="Acceuil" fill="#d7b2b2" layoutX="28.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Acceuil">
+                  <Text fx:id="Acceuil" fill="#d7b2b2" layoutX="18.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Acceuil">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Text>
-                  <Text fx:id="Boutique" fill="#d7b2b2" layoutX="97.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Boutique">
+                  <Text fx:id="Boutique" fill="#d7b2b2" layoutX="80.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Boutique">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Text>
-                  <Text fx:id="Details" fill="#d7b2b2" layoutX="178.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Détails">
+                  <Text fx:id="Details" fill="#d7b2b2" layoutX="162.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Détails">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Text>
-                  <Text fx:id="Contact" fill="#d19c97" layoutX="239.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Event" wrappingWidth="42.7763671875">
+                  <Text fx:id="Contact" fill="#d19c97" layoutX="221.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Event" wrappingWidth="42.7763671875">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -66,9 +65,13 @@
                         <Font size="14.0" />
                      </font>
                   </Text>
-                  <Button fx:id="btn_display" layoutX="302.0" layoutY="5.0" mnemonicParsing="false" text=" les reclamations" textFill="#d19c97" />
                </children>
             </Pane>
+            <Hyperlink fx:id="btn_display" layoutX="268.0" layoutY="113.0" text="Consulter réclamations" textFill="#d7b2b2">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Hyperlink>
          </children></AnchorPane>
     
   </content>

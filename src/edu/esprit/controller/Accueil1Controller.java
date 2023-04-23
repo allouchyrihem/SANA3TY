@@ -17,6 +17,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -33,8 +34,6 @@ public class Accueil1Controller implements Initializable {
     @FXML
     private ImageView imageView;
     @FXML
-    private Button buttonSearch;
-    @FXML
     private Text Acceuil;
     @FXML
     private Text Boutique;
@@ -47,13 +46,14 @@ public class Accueil1Controller implements Initializable {
     @FXML
     private Text Sinscrire;
     @FXML
-    private Button btn_display;
+    private Hyperlink btn_display;
 
     /**
      * Initializes the controller class.
      */
     @Override
-    public void initialize(URL url, ResourceBundle rb) { btn_display.setOnAction(event -> {
+    public void initialize(URL url, ResourceBundle rb) {
+        btn_display.setOnAction(event -> {
             try {//FXMLLoader loader = new FXMLLoader();
                 //loader.setLocation(getClass().getResource("/com/esprit/view/Accueil.fxml"));
                 Parent page2 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/AfficherReclamation.fxml"));
