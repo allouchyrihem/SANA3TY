@@ -13,6 +13,8 @@ import edu.esprit.entity.Product;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -72,6 +74,8 @@ public class AjouterCommentController implements Initializable {
     private Button supprimer;
     @FXML
     private Button updatebuttonid;
+    @FXML
+    private Button back;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -94,7 +98,18 @@ public class AjouterCommentController implements Initializable {
         descriptionC.setText("");
 }
         });
-          
+           back.setOnAction(event -> {
+
+            try {
+                Parent page1 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/Accueil1.fxml"));
+                Scene scene = new Scene(page1);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(Accueil1Controller.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
 
     } 
     
@@ -199,5 +214,14 @@ void updatebtn(ActionEvent event) {
         
        
     }
+}
+private void back(ActionEvent event) throws IOException {
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/esprit/view/Accueil1.fxml"));
+    Parent root = loader.load();
+
+    Scene scene = new Scene(root);
+    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    stage.setScene(scene);
+    stage.show();
 }
 }
