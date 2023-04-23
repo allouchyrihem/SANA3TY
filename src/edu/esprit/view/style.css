@@ -56,3 +56,15 @@
   -fx-pref-height: 30.0;
   -fx-pref-width: 98.0;
 }
+#searchP {
+    -fx-text-fill: blue;
+    -fx-font-size: 14px;
+    -fx-background-color: white;
+    -fx-border-color: blue;
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+}
+
+#searchP:focused {
+    -fx-border-color: lightblue;
+}

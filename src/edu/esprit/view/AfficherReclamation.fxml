@@ -20,7 +20,7 @@
             <HBox alignment="TOP_CENTER" layoutX="525.0" layoutY="14.0" />
             <Button fx:id="supprimer" layoutX="506.0" layoutY="214.0" mnemonicParsing="false" onMouseClicked="#supprimer" prefHeight="30.0" prefWidth="98.0" styleClass="button-custom" text="Supprimer" />
 <Button fx:id="createPDFButton" layoutX="506.0" layoutY="257.0" onAction="#createPDFButtonClicked" styleClass="button-custom" text="Create PDF" />
-            <TextField fx:id="searchP" layoutX="87.0" layoutY="38.0" promptText="Rechercher" />
+            <TextField fx:id="searchP" layoutX="87.0" layoutY="38.0" promptText="Rechercher" stylesheets="@style.css" />
          </children>
          
       </AnchorPane>
