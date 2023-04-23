@@ -18,12 +18,16 @@ import javafx.scene.text.Text;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Comparator;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 
 public class AfficherEventClientController implements Initializable {
 
+    @FXML
+    private Button sortButton;
+    
     @FXML
     private Text Acceuil;
 
@@ -143,6 +147,14 @@ private void loadEvents(List<Events> events) {
         e.printStackTrace();
     }
 }
+
+@FXML
+private void sortEventsByDate() {
+    List<Events> events = eventsDao.displayAll();
+    events.sort(Comparator.comparing(Events::getDate));
+    loadEvents(events);
+}
+
 
 
 
