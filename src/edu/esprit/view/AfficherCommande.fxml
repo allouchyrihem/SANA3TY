@@ -23,7 +23,10 @@
                </image>
             </ImageView>
          
-      <Button fx:id="back" mnemonicParsing="false" opacity="0.28" prefHeight="25.0" prefWidth="30.0" style="-fx-background-color: #D4A29C;" text="&lt;-" />
+      <Button fx:id="back" mnemonicParsing="false" opacity="0.28" prefHeight="25.0" prefWidth="30.0" style="-fx-background-color: #D4A29C;" text="&lt;-">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font></Button>
             <Button fx:id="" mnemonicParsing="false" prefHeight="43.0" prefWidth="118.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-border-width: 0px 0px 1px 0px;" text="Événement" textFill="WHITE">
                <font>
                   <Font name="Calibri" size="12.0" />
@@ -48,19 +51,20 @@
       </VBox>
    </left>
    <center>
-      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+      <VBox prefHeight="500.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
          <children>
-            <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="343.0" prefWidth="498.0">
+            <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="343.0" prefWidth="548.0">
          <children>
-            <TableView fx:id="commandeTable" layoutX="9.0" layoutY="36.0" prefHeight="174.0" prefWidth="475.0">
+            <TableView fx:id="commandeTable" layoutX="7.0" layoutY="35.0" prefHeight="174.0" prefWidth="507.0">
                <columns>
                   <TableColumn fx:id="adresse" prefWidth="63.19995403289795" text="Adresse" />
                   <TableColumn fx:id="description" prefWidth="84.7999267578125" text="Description" />
                   <TableColumn fx:id="etat" prefWidth="74.40000915527344" text="Etat" />
                         <TableColumn fx:id="totale" prefWidth="52.79997253417969" text="Totale" />
-                        <TableColumn fx:id="datecmd" prefWidth="94.39996337890625" text="Date" />
-                        <TableColumn fx:id="produit" prefWidth="104.79998779296875" text="Produit" />
-                        <TableColumn fx:id="quantite" prefWidth="104.79998779296875" text="Quantite" />
+                        <TableColumn fx:id="datecmd" prefWidth="84.0" text="Date" />
+                        <TableColumn fx:id="produit" prefWidth="78.4000244140625" text="Produit" />
+                        <TableColumn fx:id="quantite" prefWidth="88.0" text="Quantite" />
+                        <TableColumn fx:id="facture" prefWidth="66.39999999999998" text="Facture" />
                
                </columns>
             </TableView>

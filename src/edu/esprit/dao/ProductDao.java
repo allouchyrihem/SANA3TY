@@ -106,7 +106,7 @@ public Product find(int id) {
                 p.setId(rs.getInt("id"));
                 p.setName(rs.getString("name"));
                 p.setDescription(rs.getString("description"));
-                p.setPrice(rs.getString("price"));
+                p.setPrice(rs.getFloat("price"));
                 p.setStock(rs.getString("stock"));
                 p.setImage(rs.getString("image"));
                 list.add(p);
@@ -129,7 +129,7 @@ public Product find(int id) {
                 p.setId(rs.getInt(1));
                 p.setName(rs.getString("name"));
                 p.setDescription(rs.getString("description"));
-                p.setPrice(rs.getString("price"));
+                p.setPrice(rs.getFloat("price"));
                 p.setStock(rs.getString("stock"));
                 p.setImage(rs.getString("image"));
                 list.add(p);
@@ -151,7 +151,7 @@ public Product find(int id) {
                 p.setId(rs.getInt("id"));
                 p.setName(rs.getString("name"));
                 p.setDescription(rs.getString("description"));
-                p.setPrice(rs.getString("price"));
+                p.setPrice(rs.getFloat("price"));
                 p.setStock(rs.getString("stock"));
                 p.setImage(rs.getString("image"));
             //}  

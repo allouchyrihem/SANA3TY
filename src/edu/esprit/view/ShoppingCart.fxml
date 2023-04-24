@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+
+<VBox spacing="10" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+    <Label text="Shopping Cart" style="-fx-font-size: 20px; -fx-font-weight: bold;" />
+    <ScrollPane prefHeight="200">
+        <VBox spacing="10">
+            <!-- Add dynamically generated content here -->
+        </VBox>
+    </ScrollPane>
+    <HBox spacing="10">
+        <Label text="Total: " style="-fx-font-weight: bold;" />
+        <Label fx:id="totalLabel" />
+    </HBox>
+    <Button text="Checkout" />
+</VBox>

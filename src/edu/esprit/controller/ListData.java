@@ -49,4 +49,8 @@ public class ListData {
     public ObservableList<Commande> getcommandes(){
         return commandes;
     }
+    public ObservableList<String> getNames(){
+        return cat;
+    
+    }
 }

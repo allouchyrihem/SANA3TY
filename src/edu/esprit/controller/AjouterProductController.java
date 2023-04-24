@@ -110,8 +110,15 @@ public class AjouterProductController  implements Initializable {
         btn.setOnAction((ActionEvent event) -> {
             Product p;
             try {
-                p = new Product(name.getText(), description.getText(),price.getText(),stock.getText(),imageEncoderDecoder(f.getAbsolutePath()));
-                ProductDao pdao = ProductDao.getInstance();
+               float productPrice = 0.0f;
+try {
+    productPrice = Float.parseFloat(price.getText());
+} catch (NumberFormatException e) {
+    // handle the error here, e.g. display an error message to the user
+    return;
+}
+p = new Product(name.getText(), description.getText(), productPrice, stock.getText(), imageEncoderDecoder(f.getAbsolutePath()));
+ ProductDao pdao = ProductDao.getInstance();
                 pdao.insert(p);
             } catch (IOException ex) {
                 Logger.getLogger(AjouterProductController.class.getName()).log(Level.SEVERE, null, ex);

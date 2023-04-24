@@ -14,7 +14,22 @@ import javafx.collections.ObservableList;
  * @author HP
  */
  public class ShoppingCart {
-    private ObservableList<Product> products = FXCollections.observableArrayList();
+     private ObservableList<Product> products;
+
+    public ShoppingCart() {
+        products = FXCollections.observableArrayList();
+    }
+
+    public void addProduct(Product product) {
+        products.add(product);
+    }
+
+    public ObservableList<Product> getProducts() {
+        return products;
+    }
+}
+ 
+  /*  private ObservableList<Product> products = FXCollections.observableArrayList();
 
     public void addProduct(Product product) {
         products.add(product);
@@ -27,4 +42,4 @@ import javafx.collections.ObservableList;
     public ObservableList<Product> getProducts() {
         return products;
     }
-}
+}*/

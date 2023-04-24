@@ -23,6 +23,7 @@
                <children>
                      <Button fx:id="btn_addcmd" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="8.0" mnemonicParsing="false" text="Ajouter cmd" />
                   <Button fx:id="btn_displayS" mnemonicParsing="false" text="sessionPanier" />
+                  <Button fx:id="btn_Boutique" mnemonicParsing="false" text="Boutique" />
                
                </children>
             </HBox>

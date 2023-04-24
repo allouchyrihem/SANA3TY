@@ -25,7 +25,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
+import javafx.scene.Node; 
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -122,14 +122,18 @@ int quantite = Integer.parseInt(quantiteResult.get());
         nouvelleCommande.setAdresse(adresseLivraison);
         nouvelleCommande.setQuantite(quantite);
         nouvelleCommande.setCommandeProducts(FXCollections.observableList(new ArrayList<ProductCmd>()));
-
+        float totale=0.0f;
+        
         // Ajouter les produits du panier à la nouvelle commande
         for (Product produit : panier) {
             ProductCmd commandeProduit = new ProductCmd(produit, nouvelleCommande);
             commandeProduit.setProduct(produit);
             commandeProduit.setCommande(nouvelleCommande);
             nouvelleCommande.getCommandeProducts().add(commandeProduit);
+            float price=produit.getPrice();
+            totale+= price *quantite;
         }
+         nouvelleCommande.setTotale(totale);
 
         // Enregistrer la nouvelle commande dans la base de données
         CmdDao commandeDAO = new CmdDao();

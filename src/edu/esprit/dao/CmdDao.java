@@ -93,13 +93,12 @@ public int getLastInsertedId() throws SQLException {
 public void insert(Commande o) {
     try {
         // Insertion de la commande avec la quantité renseignée par le client
-        String req="INSERT INTO commande (adresse, description, etat, datecmd, quantity) VALUES ('"+o.getAdresse()+"', '"+o.getDescription()+"', 'en attente', '"+java.sql.Date.valueOf(LocalDate.now())+"', '"+o.getQuantite()+"')";
+        String req="INSERT INTO commande (adresse, description, etat, datecmd, quantity, totale) VALUES ('"+o.getAdresse()+"', '"+o.getDescription()+"', 'en attente', '"+java.sql.Date.valueOf(LocalDate.now())+"', '"+o.getQuantite()+"', '" + o.getTotale() +"')";
         st.executeUpdate(req);
     } catch (SQLException ex) {
         Logger.getLogger(CmdDao.class.getName()).log(Level.SEVERE, null, ex);
     }
 }
-
 
     public void insertP(int commande_id, int product_id) {
     MyConnection cs = MyConnection.getInstance();

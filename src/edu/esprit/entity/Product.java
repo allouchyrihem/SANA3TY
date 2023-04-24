@@ -8,6 +8,7 @@ package edu.esprit.entity;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
+import javafx.beans.property.SimpleFloatProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -23,7 +24,7 @@ public class Product {
     private SimpleIntegerProperty id;
     private SimpleStringProperty name;
     private SimpleStringProperty description;   
-    private SimpleStringProperty price;
+    private SimpleFloatProperty price;
     private SimpleStringProperty stock;
     private SimpleStringProperty image;
 
@@ -39,19 +40,19 @@ public class Product {
  
     
 
-    public Product(int id, String name, String description, String price, String stock, String image) {
+    public Product(int id, String name, String description, Float price, String stock, String image) {
         this.id = new SimpleIntegerProperty(id);
         this.name = new SimpleStringProperty(name);
         this.description = new SimpleStringProperty(description);
-        this.price = new SimpleStringProperty(price);
+        this.price = new SimpleFloatProperty(price);
         this.stock = new SimpleStringProperty(stock);
         this.image = new SimpleStringProperty(image);
          }
 
-    public Product(String name, String description, String price, String stock, String image) {
+    public Product(String name, String description, Float price, String stock, String image) {
         this.name = new SimpleStringProperty(name);
         this.description = new SimpleStringProperty(description);
-        this.price = new SimpleStringProperty(price);
+        this.price = new SimpleFloatProperty(price);
         this.stock = new SimpleStringProperty(stock);
         this.image = new SimpleStringProperty(image);
        
@@ -84,12 +85,12 @@ public class Product {
         this.description = new SimpleStringProperty(description);
     }
 
-    public String getPrice() {
+    public Float getPrice() {
         return price.get();
     }
 
-    public void setPrice(String price) {
-        this.price = new SimpleStringProperty(price);
+    public void setPrice(Float price) {
+        this.price = new SimpleFloatProperty(price);
     }
 
     public String getStock() {
@@ -115,7 +116,7 @@ public class Product {
     public SimpleStringProperty getDescriptionProperty(){
         return description;
     }
-    public SimpleStringProperty getPriceProperty(){
+    public SimpleFloatProperty getPriceProperty(){
         return price;
     }
     public SimpleStringProperty getStockProperty(){
