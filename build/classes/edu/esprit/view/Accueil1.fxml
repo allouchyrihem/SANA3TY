@@ -54,7 +54,7 @@
                                 <Font size="14.0" />
                             </font>
                         </Hyperlink>
-                        <Hyperlink layoutX="302.0" layoutY="4.0" text="Réclamation" textFill="#d7b2b2">
+                        <Hyperlink fx:id="reclamation" layoutX="302.0" layoutY="4.0" text="Réclamation" textFill="#d7b2b2">
                             <font>
                                 <Font size="14.0" />
                             </font>

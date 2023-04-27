@@ -67,6 +67,8 @@ public class BoutiqueController implements Initializable {
     private Hyperlink accueil;
     @FXML
     private AnchorPane root;
+    @FXML
+    private Hyperlink reclamation;
     /**
      * Initializes the controller class.
      */
@@ -75,6 +77,17 @@ public class BoutiqueController implements Initializable {
       dashboard.setOnAction(e -> {
         try {
                 Parent page1 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/Dashboard.fxml"));
+                Scene scene = new Scene(page1);
+                Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(Accueil1Controller.class.getName()).log(Level.SEVERE, null, ex);
+            }
+});
+          reclamation.setOnAction(e -> {
+        try {
+                Parent page1 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/AjouterReclamation.fxml"));
                 Scene scene = new Scene(page1);
                 Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
                 stage.setScene(scene);
@@ -105,7 +118,6 @@ public class BoutiqueController implements Initializable {
                 Logger.getLogger(Accueil1Controller.class.getName()).log(Level.SEVERE, null, ex);
             }
 });
- 
     categories = listData.getNames();
     observableOptions = FXCollections.observableArrayList(categories);
     catbox.setItems(categories);

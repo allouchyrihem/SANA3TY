@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" stylesheets="@stylereclamation.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controller.AjouterReclamationController">
+   <children>
+      <Pane fx:id="BoutonValider" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: ivory; -fx-border-width: 2px; -fx-border-color: black;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label layoutX="20.0" layoutY="83.0" prefHeight="17.0" prefWidth="80.0" text="Sujet:" textAlignment="CENTER" textFill="#e5c2a8">
+               <font>
+                  <Font name="Georgia" size="28.0" />
+               </font>
+               <effect>
+                  <ColorAdjust />
+               </effect></Label>
+            <Label layoutX="19.0" layoutY="138.0" prefHeight="32.0" prefWidth="168.0" text="Description :" textFill="#e5c2a8">
+               <font>
+                  <Font name="Georgia" size="28.0" />
+               </font></Label>
+            <Button id="valider" fx:id="btn" layoutX="248.0" layoutY="176.0" mnemonicParsing="false" text="Envoyer" textFill="#502920">
+               <font>
+                  <Font name="Franklin Gothic Medium" size="14.0" />
+               </font>
+            </Button>
+            <TextField id="name" fx:id="name" layoutX="199.0" layoutY="87.0" />
+            <TextField id="description" fx:id="description" layoutX="200.0" layoutY="142.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d19c97" height="64.0" stroke="#d19c97" strokeType="INSIDE" width="600.0" />
+            <Text fill="#e5c2a8" layoutX="200.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="San3ty.tn">
+               <font>
+                  <Font name="Cambria Bold" size="31.0" />
+               </font>
+            </Text>
+            <ImageView fx:id="imageView" fitHeight="64.0" fitWidth="65.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/ogo.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="back" layoutX="535.0" layoutY="350.0" mnemonicParsing="false" text="back" />
+
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

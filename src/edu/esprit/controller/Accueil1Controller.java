@@ -91,6 +91,8 @@ public class Accueil1Controller implements Initializable {
     private Hyperlink accueil;
     @FXML
     private AnchorPane anchor;
+    @FXML
+    private Hyperlink reclamation;
 
     /**
      * Initializes the controller class.
@@ -122,6 +124,18 @@ public void initialize(URL url, ResourceBundle rb) {
     boutique.setOnAction(e -> {
         try {
                 Parent page1 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/Boutique.fxml"));
+                Scene scene = new Scene(page1);
+                Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(Accueil1Controller.class.getName()).log(Level.SEVERE, null, ex);
+            }
+});
+    
+     reclamation.setOnAction(e -> {
+        try {
+                Parent page1 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/AjouterReclamation.fxml"));
                 Scene scene = new Scene(page1);
                 Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
                 stage.setScene(scene);

@@ -27,6 +27,7 @@ public class Product {
     private SimpleStringProperty price;
     private SimpleStringProperty stock;
     private SimpleStringProperty image;
+    //hedhilik ya nadou badelha product id fel comment
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
