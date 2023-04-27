@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="desktopSana3ty.jar" size="10652901" download="eager" />
+    <jar href="desktopSana3ty.jar" size="10652903" download="eager" />
     <jar href="lib\commons-codec-1.15.jar" size="353793" download="eager" />
     <jar href="lib\commons-io-2.7.jar" size="276413" download="eager" />
     <jar href="lib\commons-logging-1.2.jar" size="61829" download="eager" />
