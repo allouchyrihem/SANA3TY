@@ -5,17 +5,23 @@
  */
 package edu.esprit.controller;
 
+import static edu.esprit.controller.BoutiqueController.decodeBase64Image;
 import edu.esprit.dao.CategoryDao;
 import edu.esprit.dao.ProductDao;
 import edu.esprit.entity.Category;
 import edu.esprit.entity.Product;
+import java.io.ByteArrayInputStream;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Base64;
+import java.util.List;
 import static java.util.Optional.empty;
 import java.util.ResourceBundle;
 import java.util.function.Predicate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -27,8 +33,10 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
+import javafx.scene.control.Pagination;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -36,6 +44,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import javafx.scene.image.Image;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 
 /**
  *
@@ -58,7 +70,7 @@ public class AfficherProductController implements Initializable {
     @FXML
     private TableColumn<Product, String> stock;
     @FXML
-    private TableColumn<Product, ImageView> image;
+    private TableColumn<Product, String> image;
     @FXML
     private TableColumn<Product, String> categoryname;
     @FXML
@@ -84,6 +96,12 @@ public class AfficherProductController implements Initializable {
     private Hyperlink categoryy;
     @FXML
     private TextField searchP;
+    @FXML
+    private ImageView img;
+    @FXML
+    private Pane rootContainer;
+    private ListData listData = new ListData(); // initialize listData
+    private ObservableList<Product> products=FXCollections.observableArrayList();
 
 
 
@@ -147,22 +165,51 @@ public class AfficherProductController implements Initializable {
             }
         });
         productTable.setItems(listdata.getProducts());
-productTable.getSortOrder().add(name); // add the column to sort by
-name.setSortType(TableColumn.SortType.ASCENDING); // set the sort type
-productTable.sort(); 
+        
+        productTable.getSortOrder().add(name); // add the column to sort by
+        image.setCellValueFactory(new PropertyValueFactory<>("image"));
+        image.setCellFactory(column -> {
+        return new TableCell<Product, String>() {
+        private final ImageView imageView = new ImageView();
+        {
+            setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
+            setGraphic(imageView);
+        }
+        @Override
+        protected void updateItem(String item, boolean empty) {
+            super.updateItem(item, empty);
+            if (empty || item == null) {
+                imageView.setImage(null);
+                
+            } else {
+                try {
+                    Image image = decodeBase64Image(item);
+                    imageView.setImage(image);
+                    imageView.setFitWidth(70);
+                imageView.setFitHeight(50);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    };
+});
         name.setCellValueFactory(new PropertyValueFactory<>("name"));
         description.setCellValueFactory(new PropertyValueFactory<>("description"));
         price.setCellValueFactory(new PropertyValueFactory<>("price"));
         stock.setCellValueFactory(new PropertyValueFactory<>("stock"));
-        image.setCellValueFactory(new PropertyValueFactory<>("image"));
-        categoryname.setCellValueFactory(cellData -> {
+        name.setSortType(TableColumn.SortType.ASCENDING); // set the sort type
+        productTable.sort(); 
+        
+        
+        
+    categoryname.setCellValueFactory(cellData -> {
     SimpleStringProperty property = new SimpleStringProperty();
     if (cellData.getValue() != null && cellData.getValue().getCategory() != null) {
         property.setValue(cellData.getValue().getCategory().getName());
     }
     return property;
 });
-
         searchP.textProperty().addListener((observable, oldValue, newValue) -> {
             // Create filter Predicate
             Predicate<Product> filter = item -> {
@@ -175,9 +222,19 @@ productTable.sort();
             productTable.setItems(listdata.getProducts().filtered(filter));
         });
     } 
-    
+  private void goToProductDetailsPage(Product p) throws IOException {
+    // Navigate to the product details page and pass the selected product as a parameter
+    // You can use a URL parameter or a session to pass the product information to the next page
+    // For example, you can use the following code to navigate to the product details page with a URL parameter:
+     Stage stage = (Stage) rootContainer.getScene().getWindow();
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/esprit/view/Detail.fxml"));
+    Scene scene = new Scene(loader.load());
+    stage.setScene(scene);
+    DetailController controller = loader.getController();
+    controller.setProduct(p);
+    stage.show();
+}
 
-        
     public void delete(){
     pdao.delete(productTable.getSelectionModel().getSelectedItem().getId());
     System.out.println(productTable.getSelectionModel().getSelectedItem().getId());
@@ -194,6 +251,12 @@ productTable.sort();
         Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
         stage.close();
     }
+        public static Image decodeBase64Image(String imageString) throws IOException {
+    byte[] imageData = Base64.getDecoder().decode(imageString);
+    ByteArrayInputStream stream = new ByteArrayInputStream(imageData);
+    return new Image(stream);
+
+}
 
    @FXML
     void updatebtn(ActionEvent event) {
@@ -201,7 +264,6 @@ productTable.sort();
 
     // Get selected Event from the table
     Product selectedproduct = productTable.getSelectionModel().getSelectedItem();
-    CategoryDao cdao = new CategoryDao();
     if (selectedproduct != null) {
         try {
             // Create the FXMLLoader
@@ -212,7 +274,6 @@ productTable.sort();
 
             // Get the UpdateEvents controller
             UpdateProductController updateproductsController = loader.getController();
-
             // Pass the selected Event to the controller
             updateproductsController.setProduct(selectedproduct);
 

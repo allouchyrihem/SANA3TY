@@ -28,6 +28,7 @@ import javafx.scene.control.Pagination;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -57,13 +58,15 @@ public class BoutiqueController implements Initializable {
     private Pane rootContainer;
     @FXML
     private Hyperlink boutique;
- private ObservableList<String> observableOptions ;
+    private ObservableList<String> observableOptions ;
     private ListData listData = new ListData(); // initialize listData
-    private ObservableList<String> categories=FXCollections.observableArrayList();
     private ObservableList<Product> products=FXCollections.observableArrayList();
+    private ObservableList<String> categories=FXCollections.observableArrayList();
     private ObservableList<Product> Filtredproducts=FXCollections.observableArrayList();
     @FXML
     private Hyperlink accueil;
+    @FXML
+    private AnchorPane root;
     /**
      * Initializes the controller class.
      */
