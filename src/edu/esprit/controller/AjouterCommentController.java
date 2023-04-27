@@ -203,7 +203,7 @@ void updatebtn(ActionEvent event) {
         evnmdata.clear();
     evnmdata.addAll(commentsdao.displayAll());
     categoryTable.setItems(evnmdata);
-            
+        
 
            /* // Refresh the table after updating the Event
             eventsdata.setAll(evd.displayAll()); */
@@ -212,7 +212,7 @@ void updatebtn(ActionEvent event) {
             e.printStackTrace();
         }
         
-       
+    
     }
 }
 private void back(ActionEvent event) throws IOException {
