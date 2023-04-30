@@ -67,6 +67,7 @@ import javafx.fxml.FXMLLoader;
 import javax.mail.*;
 import javax.mail.internet.*;
 import java.util.Properties;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -132,7 +133,7 @@ private TableColumn<Commande, Void> facture;
     @FXML
     private ComboBox<String> etatC;
     @FXML
-    private TableColumn<Commande, Void> email;
+    private TableColumn<Commande, String > client;
   
     /**
      * Initializes the controller class.
@@ -346,7 +347,8 @@ document.close();
             }
         }
     };
-});
+});     client.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getUser().getName()));
+
 
    
     

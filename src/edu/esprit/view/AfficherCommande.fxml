@@ -15,7 +15,7 @@
 
 <BorderPane fx:id="bp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controller.AfficherCmdController">
    <left>
-      <VBox prefHeight="352.0" prefWidth="92.0" style="-fx-background-color: #D4A29C;" BorderPane.alignment="CENTER">
+      <VBox prefHeight="852.0" prefWidth="92.0" style="-fx-background-color: #D4A29C;" BorderPane.alignment="CENTER">
          <children>
                <ImageView fx:id="imageView" fitHeight="59.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -51,11 +51,11 @@
       </VBox>
    </left>
    <center>
-      <VBox prefHeight="500.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
+      <VBox prefHeight="800.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
          <children>
-            <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="343.0" prefWidth="548.0">
+            <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="843.0" prefWidth="548.0">
          <children>
-            <TableView fx:id="commandeTable" layoutX="7.0" layoutY="35.0" prefHeight="174.0" prefWidth="507.0">
+            <TableView fx:id="commandeTable" layoutX="14.0" layoutY="48.0" prefHeight="174.0" prefWidth="496.0">
                <columns>
                   <TableColumn fx:id="adresse" prefWidth="63.19995403289795" text="Adresse" />
                   <TableColumn fx:id="description" prefWidth="84.7999267578125" text="Description" />
@@ -64,12 +64,13 @@
                         <TableColumn fx:id="datecmd" prefWidth="84.0" text="Date" />
                         <TableColumn fx:id="produit" prefWidth="78.4000244140625" text="Produit" />
                         <TableColumn fx:id="quantite" prefWidth="88.0" text="Quantite" />
+                        <TableColumn fx:id="client" prefWidth="75.0" text="Client" />
                         <TableColumn fx:id="facture" prefWidth="66.39999999999998" text="Facture" />
                
                </columns>
             </TableView>
             <HBox alignment="TOP_CENTER" layoutX="525.0" layoutY="14.0" />
-            <Button fx:id="supprimer" layoutX="405.0" layoutY="210.0" mnemonicParsing="false" onMouseClicked="#supprimer" prefHeight="26.0" prefWidth="78.0" style="-fx-background-color: #D4A29C;" text="supprimer" />
+            <Button fx:id="supprimer" layoutX="399.0" layoutY="232.0" mnemonicParsing="false" onMouseClicked="#supprimer" prefHeight="26.0" prefWidth="78.0" style="-fx-background-color: #D4A29C;" text="supprimer" />
             <Label layoutX="30.0" layoutY="279.0" text="Etat" />
             <Button id="updateU" fx:id="updateU" layoutX="241.0" layoutY="275.0" mnemonicParsing="false" onMouseClicked="#update" style="-fx-background-color: #D4A29C;" text="Update" />
             <Button fx:id="exit" alignment="TOP_CENTER" contentDisplay="RIGHT" layoutX="478.0" layoutY="2.0" minWidth="38.0" mnemonicParsing="false" onMouseClicked="#EXIT" prefHeight="24.0" prefWidth="38.0" style="-fx-background-color: #ffdfdf;" text="X" textAlignment="RIGHT">

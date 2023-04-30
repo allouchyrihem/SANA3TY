@@ -31,6 +31,7 @@ public class Commande {
     private LocalDate datecmd;
     private ObservableList<ProductCmd> produits;
     private SimpleIntegerProperty quantite;
+    private user user;
         public static ObservableList<Commande> getCommandes() {
         ObservableList<Commande> commandes = FXCollections.observableArrayList();
         // retrieve commandes from database or other data source
@@ -93,7 +94,13 @@ public class Commande {
         this.produits = commandeProducts;
     }
     
+  public user getUser() {
+        return user;
+    }
 
+    public void setUser(user user) {
+        this.user = user;
+    }
 public Commande(String adresse, String description) {
         this.adresse = new SimpleStringProperty(adresse);
         this.description = new SimpleStringProperty(description);}
@@ -164,7 +171,7 @@ public void setDatecmd(LocalDate datecmd) {
     }
     @Override
     public String toString() {
-        return "Commande{" + "id=" + id + ", adresse=" + adresse + ", description="+description+"etat"+etat+"totale"+totale +"datecmd"+datecmd+"quantite"+quantite+'}';
+        return "Commande{" + "id=" + id + ", adresse=" + adresse + ", description="+description+"etat"+etat+"totale"+totale +"datecmd"+datecmd+"quantite"+quantite+"user"+user.getId()+'}';
     }
     
     

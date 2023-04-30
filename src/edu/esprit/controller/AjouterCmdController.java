@@ -11,6 +11,7 @@ import edu.esprit.dao.ProductDao;
 import edu.esprit.entity.Category;
 import edu.esprit.entity.Commande;
 import edu.esprit.entity.Product;
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -25,83 +26,122 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
+import javafx.stage.Stage;
 /**
  * FXML Controller class
  *
  * @author HP
  */
-public class AjouterCmdController implements Initializable {
+ public class AjouterCmdController implements Initializable {
+
     @FXML
-    private Button btnCmd;
+    private ImageView imageView;
     @FXML
-    private TextField adresse;
+    private TextField search;
     @FXML
-    private TextField description;
+    private Button buttonSearch;
     @FXML
-    private TextField etat;
+    private Text Acceuil;
     @FXML
-    private DatePicker  datecmd;
-     @FXML
-    private TextField totale;
+    private Text Boutique;
+    @FXML
+    private Text Details;
+    @FXML
+    private Text Contact;
+    @FXML
+    private Text Réclamation;
+    @FXML
+    private Text Seconnecter;
+    @FXML
+    private Text Sinscrire;
+    @FXML
+    private Pane BoutonValiderC;
+    @FXML
+    private TableView<Product> productTable;
+    @FXML
+    private TableColumn<Product, String> nameCol;
+    @FXML
+    private TableColumn<Product, String> descriptionCol;
+    @FXML
+    private TableColumn<Product, Double> priceCol;
+    
+private List<Product> products;
     @FXML
     private Button back;
-    private boolean present;
-    private final String[] listeMots = {"mot1", "mot2", "mot3"};
+    @FXML
+    private Button acheterButton;
+public Product getSelectedProduct() {
+    return productTable.getSelectionModel().getSelectedItem();
+}
+private Product selectedProduct;
+
+public void setSelectedProduct(Product product) {
+        this.selectedProduct = product;
+    }
+
     /**
      * Initializes the controller class.
-     *
-     * @param url
-     * @param rb
-     */
-    /**
-     * Initializes the controller class.
-     */
+     
+    public void setProducts(List<Product> products) {
+        nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
+        descriptionCol.setCellValueFactory(new PropertyValueFactory<>("description"));
+        priceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
+        
+        ObservableList<Product> productList = FXCollections.observableArrayList(products);
+        productTable.setItems(productList);
+    }*/
+  
+public void setProduct(Product product) throws IOException {
+    List<Product> productList = new ArrayList<>();
+    productList.add(product);
+    productTable.setItems(FXCollections.observableArrayList(productList));
+    nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
+    descriptionCol.setCellValueFactory(new PropertyValueFactory<>("description"));
+    priceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
+}
+
+   
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-       Date date = new Date();
-Timestamp timestamp = new Timestamp(date.getTime());
-         btnCmd.setOnAction(new EventHandler<ActionEvent>() {
-           @Override
-           public void handle(ActionEvent event) {
-               if (adresse.getText().trim().length() <4 || description.getText().trim().length() <3  ) {
-                   Alert alert = new Alert(Alert.AlertType.ERROR);
-                   alert.setTitle("Information Dialog");
-                   alert.setHeaderText(null);
-                   alert.setContentText("Veuillez remplir tous les champs.");
-                   alert.show();
-                   
-               }else {
-                   
-                   Commande p = new Commande(adresse.getText(), description.getText());
-                   CmdDao cdao = CmdDao.getInstance();
-                   cdao.insert(p);
-                   
-                   Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                   alert.setTitle("Information Dialog");
-                   alert.setHeaderText(null);
-                   alert.setContentText("Commande insérée avec succés!");
-                   alert.show();
-                   adresse.setText("");
-                   description.setText("");
-               }
-           }
-       });
-    }  
+        back.setOnAction(event -> {
+
+            try {
+                Parent page1 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/Boutique.fxml"));
+                Scene scene
+                        = new Scene(page1);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(AccueilController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+    }    
+    
 }

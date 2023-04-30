@@ -50,7 +50,7 @@ public class SessionPanierController implements Initializable {
     ObservableList<Product> panier = FXCollections.observableArrayList();
 
     @FXML
-    private ListView<Product> panierView;
+     ListView<Product> panierView;
 
     @FXML
     private Button acheterButton;

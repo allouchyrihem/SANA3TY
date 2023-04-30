@@ -8,11 +8,12 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controller.SessionPanier">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controller.AjouterCmdController">
     <children>
       <Pane layoutX="-1.0" prefHeight="84.0" prefWidth="900.0" style="-fx-background-color: #FFFFFF;">
          <children>
@@ -67,15 +68,20 @@
       </Pane>
        <Pane fx:id="BoutonValiderC" layoutX="3.0" layoutY="102.0" prefHeight="291.0" prefWidth="585.0" style="-fx-background-color: ivory; -fx-border-width: 2px; -fx-border-color: black;" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="102.0">
          <children>
-            <TableView layoutX="123.0" layoutY="57.0" prefHeight="200.0" prefWidth="228.0">
+            <TableView fx:id="productTable" layoutX="123.0" layoutY="57.0" prefHeight="200.0" prefWidth="228.0">
               <columns>
-                <TableColumn prefWidth="75.0" text="Produit" />
-                <TableColumn prefWidth="75.0" text="price" />
-                  <TableColumn prefWidth="75.0" text="opération" />
+                <TableColumn fx:id="nameCol" text="Nom" />
+                 <TableColumn fx:id="descriptionCol" text="Description" />
+                  <TableColumn fx:id="priceCol" text="Prix" />
               </columns>
             </TableView>
-            <Button layoutX="351.0" layoutY="257.0" mnemonicParsing="false" text="Passer Commande" />
+            
+            <Button fx:id="acheterButton" layoutX="351.0" layoutY="257.0" mnemonicParsing="false" text="Passer Commande" />
+          
          </children>
       </Pane>
+      <Pane layoutX="-1.0" prefHeight="400.0" prefWidth="885.0">
+      <HBox layoutX="15.0" layoutY="100.0" prefHeight="300.0" prefWidth="785.0" spacing="10" />
+         <Button fx:id="back" layoutX="65.0" layoutY="14.0" mnemonicParsing="false" style="-fx-background-color: #f4baba;" text="&lt;-" /></Pane>
      </children>
 </AnchorPane>

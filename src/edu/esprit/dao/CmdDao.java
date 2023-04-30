@@ -9,6 +9,7 @@ import edu.esprit.entity.Commande;
 import edu.esprit.entity.CommandeProduit;
 import edu.esprit.entity.Product;
 import edu.esprit.entity.ProductCmd;
+import edu.esprit.entity.user;
 import edu.esprit.util.MyConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -93,7 +94,7 @@ public int getLastInsertedId() throws SQLException {
 public void insert(Commande o) {
     try {
         // Insertion de la commande avec la quantité renseignée par le client
-        String req="INSERT INTO commande (adresse, description, etat, datecmd, quantity, totale) VALUES ('"+o.getAdresse()+"', '"+o.getDescription()+"', 'en attente', '"+java.sql.Date.valueOf(LocalDate.now())+"', '"+o.getQuantite()+"', '" + o.getTotale() +"')";
+        String req="INSERT INTO commande (adresse, description, etat, datecmd, quantity, totale, user_id) VALUES ('"+o.getAdresse()+"', '"+o.getDescription()+"', 'en attente', '"+java.sql.Date.valueOf(LocalDate.now())+"', '"+o.getQuantite()+"', '" + o.getTotale()+"', '" +6 +"')";
         st.executeUpdate(req);
     } catch (SQLException ex) {
         Logger.getLogger(CmdDao.class.getName()).log(Level.SEVERE, null, ex);
@@ -244,7 +245,7 @@ public void updateCommandState(Commande commande) {
 
     @Override
 public ObservableList<Commande> displayAll() {
-     String req="SELECT c.*,p.id, p.name FROM commande c JOIN product_commande cp ON c.id = cp.commande_id JOIN product p ON cp.product_id = p.id";
+     String req="SELECT c.*,u.name,p.id, p.name FROM commande c JOIN product_commande cp ON c.id = cp.commande_id JOIN product p ON cp.product_id = p.id  JOIN user u ON c.user_id = u.id";
 
     ObservableList<Commande> list = FXCollections.observableArrayList();
     
@@ -274,6 +275,12 @@ public ObservableList<Commande> displayAll() {
                 commande.setDatecmd(rs.getDate("c.datecmd").toLocalDate());
                 commande.setCommandeProducts(FXCollections.observableArrayList());
                 commande.setQuantite(rs.getInt("c.quantity"));
+                 // Set the User object associated with this Commande
+                user user = new user();
+                user.setId(rs.getInt("user_id"));
+                user.setName(rs.getString("name"));
+                commande.setUser(user);
+                
                 list.add(commande);
             }
             

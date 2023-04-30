@@ -27,6 +27,13 @@ import javafx.collections.ObservableList;
     public ObservableList<Product> getProducts() {
         return products;
     }
+
+    void clear() {
+          products.clear();
+    
+    System.out.println("Le panier a été vidé.");
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
  
   /*  private ObservableList<Product> products = FXCollections.observableArrayList();

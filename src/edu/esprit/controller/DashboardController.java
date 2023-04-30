@@ -41,6 +41,8 @@ public class DashboardController implements Initializable {
     private Button btn_displayS; 
     @FXML
     private Button btn_Boutique;
+    @FXML
+    private Button client;
     /**
      * Initializes the controller class.
      */
@@ -75,7 +77,21 @@ public class DashboardController implements Initializable {
                 Logger.getLogger(AccueilController.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
-        
+        client.setOnAction(event -> {
+            try {//FXMLLoader loader = new FXMLLoader();
+                //loader.setLocation(getClass().getResource("/com/esprit/view/Accueil.fxml"));
+                Parent page2 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/CClient.fxml"));
+                // Give the controller access to the main app.
+//                AfficherPersonneController controller =loader.getController();
+//                controller.setListData(new ListData());
+                Scene scene = new Scene(page2);
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(AccueilController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
         btn_displayS.setOnAction(event -> {
             try {//FXMLLoader loader = new FXMLLoader();
                 //loader.setLocation(getClass().getResource("/com/esprit/view/Accueil.fxml"));

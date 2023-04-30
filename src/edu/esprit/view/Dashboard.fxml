@@ -27,6 +27,7 @@
                
                </children>
             </HBox>
+            <Button fx:id="client" mnemonicParsing="false" text="client" />
             <Button fx:id="btn_displayCmd" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="8.0" mnemonicParsing="false" text="Afficher commande" />
          
          </children>
