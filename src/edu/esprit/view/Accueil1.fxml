@@ -39,41 +39,46 @@
                 <Pane layoutY="108.0" prefHeight="36.0" prefWidth="600.0" style="-fx-background-color: #FFFFFF;">
                     <children>
                         <Separator layoutX="2.0" layoutY="1.0" prefHeight="1.0" prefWidth="600.0" />
-                        <Hyperlink fx:id="accueil" layoutX="32.0" layoutY="4.0" text="Acceuil" textFill="#d7b2b2">
+                        <Hyperlink fx:id="accueil" layoutX="3.0" layoutY="5.0" text="Acceuil" textFill="#d7b2b2">
                             <font>
                                 <Font size="14.0" />
                             </font>
                         </Hyperlink>
-                        <Hyperlink fx:id="boutique" layoutX="100.0" layoutY="5.0" text="Boutique" textFill="#d7b2b2">
+                        <Hyperlink fx:id="boutique" layoutX="64.0" layoutY="6.0" text="Boutique" textFill="#d7b2b2">
                             <font>
                                 <Font size="14.0" />
                             </font>
                         </Hyperlink>
-                        <Hyperlink layoutX="176.0" layoutY="4.0" text="Détails" textFill="#d7b2b2">
+                        <Hyperlink layoutX="138.0" layoutY="5.0" text="Détails" textFill="#d7b2b2">
                             <font>
                                 <Font size="14.0" />
                             </font>
                         </Hyperlink>
-                        <Hyperlink fx:id="reclamation" layoutX="302.0" layoutY="4.0" text="Réclamation" textFill="#d7b2b2">
+                        <Hyperlink fx:id="reclamation" layoutX="255.0" layoutY="5.0" text="Réclamation" textFill="#d7b2b2">
                             <font>
                                 <Font size="14.0" />
                             </font>
                         </Hyperlink>
-                        <Hyperlink layoutX="236.0" layoutY="4.0" text="Contact" textFill="#d7b2b2">
+                        <Hyperlink layoutX="196.0" layoutY="5.0" text="Contact" textFill="#d7b2b2">
                             <font>
                                 <Font size="14.0" />
                             </font>
                         </Hyperlink>
-                        <Hyperlink layoutX="512.0" layoutY="5.0" text="S'inscrire" textFill="#d7b2b2">
+                        <Hyperlink layoutX="521.0" layoutY="5.0" text="S'inscrire" textFill="#d7b2b2">
                             <font>
                                 <Font size="14.0" />
                             </font>
                         </Hyperlink>
-                        <Hyperlink fx:id="dashboard" layoutX="415.0" layoutY="5.0" text="Se connecter" textFill="#d7b2b2">
+                        <Hyperlink fx:id="dashboard" layoutX="430.0" layoutY="5.0" text="Se connecter" textFill="#d7b2b2">
                             <font>
                                 <Font size="14.0" />
                             </font>
                         </Hyperlink>
+                  <Hyperlink fx:id="evenement" layoutX="345.0" layoutY="4.0" text="Evénement" textFill="#d7b2b2">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Hyperlink>
                     </children>
                 </Pane>
                 <Pane layoutY="144.0" prefHeight="949.0" prefWidth="600.0" style="-fx-background-color: #FFFFFF;">

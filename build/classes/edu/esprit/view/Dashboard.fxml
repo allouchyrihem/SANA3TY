@@ -21,17 +21,17 @@
                         <Image url="@../assets/ogo.png" />
                      </image>
                   </ImageView>
-                  <Hyperlink fx:id="dashboard" layoutX="1.0" layoutY="156.0" text="Dashboard" textFill="WHITE">
+                  <Hyperlink fx:id="dashboard" layoutY="110.0" text="Dashboard" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Hyperlink>
-                  <Hyperlink fx:id="product" layoutX="10.0" layoutY="223.0" text="Product" textFill="WHITE">
+                  <Hyperlink fx:id="product" layoutX="1.0" layoutY="156.0" text="Product" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Hyperlink>
-                  <Hyperlink fx:id="category" layoutX="7.0" layoutY="299.0" text="Catégorie" textFill="WHITE">
+                  <Hyperlink fx:id="category" layoutX="4.0" layoutY="195.0" text="Catégorie" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
@@ -41,7 +41,17 @@
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Hyperlink>
-                  <Hyperlink fx:id="reclamation" layoutX="5.0" layoutY="363.0" text="Réclamation" textFill="WHITE">
+                  <Hyperlink fx:id="reclamation" layoutX="1.0" layoutY="249.0" text="Réclamation" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Hyperlink>
+                  <Hyperlink fx:id="evenement" layoutX="5.0" layoutY="351.0" text="Evénement" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Hyperlink>
+                  <Hyperlink fx:id="promotion" layoutX="6.0" layoutY="302.0" text="Promotion" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
