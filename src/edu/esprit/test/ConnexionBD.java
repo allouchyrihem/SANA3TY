@@ -29,13 +29,14 @@ import javafx.stage.StageStyle;
 public class ConnexionBD extends Application {
     private Stage primaryStage;
     private Parent parentPage;
-   
+   //Accueil1
+    //Dashboard
     @Override
     public void start(Stage primaryStage) throws IOException {
 
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("Sana3ty");
-        parentPage = FXMLLoader.load(getClass().getResource("/edu/esprit/view/Accueil1.fxml"));
+        parentPage = FXMLLoader.load(getClass().getResource("/edu/esprit/view/Dashboard.fxml"));
         Scene scene = new Scene(parentPage);
         this.primaryStage.setScene(scene);
         this.primaryStage.show();

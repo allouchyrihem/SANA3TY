@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="desktopSana3ty.jar" size="10745956" download="eager" />
+    <jar href="desktopSana3ty.jar" size="10746088" download="eager" />
     <jar href="lib\commons-codec-1.15.jar" size="353793" download="eager" />
     <jar href="lib\commons-io-2.7.jar" size="276413" download="eager" />
     <jar href="lib\commons-logging-1.2.jar" size="61829" download="eager" />
@@ -23,6 +23,7 @@
     <jar href="lib\jackson-databind-2.14.0.jar" size="1618273" download="eager" />
     <jar href="lib\jackson-dataformat-xml-2.14.0.jar" size="130374" download="eager" />
     <jar href="lib\jackson-datatype-jsr310-2.14.0.jar" size="122014" download="eager" />
+    <jar href="lib\javax.mail.jar" size="659033" download="eager" />
     <jar href="lib\javax.persistence_2.1.0.v201304241213.jar" size="164637" download="eager" />
     <jar href="lib\jjwt-api-0.11.2.jar" size="78784" download="eager" />
     <jar href="lib\jjwt-impl-0.11.2.jar" size="78853" download="eager" />
