@@ -15,7 +15,7 @@ import com.twilio.type.PhoneNumber;
 public class SmsService {
     // Your Twilio account SID and authentication token
     public static final String ACCOUNT_SID = "AC2f24f5ca89216b1001f9b94fd1912950";
-    public static final String AUTH_TOKEN = "03bc501242c4767203fe33061a841839";
+    public static final String AUTH_TOKEN = "da53e238bc1cf87b5617cb2a464ceec2";
 
     // Your Twilio phone number
     public static final String TWILIO_NUMBER = "+16813813812";

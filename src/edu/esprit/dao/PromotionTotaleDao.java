@@ -5,6 +5,7 @@
  */
 package edu.esprit.dao;
 
+import edu.esprit.controller.SmsService;
 import edu.esprit.entity.Events;
 import edu.esprit.entity.PromotionTotale;
 import edu.esprit.util.MyConnection;
@@ -23,7 +24,8 @@ import java.util.logging.Logger;
  * @author rouao
  */
 public class PromotionTotaleDao implements Idao<PromotionTotale> {
-    
+    private SmsService smsService = new SmsService();
+
      private static PromotionTotaleDao instance;
     private Statement st;
     private ResultSet rs;
@@ -78,6 +80,27 @@ public class PromotionTotaleDao implements Idao<PromotionTotale> {
                 float value = rs.getFloat("value_promo");
                 LocalDate dated = rs.getDate("date_debut").toLocalDate();
                   LocalDate datef = rs.getDate("date_fin").toLocalDate();
+// get today's date
+LocalDate today = LocalDate.now();
+
+// convert dated to LocalDate object
+
+
+// compare the two dates
+  
+if (dated.isEqual(today)) {
+    String message = "un code de promotion " + name + " est activée aujourd'hui" + dated;
+    smsService.sendSms("+21656437457", message);
+     
+}
+
+if (datef.isEqual(today)) {
+    String message = "un code de promotion " + name + " est expiré ajourd'hui" + datef;
+    smsService.sendSms("+21656437457", message);
+     
+}
+
+                  
                
 
                 PromotionTotale promo = new PromotionTotale(id, name, value, dated, datef);
@@ -91,6 +114,7 @@ public class PromotionTotaleDao implements Idao<PromotionTotale> {
         }
 
         return promoList;
+        
     }
 
     @Override

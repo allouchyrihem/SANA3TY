@@ -5,6 +5,8 @@
  */
 package edu.esprit.controller;
 
+import static com.fasterxml.jackson.databind.util.ClassUtil.name;
+import static com.fasterxml.jackson.databind.util.ClassUtil.name;
 import edu.esprit.dao.EventsDao;
 import edu.esprit.dao.PromotionTotaleDao;
 import edu.esprit.entity.Events;
@@ -36,7 +38,6 @@ import javafx.stage.Stage;
  * @author rouao
  */
 public class AfficherPromotionTotaleController implements Initializable {
-
     @FXML
     private ObservableList<PromotionTotale> eventsdata= FXCollections.observableArrayList();;
   

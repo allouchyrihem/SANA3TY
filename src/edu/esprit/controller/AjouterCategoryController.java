@@ -8,7 +8,7 @@ package edu.esprit.controller;
 import edu.esprit.dao.CategoryDao;
 import edu.esprit.dao.ProductDao;
 import edu.esprit.entity.Category;
-import edu.esprit.entity.Product;
+import edu.esprit.entity.Product; 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;

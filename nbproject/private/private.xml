@@ -3,12 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/rouao/SANA3TY/src/edu/esprit/controller/EventCardController.java</file>
-            <file>file:/C:/Users/rouao/SANA3TY/src/edu/esprit/controller/NavbarBackofficeController.java</file>
-            <file>file:/C:/Users/rouao/SANA3TY/src/edu/esprit/entity/Category.java</file>
-            <file>file:/C:/Users/rouao/SANA3TY/src/edu/esprit/entity/PromotionTotale.java</file>
-            <file>file:/C:/Users/rouao/SANA3TY/src/edu/esprit/controller/AfficherEventClientController.java</file>
+            <file>file:/C:/Users/rouao/SANA3TY/src/edu/esprit/controller/SmsService.java</file>
+            <file>file:/C:/Users/rouao/SANA3TY/src/edu/esprit/controller/AjouterEventsController.java</file>
             <file>file:/C:/Users/rouao/SANA3TY/src/edu/esprit/test/ConnexionBD.java</file>
+            <file>file:/C:/Users/rouao/SANA3TY/src/edu/esprit/controller/AfficherPromotionTotaleController.java</file>
+            <file>file:/C:/Users/rouao/SANA3TY/src/edu/esprit/dao/PromotionTotaleDao.java</file>
         </group>
     </open-files>
 </project-private>
