@@ -35,7 +35,7 @@ public class Comment {
 
     public Comment(String description,Product product) {
         this.description = description;
-        this.product=product;
+        this.product = product;
     }
 
     

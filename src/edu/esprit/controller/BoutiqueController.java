@@ -5,6 +5,8 @@
  */
 package edu.esprit.controller;
 
+import edu.esprit.dao.CommentDao;
+import edu.esprit.entity.Comment;
 import edu.esprit.entity.Product;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -63,6 +65,8 @@ public class BoutiqueController implements Initializable {
     private ObservableList<Product> products=FXCollections.observableArrayList();
     private ObservableList<String> categories=FXCollections.observableArrayList();
     private ObservableList<Product> Filtredproducts=FXCollections.observableArrayList();
+        private ObservableList<Comment> comment=FXCollections.observableArrayList();
+
     @FXML
     private Hyperlink accueil;
     @FXML
@@ -121,6 +125,7 @@ public class BoutiqueController implements Initializable {
     categories = listData.getNames();
     observableOptions = FXCollections.observableArrayList(categories);
     catbox.setItems(categories);
+        CommentDao codao=CommentDao.getInstance();
 
     products = listData.getProducts();
    // Assume products is a List<Product> containing all the products to be displayed
@@ -154,7 +159,8 @@ int numPages = (int) Math.ceil(products.size() / (double) productsPerPage); // C
                 img.setOnMouseClicked(e -> {
                     try {
                         // Navigate to the product details page when the product name is clicked
-                        goToProductDetailsPage(p);
+                        comment.addAll(codao.displayAll(p.getId()));
+                        goToProductDetailsPage(p,comment);
                     } catch (IOException ex) {
                         Logger.getLogger(Accueil1Controller.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -163,7 +169,8 @@ int numPages = (int) Math.ceil(products.size() / (double) productsPerPage); // C
                 productNameLabel.setOnMouseClicked(e -> {
                     try {
                         // Navigate to the product details page when the product name is clicked
-                        goToProductDetailsPage(p);
+                        comment.addAll(codao.displayAll(p.getId()));
+                        goToProductDetailsPage(p,comment);
                     } catch (IOException ex) {
                         Logger.getLogger(Accueil1Controller.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -210,7 +217,8 @@ catbox.getSelectionModel().selectedItemProperty().addListener((observable, oldVa
                 img.setOnMouseClicked(e -> {
                     try {
                         // Navigate to the product details page when the product name is clicked
-                        goToProductDetailsPage(p);
+                        comment.addAll(codao.displayAll(p.getId()));
+                        goToProductDetailsPage(p,comment);
                     } catch (IOException ex) {
                         Logger.getLogger(Accueil1Controller.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -219,7 +227,8 @@ catbox.getSelectionModel().selectedItemProperty().addListener((observable, oldVa
                 productNameLabel.setOnMouseClicked(e -> {
                     try {
                         // Navigate to the product details page when the product name is clicked
-                        goToProductDetailsPage(p);
+                        comment.addAll(codao.displayAll(p.getId()));
+                        goToProductDetailsPage(p,comment);
                     } catch (IOException ex) {
                         Logger.getLogger(Accueil1Controller.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -246,7 +255,7 @@ catbox.getSelectionModel().selectedItemProperty().addListener((observable, oldVa
     return new Image(stream);
 
 }
-    private void goToProductDetailsPage(Product p) throws IOException {
+  private void goToProductDetailsPage(Product p,ObservableList<Comment> c) throws IOException {
     // Navigate to the product details page and pass the selected product as a parameter
     // You can use a URL parameter or a session to pass the product information to the next page
     // For example, you can use the following code to navigate to the product details page with a URL parameter:
@@ -256,8 +265,10 @@ catbox.getSelectionModel().selectedItemProperty().addListener((observable, oldVa
     stage.setScene(scene);
     DetailController controller = loader.getController();
     controller.setProduct(p);
+    controller.setComment(c);
     stage.show();
 }
+
 
     }    
     

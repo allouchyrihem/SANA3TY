@@ -201,7 +201,7 @@ void updatebtn(ActionEvent event) {
             categoryTable.refresh();
              categoryTable.getSelectionModel().clearSelection();
         evnmdata.clear();
-    evnmdata.addAll(commentsdao.displayAll());
+    //evnmdata.addAll(commentsdao.displayAll(products.getId()));
     categoryTable.setItems(evnmdata);
         
 

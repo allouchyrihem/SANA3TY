@@ -1,7 +1,10 @@
 package edu.esprit.controller;
 
 import static edu.esprit.controller.BoutiqueController.decodeBase64Image;
+import edu.esprit.dao.CategoryDao;
+import edu.esprit.dao.CommentDao;
 import edu.esprit.entity.Category;
+import edu.esprit.entity.Comment;
 import edu.esprit.entity.Product;
 import javafx.scene.paint.Color;
 import java.awt.image.BufferedImage;
@@ -76,6 +79,7 @@ public class Accueil1Controller implements Initializable {
     private ListData listData = new ListData(); // initialize listData
     private ObservableList<String> categories=FXCollections.observableArrayList();
     private ObservableList<Product> products=FXCollections.observableArrayList();
+    private ObservableList<Comment> comment=FXCollections.observableArrayList();
     private Label label1;
     private Label label2;
     private VBox vbox;
@@ -95,7 +99,6 @@ public class Accueil1Controller implements Initializable {
     private Hyperlink reclamation;
     @FXML
     private Hyperlink evenement;
-
     /**
      * Initializes the controller class.
      */
@@ -171,6 +174,7 @@ int numPages = (int) Math.ceil(products.size() / (double) productsPerPage); // C
 
 Pagination pagination = new Pagination(numPages, 0);
 FilteredList<Product> filteredProducts = new FilteredList<>(FXCollections.observableArrayList(products));
+        CommentDao codao=CommentDao.getInstance();
 
 catbox.setOnAction(e -> {
     String selectedCategory = catbox.getSelectionModel().getSelectedItem().toString();
@@ -197,6 +201,7 @@ pagination.setPageFactory(pageIndex -> {
         // Create a VBox to hold each individual product
         for (int j = i; j < Math.min(i + 3, endIndex); j++) {
             Product p = filteredProducts.get(j);
+            
             VBox vbox = new VBox();
             try {
                 Image image = decodeBase64Image(p.getImage());
@@ -206,7 +211,8 @@ pagination.setPageFactory(pageIndex -> {
                 img.setOnMouseClicked(e -> {
                     try {
                         // Navigate to the product details page when the product name is clicked
-                        goToProductDetailsPage(p);
+                        comment.addAll(codao.displayAll(p.getId()));
+                        goToProductDetailsPage(p,comment);
                     } catch (IOException ex) {
                         Logger.getLogger(Accueil1Controller.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -215,7 +221,8 @@ pagination.setPageFactory(pageIndex -> {
                 productNameLabel.setOnMouseClicked(e -> {
                     try {
                         // Navigate to the product details page when the product name is clicked
-                        goToProductDetailsPage(p);
+                        comment.addAll(codao.displayAll(p.getId()));
+                        goToProductDetailsPage(p,comment);
                     } catch (IOException ex) {
                         Logger.getLogger(Accueil1Controller.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -244,7 +251,7 @@ rootContainer.getChildren().addAll(pagination); // Add the pagination control to
         fadeTransition.setOnFinished(event -> anchor.getChildren().remove(messageLabel));
         fadeTransition.play();
 }
-private void goToProductDetailsPage(Product p) throws IOException {
+private void goToProductDetailsPage(Product p,ObservableList<Comment> c) throws IOException {
     // Navigate to the product details page and pass the selected product as a parameter
     // You can use a URL parameter or a session to pass the product information to the next page
     // For example, you can use the following code to navigate to the product details page with a URL parameter:
@@ -254,6 +261,7 @@ private void goToProductDetailsPage(Product p) throws IOException {
     stage.setScene(scene);
     DetailController controller = loader.getController();
     controller.setProduct(p);
+    controller.setComment(c);
     stage.show();
 }
 
