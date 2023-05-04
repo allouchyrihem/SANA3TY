@@ -143,7 +143,7 @@ dashboard.setOnAction(e -> {
             
              if ( isInputValid() ){
                  
-                 Comment p = new Comment( descriptionC.getText());
+                 Comment p = new Comment(descriptionC.getText(),products);
             CommentDao cdao = CommentDao.getInstance();
             cdao.insert(p);
         

@@ -47,7 +47,7 @@ public class CommentDao implements ComDao<Comment>{
 
     @Override
     public void insert(Comment o) {
-        String req="insert into comment (description) values ('"+o.getDescription()+"')";
+        String req="insert into comment (description,product_id) values ('"+o.getDescription()+"','"+o.getProduct().getId()+"')";
         try {
             st.executeUpdate(req);
         } catch (SQLException ex) {
@@ -72,14 +72,13 @@ public class CommentDao implements ComDao<Comment>{
 
     @Override
     public ObservableList<Comment> displayAll() {
-        String req="select * from comment";
+        String req="SELECT c.description FROM comment c JOIN product p ON c.product_id = p.id";
         ObservableList<Comment> list=FXCollections.observableArrayList();       
         
         try {
             rs=st.executeQuery(req);
             while(rs.next()){
                 Comment p=new Comment();
-                p.setId(rs.getInt(1));
                 p.setDescription(rs.getString("description"));
                 list.add(p);
             }
@@ -91,7 +90,7 @@ public class CommentDao implements ComDao<Comment>{
     }
 
     public List<Comment> displayAllList() {
-        String req="select * from comment";
+        String req="SELECT c.* FROM comment c JOIN product p ON c.product_id = p.id WHERE p.id = ?";
         List<Comment> list=new ArrayList<>();
         
         try {

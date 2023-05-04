@@ -6,23 +6,36 @@
 package edu.esprit.entity;
 
 import java.time.LocalDate;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import edu.esprit.entity.Product;
+
+/**
 
 /**
  *
  * @author nada
  */
+ 
 
 
 public class Comment {
     private int id;
     private String description;
     private LocalDate date;
+@ManyToOne
+    @JoinColumn(name = "product_id")
+     private Product product;
 
     public Comment() {
     }
 
-    public Comment(String description) {
+    public Comment(String description,Product product) {
         this.description = description;
+        this.product=product;
     }
 
     
@@ -71,14 +84,20 @@ public class Comment {
         this.date = date;
     }
 
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
     @Override
     public String toString() {
-        return "Comment{" +
-                "id=" + id +
-                ", description='" + description + '\'' +
-                ", date=" + date +
-                '}';
+        return "Comment{" + "id=" + id + ", description=" + description + ", date=" + date + ", product=" + product + '}';
     }
+
+  
 }
 
    
