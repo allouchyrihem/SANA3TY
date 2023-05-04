@@ -1,5 +1,5 @@
 #productTable {
-  -fx-background-color: #d19c97;
+  -fx-background-color: #e5c2a8;
 }
 
 /* Style pour la première colonne */
@@ -8,7 +8,7 @@
   -fx-font-size: 16px;
   -fx-font-weight: bold;
   -fx-text-fill: #333;
-  -fx-background-color: #c8bcb1;
+  -fx-background-color: #f2d4bd;
 }
 
 /* Style pour la deuxième colonne */
@@ -17,7 +17,7 @@
   -fx-font-size: 14px;
   -fx-font-weight: normal;
   -fx-text-fill: #555;
-  -fx-background-color: #e4dacf
+  -fx-background-color: #f2d4bd
 ;
 }
 
@@ -48,7 +48,7 @@
   -fx-text-fill: #555;
 }
 #AnchorPane {
-    -fx-background-color: #FEEDF2;
+    -fx-background-color:  #FFFFFF;
 }
 .button-custom {
   -fx-background-color: #d19c97;

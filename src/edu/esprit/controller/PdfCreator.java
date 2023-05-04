@@ -40,7 +40,7 @@ public class PdfCreator {
         document.open();           
 
          // Add image
-        Image image = Image.getInstance("C:\\Users\\asus\\Documents\\NetBeansProjects\\chance\\src\\edu\\esprit\\assets\\ogo.png");
+        Image image = Image.getInstance("C:\\Users\\USER\\SANA3TY\\src\\edu\\esprit\\assets\\ogo.png");
         image.scaleAbsolute(200, 200); // Resize image if needed
         document.add(image);
          // Add the title here
