@@ -13,7 +13,34 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Session {
+    private static Session instance = null;
+    private Map<String, Object> data;
 
+    private Session() {
+        data = new HashMap<>();
+    }
+
+    public static Session getInstance() {
+        if (instance == null) {
+            instance = new Session();
+        }
+        return instance;
+    }
+
+    public void setAttribute(String key, Object value) {
+        data.put(key, value);
+    }
+
+    public Object getAttribute(String key) {
+        return data.get(key);
+    }
+
+    public void removeAttribute(String key) {
+        data.remove(key);
+    }
+}
+
+/*
     private static Map<String, Object> sessionData = new HashMap<>();
 
     public static void setUserData(Map<String, Object> data) {
@@ -38,6 +65,6 @@ public class Session {
 
     public static void clear() {
         sessionData.clear();
-    }
-}
+    }*/
+
 

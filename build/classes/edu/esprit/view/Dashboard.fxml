@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controller.DashboardController">
+<AnchorPane id="AnchorPane" prefHeight="512.0" prefWidth="629.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controller.DashboardController">
     <children>
       <VBox alignment="CENTER" layoutX="104.0" layoutY="50.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="398.0" style="-fx-border-color: blue; -fx-background-color: white;" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="104.0" AnchorPane.rightAnchor="128.0" AnchorPane.topAnchor="50.0">
          <children>

@@ -125,7 +125,7 @@ public void setProducts(List<Product> products) {
         if (selectedProduct != null) {
             panier.add(selectedProduct);
             panierView.setItems(panier);
-            cart.addProduct(selectedProduct);
+           // cart.addProduct(selectedProduct);
         }
     }
 @FXML

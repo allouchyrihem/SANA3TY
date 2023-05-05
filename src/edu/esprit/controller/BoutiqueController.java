@@ -11,12 +11,8 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Base64;
-import java.util.ResourceBundle;
 
 import java.util.logging.Level;
-import java.util.logging.Logger;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -31,31 +27,19 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
-import edu.esprit.dao.CmdDao;
-import edu.esprit.dao.ProductDao;
-import edu.esprit.entity.Commande;
-import edu.esprit.entity.ProductCmd;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Date;
+import edu.esprit.test.ConnexionBD;
 import java.util.List;
-import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextInputDialog;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.shape.SVGPath;
 import javafx.stage.Stage;
 /**
  * FXML Controller class
@@ -72,11 +56,6 @@ public class BoutiqueController implements Initializable {
     private TextField search;
     @FXML
     private Hyperlink dashboard;
-     @FXML
-    private VBox vboxContainer;
-
-    @FXML
-    private HBox hbox;
 
     @FXML
     private ComboBox<String> catbox;
@@ -88,7 +67,9 @@ public class BoutiqueController implements Initializable {
     private Hyperlink boutique;
     private Product selectedProduct;
 TableView<Product> productTable = new TableView<>();
-
+    @FXML
+    private SVGPath chariot;
+private ShoppingCart cart = new ShoppingCart();
     public Product getSelectedProduct() {
         return selectedProduct;
     }
@@ -100,7 +81,7 @@ TableView<Product> productTable = new TableView<>();
             selectedProduct = newValue;
         });
     }
-    private List<Product> panier = new ArrayList<>();
+//    private List<Product> panier = new ArrayList<>();
 
 private void navigateToAjouterCmd(ActionEvent event, Product selectedProduct) throws IOException {
     FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/esprit/view/AjouterCmd.fxml"));
@@ -115,14 +96,7 @@ private void navigateToAjouterCmd(ActionEvent event, Product selectedProduct) th
 public void setSelectedProduct(Product product) {
         this.selectedProduct = product;
     }
-@FXML
-private void handleAcheterButtonAction(ActionEvent event) throws IOException {
-    // get the selected product
-    Product selectedProduct = productTable.getSelectionModel().getSelectedItem();
-    if(selectedProduct != null) {
-        panier.add(selectedProduct);
-    }
-}
+
 private List<Product> products;
    
 
@@ -148,6 +122,7 @@ private List<Product> products;
                 Logger.getLogger(Accueil1Controller.class.getName()).log(Level.SEVERE, null, ex);
             }
 });
+      
     boutique.setOnAction(e -> {
         try {
                 Parent page1 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/Boutique.fxml"));
@@ -159,7 +134,22 @@ private List<Product> products;
                 Logger.getLogger(Accueil1Controller.class.getName()).log(Level.SEVERE, null, ex);
             }
 });
- 
+ chariot.setOnMouseClicked(event -> {
+    try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/esprit/view/AjouterCmd.fxml"));
+        Parent root = loader.load();
+       // AjouterCmdController ajouterCmdController = loader.getController();
+        //ajouterCmdController.setCartProducts(products); // passer la liste des produits dans le panier
+        //ajouterCmdController.setSelectedProduct(selectedProduct); // passer le produit sélectionné
+        Scene scene = new Scene(root);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    } catch (IOException ex) {
+        Logger.getLogger(BoutiqueController.class.getName()).log(Level.SEVERE, null, ex);
+    }
+});
+
     categories = listData.getNames();
     observableOptions = FXCollections.observableArrayList(categories);
     catbox.setItems(categories);
@@ -201,8 +191,20 @@ pagination.setPageFactory((Integer pageIndex) -> {
         // Create a button "Acheter" for this product
         Button acheterButton = new Button("Acheter");
         acheterButton.setOnAction(event -> {
-    try {
-        goToAjouterPage(p);
+    
+          ConnexionBD c = new ConnexionBD();
+          c.ajouterProduit(p);
+          System.out.println(c.contenuPanier());
+           try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/esprit/view/CartView.fxml"));
+        Parent root = loader.load();
+        CartView cartView = loader.getController();
+        cartView.setCartProducts(c.contenuPanier()); // passer la liste des produits dans le panier
+        //cartView.setSelectedProduct(selectedProduct); // passer le produit sélectionné
+        Scene scene = new Scene(root);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
     } catch (IOException ex) {
         Logger.getLogger(BoutiqueController.class.getName()).log(Level.SEVERE, null, ex);
     }
@@ -234,7 +236,7 @@ rootContainer.getChildren().addAll(pagination); // Add the pagination control to
     // Navigate to the product details page and pass the selected product as a parameter
     // You can use a URL parameter or a session to pass the product information to the next page
     // For example, you can use the following code to navigate to the product details page with a URL parameter:
-     Stage stage = (Stage) rootContainer.getScene().getWindow();
+    Stage stage = (Stage) rootContainer.getScene().getWindow();
     FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/esprit/view/AjouterCmd.fxml"));
     Scene scene = new Scene(loader.load());
     stage.setScene(scene);
@@ -242,6 +244,7 @@ rootContainer.getChildren().addAll(pagination); // Add the pagination control to
     controller.setProduct(p);
     stage.show();
 }
+
     /* private void showCart() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/esprit/view/ShoppingCart.fxml"));

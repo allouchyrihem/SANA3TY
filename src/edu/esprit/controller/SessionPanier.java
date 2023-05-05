@@ -1,6 +1,5 @@
 package edu.esprit.controller;
-import static edu.esprit.controller.Session.getUserData;
-import static edu.esprit.controller.Session.setUserData;
+
 import edu.esprit.entity.Product;
 import edu.esprit.dao.ProductDao;
 import java.net.URL;
