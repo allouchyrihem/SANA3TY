@@ -8,6 +8,8 @@ package edu.esprit.controller;
 import edu.esprit.dao.CommentDao;
 import edu.esprit.entity.Comment;
 import edu.esprit.entity.Product;
+import edu.esprit.entity.User;
+import edu.esprit.test.ConnexionBD;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.net.URL;
@@ -34,7 +36,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -153,8 +154,10 @@ dashboard.setOnAction(e -> {
             
              if ( isInputValid() ){
                  
-                 
+                 ConnexionBD c = new ConnexionBD();
+                 User connectedUser = c.getConnectedUser();
                  Comment p = new Comment(descriptionC.getText(),products);
+                 p.setUser(connectedUser);
             CommentDao cdao = CommentDao.getInstance();
             cdao.insert(p);
         

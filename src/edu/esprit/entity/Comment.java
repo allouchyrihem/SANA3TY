@@ -26,6 +26,7 @@ public class Comment {
     private int id;
     private String description;
     private LocalDate date;
+    private User user; 
 @ManyToOne
     @JoinColumn(name = "product_id")
      private Product product;
@@ -48,6 +49,14 @@ public class Comment {
     public Comment(int id, String description) {
         this.id = id;
         this.description = description;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
    

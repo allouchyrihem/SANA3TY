@@ -5,6 +5,7 @@
  */
 package edu.esprit.test;
 
+import edu.esprit.entity.User;
 import java.io.IOException;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
@@ -27,6 +28,8 @@ import javafx.stage.StageStyle;
  * @author asus
  */
 public class ConnexionBD extends Application {
+    public static User connectedUser = null ;
+    public static String email = null;
     private Stage primaryStage;
     private Parent parentPage;
    
@@ -41,7 +44,29 @@ public class ConnexionBD extends Application {
         this.primaryStage.show();
 
     }
+public void setConnectedUser(User user){
+        this.connectedUser= user;  
+    }
+    
+    public void signOut() throws IOException{
+        this.connectedUser = null;
+        Stage s = new Stage();
+        this.start(s);
+         
+    }
 
+    public static void setEmail(String email) {
+        ConnexionBD.email = email;
+    }
+
+    public static String getEmail() {
+        return email;
+    }
+    
+    
+   public User getConnectedUser(){
+       return this.connectedUser;
+   }
     /**
      * @param args the command line arguments
      */
