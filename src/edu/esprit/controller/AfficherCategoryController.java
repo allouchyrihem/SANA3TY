@@ -63,6 +63,10 @@ public class AfficherCategoryController implements Initializable {
     private ObservableList<Category> catdata = FXCollections.observableArrayList();
     @FXML
     private TextField searchC;
+    @FXML
+    private Hyperlink evenement;
+    @FXML
+    private Hyperlink commande;
     /**
      * Initializes the controller class.
      */
@@ -81,7 +85,7 @@ public class AfficherCategoryController implements Initializable {
                 Logger.getLogger(Accueil1Controller.class.getName()).log(Level.SEVERE, null, ex);
             }
 });
-         dashboard.setOnAction(e -> {
+    dashboard.setOnAction(e -> {
         try {
                 Parent page1 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/Dashboard.fxml"));
                 Scene scene = new Scene(page1);
@@ -92,6 +96,18 @@ public class AfficherCategoryController implements Initializable {
                 Logger.getLogger(Accueil1Controller.class.getName()).log(Level.SEVERE, null, ex);
             }
 });
+       commande.setOnAction(e -> {
+        try {
+                Parent page1 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/AfficherCommande.fxml"));
+                Scene scene = new Scene(page1);
+                Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(Accueil1Controller.class.getName()).log(Level.SEVERE, null, ex);
+            }
+});
+       
     product.setOnAction(e -> {
         try {
                 Parent page1 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/AfficherProduct.fxml"));
@@ -114,19 +130,18 @@ public class AfficherCategoryController implements Initializable {
                 Logger.getLogger(Accueil1Controller.class.getName()).log(Level.SEVERE, null, ex);
             }
 });
-         back.setOnAction(event -> {
-
-            try {
-                Parent page1 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/AjouterCategory.fxml"));
+     
+      evenement.setOnAction(e -> {
+        try {
+                Parent page1 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/AfficherEvents.fxml"));
                 Scene scene = new Scene(page1);
-                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
                 stage.setScene(scene);
                 stage.show();
             } catch (IOException ex) {
-                Logger.getLogger(AccueilController.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Accueil1Controller.class.getName()).log(Level.SEVERE, null, ex);
             }
-        });
-      
+});
         categoryTable.setItems(listdata.getcategories());
         categoryTable.getSortOrder().add(name); // add the column to sort by
 name.setSortType(TableColumn.SortType.ASCENDING); // set the sort type

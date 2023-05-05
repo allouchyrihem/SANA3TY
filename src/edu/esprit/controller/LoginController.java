@@ -148,7 +148,7 @@ public class LoginController implements Initializable {
             }
         } else if (user.checkRole("ROLE_CLIENT")) {
             try {
-                Parent page1 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/SignUpClient.fxml"));
+                Parent page1 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/Boutique.fxml"));
                 currentStage.setScene(new Scene(page1));
             } catch (IOException ex) {
                 Logger.getLogger(SignUpClientController.class.getName()).log(Level.SEVERE, null, ex);

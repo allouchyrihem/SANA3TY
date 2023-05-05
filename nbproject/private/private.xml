@@ -3,14 +3,36 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/asus/Documents/NetBeansProjects/chance/src/edu/esprit/view/SignUp.fxml</file>
-            <file>file:/C:/Users/asus/Documents/NetBeansProjects/chance/src/edu/esprit/controller/LoginController.java</file>
-            <file>file:/C:/Users/asus/Documents/NetBeansProjects/chance/src/edu/esprit/dao/UserDao.java</file>
-            <file>file:/C:/Users/asus/Documents/NetBeansProjects/chance/src/edu/esprit/controller/SignUpVendeurController.java</file>
-            <file>file:/C:/Users/asus/Documents/NetBeansProjects/chance/src/edu/esprit/controller/SignUpController.java</file>
-            <file>file:/C:/Users/asus/Documents/NetBeansProjects/chance/src/edu/esprit/entity/User.java</file>
+            <file>file:/C:/Users/asus/Documents/NetBeansProjects/chance/src/edu/esprit/controller/BoutiqueController.java</file>
+            <file>file:/C:/Users/asus/Documents/NetBeansProjects/chance/src/edu/esprit/controller/DetailController.java</file>
+            <file>file:/C:/Users/asus/Documents/NetBeansProjects/chance/src/edu/esprit/dao/ComDao.java</file>
+            <file>file:/C:/Users/asus/Documents/NetBeansProjects/chance/src/edu/esprit/dao/CommentDao.java</file>
+            <file>file:/C:/Users/asus/Documents/NetBeansProjects/chance/src/edu/esprit/controller/AjouterProductController.java</file>
+            <file>file:/C:/Users/asus/Documents/NetBeansProjects/chance/src/edu/esprit/entity/Comment.java</file>
+            <file>file:/C:/Users/asus/Documents/NetBeansProjects/chance/src/edu/esprit/controller/AfficherEventsController.java</file>
+            <file>file:/C:/Users/asus/Documents/NetBeansProjects/chance/src/edu/esprit/controller/ListData1.java</file>
+            <file>file:/C:/Users/asus/Documents/NetBeansProjects/chance/src/edu/esprit/view/AfficherProduct.fxml</file>
+            <file>file:/C:/Users/asus/Documents/NetBeansProjects/chance/src/edu/esprit/controller/AfficherCmdController.java</file>
+            <file>file:/C:/Users/asus/Documents/NetBeansProjects/chance/src/edu/esprit/entity/PromotionTotale.java</file>
+            <file>file:/C:/Users/asus/Documents/NetBeansProjects/chance/src/edu/esprit/view/style.css</file>
+            <file>file:/C:/Users/asus/Documents/NetBeansProjects/chance/src/edu/esprit/controller/ResetPwdChangeController.java</file>
+            <file>file:/C:/Users/asus/Documents/NetBeansProjects/chance/src/edu/esprit/controller/ResetPwdEmailCheckController.java</file>
+            <file>file:/C:/Users/asus/Documents/NetBeansProjects/chance/src/edu/esprit/controller/ProfileController.java</file>
+            <file>file:/C:/Users/asus/Documents/NetBeansProjects/chance/src/edu/esprit/entity/SendSMS.java</file>
+            <file>file:/C:/Users/asus/Documents/NetBeansProjects/chance/src/edu/esprit/view/Boutique.fxml</file>
+            <file>file:/C:/Users/asus/Documents/NetBeansProjects/chance/src/edu/esprit/controller/DashboardController.java</file>
+            <file>file:/C:/Users/asus/Documents/NetBeansProjects/chance/src/edu/esprit/controller/AfficherProductController.java</file>
+            <file>file:/C:/Users/asus/Documents/NetBeansProjects/chance/src/edu/esprit/controller/ResetPwdCodeCheckController.java</file>
+            <file>file:/C:/Users/asus/Documents/NetBeansProjects/chance/src/edu/esprit/controller/AfficherReclamationController.java</file>
+            <file>file:/C:/Users/asus/Documents/NetBeansProjects/chance/src/edu/esprit/controller/DashboardAController.java</file>
+            <file>file:/C:/Users/asus/Documents/NetBeansProjects/chance/src/edu/esprit/controller/AjouterPromotionTotaleController.java</file>
+            <file>file:/C:/Users/asus/Documents/NetBeansProjects/chance/src/edu/esprit/view/AfficherReclamation.fxml</file>
+            <file>file:/C:/Users/asus/Documents/NetBeansProjects/chance/src/edu/esprit/dao/EventsDao.java</file>
+            <file>file:/C:/Users/asus/Documents/NetBeansProjects/chance/src/edu/esprit/controller/AjouterCommentController.java</file>
             <file>file:/C:/Users/asus/Documents/NetBeansProjects/chance/src/edu/esprit/controller/UsersController.java</file>
-            <file>file:/C:/Users/asus/Documents/NetBeansProjects/chance/src/edu/esprit/view/Users.fxml</file>
+            <file>file:/C:/Users/asus/Documents/NetBeansProjects/chance/src/edu/esprit/controller/AjouterReclamationController.java</file>
+            <file>file:/C:/Users/asus/Documents/NetBeansProjects/chance/src/edu/esprit/controller/AjouterEventsController.java</file>
+            <file>file:/C:/Users/asus/Documents/NetBeansProjects/chance/src/edu/esprit/entity/Events.java</file>
         </group>
     </open-files>
 </project-private>

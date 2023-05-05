@@ -9,6 +9,8 @@ import edu.esprit.dao.EventsDao;
 import edu.esprit.dao.PromotionTotaleDao;
 import edu.esprit.entity.Events;
 import edu.esprit.entity.PromotionTotale;
+import edu.esprit.entity.User;
+import edu.esprit.test.ConnexionBD;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
@@ -159,12 +161,16 @@ public class AjouterPromotionTotaleController implements Initializable {
     @FXML
     private void Addeventbtn(ActionEvent event) throws IOException {
 if (isInputValid()) {
+    
+   ConnexionBD app = new ConnexionBD();
+          User connectedUser = app.getConnectedUser(); 
         String name = nameid.getText();
         float value = Float.parseFloat(valueid.getText());
         LocalDate dated = datedid.getValue();
         LocalDate datef = datefid.getValue();
        
          promos = new PromotionTotale(name, value, dated,datef);
+         promos.setUser(connectedUser);
         promoDao.insert(promos);
         // TODO     
        /* addeventbuttonid.setOnAction((ActionEvent event) -> {

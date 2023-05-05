@@ -40,8 +40,14 @@ public class DashboardController implements Initializable {
     private Hyperlink reclamation;
     @FXML
     private Hyperlink evenement;
-    @FXML
     private Hyperlink promotion;
+    @FXML
+    private Hyperlink commande;
+     @FXML
+    private Hyperlink profileBtn;
+        @FXML
+    private Hyperlink decBtn;
+
     /**
      * Initializes the controller class.
      */
@@ -50,6 +56,9 @@ public class DashboardController implements Initializable {
         // TODO
         ConnexionBD app = new ConnexionBD();
         User connectedUser = app.getConnectedUser();
+         
+        
+        profileBtn.setText(connectedUser.getName());
         accueil.setOnAction(e -> {
         try {
                 Parent page1 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/Accueil1.fxml"));
@@ -72,6 +81,37 @@ public class DashboardController implements Initializable {
                 Logger.getLogger(Accueil1Controller.class.getName()).log(Level.SEVERE, null, ex);
             }
 });
+      decBtn.setOnAction(event -> {
+            try {
+                app.signOut();
+            } catch (IOException ex) {
+                Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        });
+       commande.setOnAction(e -> {
+        try {
+                Parent page1 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/AfficherCommande.fxml"));
+                Scene scene = new Scene(page1);
+                Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(Accueil1Controller.class.getName()).log(Level.SEVERE, null, ex);
+            }
+});
+        reclamation.setOnAction(e -> {
+        try {
+                Parent page1 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/AfficherReclamation.fxml"));
+                Scene scene = new Scene(page1);
+                Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(Accueil1Controller.class.getName()).log(Level.SEVERE, null, ex);
+            }
+});
+
     product.setOnAction(e -> {
         try {
                 Parent page1 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/AfficherProduct.fxml"));
@@ -86,29 +126,6 @@ public class DashboardController implements Initializable {
     category.setOnAction(e -> {
         try {
                 Parent page1 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/AfficherCategory.fxml"));
-                Scene scene = new Scene(page1);
-                Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-                stage.setScene(scene);
-                stage.show();
-            } catch (IOException ex) {
-                Logger.getLogger(Accueil1Controller.class.getName()).log(Level.SEVERE, null, ex);
-            }
-});
-    reclamation.setOnAction(e -> {
-        try {
-                Parent page1 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/AfficherReclamation.fxml"));
-                Scene scene = new Scene(page1);
-                Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-                stage.setScene(scene);
-                stage.show();
-            } catch (IOException ex) {
-                Logger.getLogger(Accueil1Controller.class.getName()).log(Level.SEVERE, null, ex);
-            }
-});
-    
-     promotion.setOnAction(e -> {
-        try {
-                Parent page1 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/AfficherPromotionTotale.fxml"));
                 Scene scene = new Scene(page1);
                 Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
                 stage.setScene(scene);

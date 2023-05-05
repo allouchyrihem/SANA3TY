@@ -106,11 +106,10 @@ public class UpdateProductController implements Initializable {
     this.products = products;
     name.setText(products.getName());
     description.setText(products.getDescription());
-    price.setText(products.getPrice());
+    price.setText(Float.toString(products.getPrice()));
     stock.setText(products.getStock());
     addImage.setText(products.getImage());
     ImageView.setImage(decodeBase64Image(products.getImage()));
-
     cat.setValue(products.getCategory());
     
 }
@@ -148,11 +147,11 @@ public class UpdateProductController implements Initializable {
             }else {
                 String namee = name.getText();
         String descriptione = description.getText();    
-        String pricee = price.getText();
+        Float pricee = Float.parseFloat(price.getText());
         String stockk=stock.getText();
         String imagee = imageEncoderDecoder(f.getAbsolutePath());
         Category catee = cat.getValue();
-        Product p = new Product(products.getId(),namee, descriptione,pricee,stockk,imagee,catee);
+        Product p = new Product(products.getId(),namee,descriptione,pricee,stockk,imagee,catee);
         pdao.update(p);
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Message");

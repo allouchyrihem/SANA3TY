@@ -8,6 +8,8 @@ package edu.esprit.controller;
 import edu.esprit.dao.CommentDao;
 import edu.esprit.entity.Comment;
 import edu.esprit.entity.Product;
+import edu.esprit.entity.User;
+import edu.esprit.test.ConnexionBD;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.net.URL;
@@ -34,7 +36,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -46,6 +47,8 @@ import javafx.stage.Stage;
  */
 public class DetailController implements Initializable {
     private Product products;
+    private Comment comments;
+    
     @FXML
     private Text text1;
     @FXML
@@ -86,6 +89,7 @@ public class DetailController implements Initializable {
     private ListData1 listdata = new ListData1();
     @FXML
     private Hyperlink reclamation;
+    
 
     /**
      * Initializes the controller class.
@@ -136,14 +140,24 @@ dashboard.setOnAction(e -> {
                 Logger.getLogger(Accueil1Controller.class.getName()).log(Level.SEVERE, null, ex);
             }
 });
-        categoryTable.setItems(listdata.getcomments());
-        descriptionco.setCellValueFactory(new PropertyValueFactory<>("description"));
+          
+          /*ObservableList<Comment> cdata = FXCollections.observableArrayList();
+                    CommentDao ccdao = CommentDao.getInstance();
+                    int productId = this.products.getId();
+          cdata.addAll(ccdao.displayAll((productId)));
+          
+          
+        categoryTable.setItems(cdata);
+        descriptionco.setCellValueFactory(new PropertyValueFactory<>("description"));*/
         
          btnC.setOnAction((ActionEvent event) -> {
             
              if ( isInputValid() ){
                  
-                 Comment p = new Comment( descriptionC.getText());
+                 ConnexionBD c = new ConnexionBD();
+                 User connectedUser = c.getConnectedUser();
+                 Comment p = new Comment(descriptionC.getText(),products);
+                 p.setUser(connectedUser);
             CommentDao cdao = CommentDao.getInstance();
             cdao.insert(p);
         
@@ -161,11 +175,19 @@ dashboard.setOnAction(e -> {
     this.products = products;
     name.setText(products.getName());
     description.setText(products.getDescription());
-    price.setText(products.getPrice());
+    price.setText(Float.toString(products.getPrice()));
     stock.setText(products.getStock());
     addImage.setImage(decodeBase64Image(products.getImage()));
     
 }
+           
+                    public void setComment(ObservableList<Comment> c) throws IOException{
+                        this.categoryTable.setItems(c);
+                        descriptionco.setCellValueFactory(new PropertyValueFactory<>("description"));
+     
+    
+}
+                    
            public static Image decodeBase64Image(String imageString) throws IOException {
     byte[] imageData = Base64.getDecoder().decode(imageString);
     ByteArrayInputStream stream = new ByteArrayInputStream(imageData);
@@ -227,8 +249,7 @@ private String filterComments(String comment) {
     }
    
  
-private CommentDao evd= new CommentDao() ;
-    private ObservableList<Comment> evnmdata = FXCollections.observableArrayList();
+
   
 @FXML
 void updatebtn(ActionEvent event) {
@@ -236,7 +257,8 @@ void updatebtn(ActionEvent event) {
 
     // Get selected Event from the table
     Comment selectedComment = categoryTable.getSelectionModel().getSelectedItem();
-   CommentDao commentsdao = new CommentDao();
+      ObservableList<Comment> evnmdata = FXCollections.observableArrayList();
+  CommentDao commentsdao = new CommentDao(); 
     if (selectedComment != null) {
         try {
             // Create the FXMLLoader
@@ -258,10 +280,10 @@ void updatebtn(ActionEvent event) {
             stage.show();
             
             categoryTable.refresh();
-             categoryTable.getSelectionModel().clearSelection();
-        evnmdata.clear();
-    evnmdata.addAll(commentsdao.displayAll());
-    categoryTable.setItems(evnmdata);
+            categoryTable.getSelectionModel().clearSelection();
+            evnmdata.clear();
+            evnmdata.addAll(listdata.getcomments());
+            //categoryTable.setItems(evnmdata);
         
 
            /* // Refresh the table after updating the Event

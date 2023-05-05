@@ -6,11 +6,11 @@
 package edu.esprit.entity;
 
 import java.util.Objects;
+import javafx.beans.property.SimpleFloatProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 /**
@@ -23,7 +23,7 @@ public class Product {
     private SimpleIntegerProperty id;
     private SimpleStringProperty name;
     private SimpleStringProperty description;   
-    private SimpleStringProperty price;
+    private SimpleFloatProperty price;
     private SimpleStringProperty stock;
     private SimpleStringProperty image;
     //hedhilik ya nadou badelha product id fel comment
@@ -34,38 +34,40 @@ public class Product {
     @JoinColumn(name = "user_id")
     private User user;
 
-    
+      public static ObservableList<Product> getProducts() {
+        ObservableList<Product> products = FXCollections.observableArrayList();
+        // retrieve products from database or other data source
+        // add each Product object to the products list
+        return products;
+    }
     public Product() {
     }
-
-    public Product(int id, String name, String description, String price, String stock, String image,Category category){
+ public Product(int id,String name) {
+        this.id = new SimpleIntegerProperty(id);
+        this.name = new SimpleStringProperty(name);
+    }
+   
+    public Product(int id, String name, String description, Float price, String stock, String image,Category category) {
         this.id = new SimpleIntegerProperty(id);
         this.name = new SimpleStringProperty(name);
         this.description = new SimpleStringProperty(description);
-        this.price = new SimpleStringProperty(price);
+        this.price = new SimpleFloatProperty(price);
         this.stock = new SimpleStringProperty(stock);
         this.image = new SimpleStringProperty(image);
-        this.category = category;
-        
+         this.category = category;
          }
-    public Product(String name, String description, String price, String stock, String image,Category category) {
+
+    public Product(String name, String description, Float price, String stock, String image,Category category) {
         this.name = new SimpleStringProperty(name);
         this.description = new SimpleStringProperty(description);
-        this.price = new SimpleStringProperty(price);
+        this.price = new SimpleFloatProperty(price);
         this.stock = new SimpleStringProperty(stock);
         this.image = new SimpleStringProperty(image);
-        this.category = category;
+         this.category = category;
        
     }
-       public Product(String name, String description, String price, String stock, String image,Category category,User user) {
-        this.name = new SimpleStringProperty(name);
-        this.description = new SimpleStringProperty(description);
-        this.price = new SimpleStringProperty(price);
-        this.stock = new SimpleStringProperty(stock);
-        this.image = new SimpleStringProperty(image);
-        this.category = category;
-       
-    }
+  
+      
 
     public int getId() {
         return id.get();
@@ -91,12 +93,13 @@ public class Product {
         this.description = new SimpleStringProperty(description);
     }
 
-    public String getPrice() {
+    
+    public Float getPrice() {
         return price.get();
     }
 
-    public void setPrice(String price) {
-        this.price = new SimpleStringProperty(price);
+    public void setPrice(Float price) {
+        this.price = new SimpleFloatProperty(price);
     }
 
     public String getStock() {
@@ -128,7 +131,7 @@ public class Product {
     public SimpleStringProperty getDescriptionProperty(){
         return description;
     }
-    public SimpleStringProperty getPriceProperty(){
+       public SimpleFloatProperty getPriceProperty(){
         return price;
     }
     public SimpleStringProperty getStockProperty(){

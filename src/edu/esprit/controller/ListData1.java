@@ -31,7 +31,7 @@ public class ListData1 {
         ReclamationDao pdao=ReclamationDao.getInstance();
         CommentDao cdao=CommentDao.getInstance();
         reclamations= (ObservableList<Reclamation>)pdao.displayAll();
-        comments= (ObservableList<Comment>)cdao.displayAll();
+        comments= (ObservableList<Comment>)cdao.displayAllList();
 
         System.out.println(reclamations);
     }

@@ -1,7 +1,6 @@
 package edu.esprit.entity;
 
 import java.time.LocalDate;
-import javafx.beans.property.SimpleStringProperty;
 
 public class Events {
     private int id;
@@ -11,7 +10,15 @@ public class Events {
     private LocalDate date;
     private String description;
     private String link;
+    private User user;
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
     public Events() {
 
     }

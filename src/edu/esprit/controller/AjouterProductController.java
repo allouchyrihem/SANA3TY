@@ -88,6 +88,10 @@ public class AjouterProductController  implements Initializable {
     private Hyperlink category;
     @FXML
     private Hyperlink accueil;
+    @FXML
+    private Hyperlink evenement;
+    @FXML
+    private Hyperlink commande;
 
     /**
      * Initializes the controller class.
@@ -146,7 +150,7 @@ public class AjouterProductController  implements Initializable {
                 Logger.getLogger(Accueil1Controller.class.getName()).log(Level.SEVERE, null, ex);
             }
 });
-       dashboard.setOnAction(e -> {
+    dashboard.setOnAction(e -> {
         try {
                 Parent page1 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/Dashboard.fxml"));
                 Scene scene = new Scene(page1);
@@ -157,6 +161,18 @@ public class AjouterProductController  implements Initializable {
                 Logger.getLogger(Accueil1Controller.class.getName()).log(Level.SEVERE, null, ex);
             }
 });
+       commande.setOnAction(e -> {
+        try {
+                Parent page1 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/AfficherCommande.fxml"));
+                Scene scene = new Scene(page1);
+                Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(Accueil1Controller.class.getName()).log(Level.SEVERE, null, ex);
+            }
+});
+       
     product.setOnAction(e -> {
         try {
                 Parent page1 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/AfficherProduct.fxml"));
@@ -179,18 +195,18 @@ public class AjouterProductController  implements Initializable {
                 Logger.getLogger(Accueil1Controller.class.getName()).log(Level.SEVERE, null, ex);
             }
 });
-          back.setOnAction(event -> {
-
-            try {
-                Parent page1 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/AfficherProduct.fxml"));
+     
+      evenement.setOnAction(e -> {
+        try {
+                Parent page1 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/AfficherEvents.fxml"));
                 Scene scene = new Scene(page1);
-                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
                 stage.setScene(scene);
                 stage.show();
             } catch (IOException ex) {
                 Logger.getLogger(Accueil1Controller.class.getName()).log(Level.SEVERE, null, ex);
             }
-        });
+});
           listp.setOnAction(event -> {
 
             try {
@@ -239,7 +255,7 @@ public class AjouterProductController  implements Initializable {
                 ConnexionBD app = new ConnexionBD();
                 User connectedUser = app.getConnectedUser();
                 User userr = new User(9,"fatma Creation","fatmajrad2000@gmail.com");
-                p = new Product(name.getText(), description.getText(),price.getText(),stock.getText(),imageEncoderDecoder(f.getAbsolutePath()),cat.getValue());
+                p = new Product(name.getText(), description.getText(),Float.parseFloat(price.getText()),stock.getText(),imageEncoderDecoder(f.getAbsolutePath()),cat.getValue());
                 p.setUser(connectedUser);
                 ProductDao pdao = ProductDao.getInstance();
                 pdao.insert(p);
@@ -289,9 +305,6 @@ public class AjouterProductController  implements Initializable {
 
     }
 
-    @FXML
-    private void valider(ActionEvent event) {
-    }
 
 
 

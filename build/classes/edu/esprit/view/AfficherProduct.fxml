@@ -13,11 +13,11 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="513.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controller.AfficherProductController">
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="887.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controller.AfficherProductController">
    <content>
-      <AnchorPane id="AnchorPane" prefHeight="493.0" prefWidth="900.0">
+      <AnchorPane id="AnchorPane" prefHeight="650.0" prefWidth="887.0">
          <children>
-            <AnchorPane layoutX="-1.0" prefHeight="513.0" prefWidth="900.0" style="-fx-background-color: #FFFFFF;">
+            <AnchorPane layoutX="-1.0" prefHeight="650.0" prefWidth="887.0" style="-fx-background-color: #FFFFFF;">
                <children>
                   <TableView fx:id="productTable" layoutX="110.0" layoutY="117.0" prefHeight="374.0" prefWidth="651.0">
                      <columns>
@@ -34,39 +34,49 @@
                   <Button fx:id="supprimer" layoutX="768.0" layoutY="148.0" mnemonicParsing="false" onMouseClicked="#supprimer" prefHeight="30.0" prefWidth="98.0" style="-fx-background-color: #F1F1F1;" text="supprimer" textFill="#d19c97" />
                   <Button id="updateU" fx:id="updateU" layoutX="768.0" layoutY="210.0" mnemonicParsing="false" onAction="#updatebtn" prefHeight="25.0" prefWidth="98.0" style="-fx-background-color: #F1F1F1;" text="Update" textFill="#d19c97" />
                   <Button fx:id="back" layoutX="583.0" layoutY="21.0" mnemonicParsing="false" style="-fx-background-color: #F1F1F1;" text="Ajouter produits" textFill="#d19c97" />
-                  <Pane prefHeight="497.0" prefWidth="84.0" style="-fx-background-color: #D19C97;">
-                     <children>
-                        <ImageView fitHeight="90.0" fitWidth="73.0" layoutX="6.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../assets/ogo.png" />
-                           </image>
-                        </ImageView>
-                        <Hyperlink fx:id="dashboard" layoutX="1.0" layoutY="156.0" text="Dashboard" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="14.0" />
-                           </font>
-                        </Hyperlink>
-                        <Hyperlink fx:id="product" layoutX="10.0" layoutY="223.0" text="Product" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="14.0" />
-                           </font>
-                        </Hyperlink>
-                        <Hyperlink fx:id="categoryy" layoutX="7.0" layoutY="299.0" text="Catégorie" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="14.0" />
-                           </font>
-                        </Hyperlink>
-                        <Hyperlink fx:id="accueil" layoutX="18.0" layoutY="453.0" text="Back" textFill="WHITE">
-                           <font>
-                              <Font name="System Bold" size="14.0" />
-                           </font>
-                        </Hyperlink>
-                     </children>
-                  </Pane>
                   <TextField fx:id="searchP" layoutX="110.0" layoutY="69.0" promptText="saisir le produit" />
                </children>
             </AnchorPane>
             <HBox layoutX="685.9000244140625" layoutY="10.899999618530273" AnchorPane.rightAnchor="14.399999999999977" AnchorPane.topAnchor="14.0" />
+            <Pane layoutX="-1.0" layoutY="-12.0" prefHeight="650.0" prefWidth="93.0" style="-fx-background-color: #D19C97;">
+               <children>
+                  <ImageView fitHeight="90.0" fitWidth="73.0" layoutX="6.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/ogo.png" />
+                     </image>
+                  </ImageView>
+                  <Hyperlink fx:id="dashboard" layoutY="110.0" text="Dashboard" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Hyperlink>
+                  <Hyperlink fx:id="product" layoutX="9.0" layoutY="215.0" text="Product" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Hyperlink>
+                  <Hyperlink fx:id="category" layoutX="4.0" layoutY="302.0" text="Catégorie" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Hyperlink>
+                  <Hyperlink fx:id="accueil" layoutX="20.0" layoutY="623.0" text="Back" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Hyperlink>
+                  <Hyperlink fx:id="evenement" layoutX="5.0" layoutY="400.0" text="Evénement" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Hyperlink>
+                  <Hyperlink fx:id="commande" layoutX="6.0" layoutY="499.0" text="Commande" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Hyperlink>
+               </children>
+            </Pane>
          </children>
       </AnchorPane>
    </content>

@@ -5,23 +5,17 @@
  */
 package edu.esprit.test;
 
+import edu.esprit.entity.Product;
 import edu.esprit.entity.User;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
-import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 /**
  *
@@ -32,7 +26,7 @@ public class ConnexionBD extends Application {
     public static String email = null;
     private Stage primaryStage;
     private Parent parentPage;
-   
+     public  List<Product> panier = new ArrayList<>();   
     @Override
     public void start(Stage primaryStage) throws IOException {
 
@@ -42,8 +36,16 @@ public class ConnexionBD extends Application {
         Scene scene = new Scene(parentPage);
         this.primaryStage.setScene(scene);
         this.primaryStage.show();
-
+panier.clear();
     }
+    public void ajouterProduit(Product p){
+        panier.add(p);
+    }
+    public List<Product> contenuPanier(){
+        
+       return panier;
+    }
+   
 public void setConnectedUser(User user){
         this.connectedUser= user;  
     }

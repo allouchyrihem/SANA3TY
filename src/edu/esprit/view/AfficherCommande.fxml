@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="bp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="630.0" prefWidth="880.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controller.AfficherCmdController">
+   <left>
+      <VBox prefHeight="630.0" prefWidth="118.0" style="-fx-background-color: #D4A29C;" BorderPane.alignment="CENTER">
+       <Pane layoutX="-1.0" layoutY="-12.0" prefHeight="650.0" prefWidth="93.0" style="-fx-background-color: #D19C97;">
+               <children>
+                  <ImageView fitHeight="90.0" fitWidth="73.0" layoutX="6.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/ogo.png" />
+                     </image>
+                  </ImageView>
+                  <Hyperlink fx:id="dashboard" layoutY="110.0" text="Dashboard" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Hyperlink>
+                  <Hyperlink fx:id="product" layoutX="9.0" layoutY="215.0" text="Product" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Hyperlink>
+                  <Hyperlink fx:id="category" layoutX="4.0" layoutY="302.0" text="Catégorie" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Hyperlink>
+                  <Hyperlink fx:id="accueil" layoutX="20.0" layoutY="623.0" text="Back" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Hyperlink>
+                  <Hyperlink fx:id="evenement" layoutX="5.0" layoutY="400.0" text="Evénement" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Hyperlink>
+                  <Hyperlink fx:id="commande" layoutX="6.0" layoutY="499.0" text="Commande" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Hyperlink>
+               </children>
+            </Pane>
+      </VBox>
+   </left>
+   <center>
+      <VBox prefHeight="1000.0" prefWidth="1500.0" BorderPane.alignment="CENTER">
+         <children>
+            <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="843.0" prefWidth="548.0">
+         <children>
+            <TableView fx:id="commandeTable" layoutX="14.0" layoutY="48.0" prefHeight="196.0" prefWidth="742.0">
+               <columns>
+                  <TableColumn fx:id="adresse" prefWidth="63.19995403289795" text="Adresse" />
+                  <TableColumn fx:id="description" prefWidth="84.7999267578125" text="Description" />
+                  <TableColumn fx:id="etat" prefWidth="74.40000915527344" text="Etat" />
+                        <TableColumn fx:id="totale" prefWidth="52.79997253417969" text="Totale" />
+                        <TableColumn fx:id="datecmd" prefWidth="84.0" text="Date" />
+                        <TableColumn fx:id="produit" prefWidth="78.4000244140625" text="Produit" />
+                        <TableColumn fx:id="quantite" prefWidth="88.0" text="Quantite" />
+                        <TableColumn fx:id="client" prefWidth="75.0" text="Client" />
+                        <TableColumn fx:id="facture" prefWidth="66.39999999999998" text="Facture" />
+               
+               </columns>
+            </TableView>
+            <HBox alignment="TOP_CENTER" layoutX="525.0" layoutY="14.0" />
+            <Button fx:id="supprimer" layoutX="651.0" layoutY="253.0" mnemonicParsing="false" onMouseClicked="#supprimer" prefHeight="26.0" prefWidth="78.0" style="-fx-background-color: #D4A29C;" text="supprimer" />
+            <Label layoutX="30.0" layoutY="279.0" text="Etat">
+                     <font>
+                        <Font size="15.0" />
+                     </font></Label>
+            <Button id="updateU" fx:id="updateU" layoutX="241.0" layoutY="275.0" mnemonicParsing="false" onMouseClicked="#update" style="-fx-background-color: #D4A29C;" text="Update" />
+            <Button fx:id="exit" alignment="TOP_CENTER" contentDisplay="RIGHT" layoutX="710.0" layoutY="8.0" minWidth="38.0" mnemonicParsing="false" onMouseClicked="#EXIT" prefHeight="24.0" prefWidth="38.0" style="-fx-background-color: #D19C97;" text="X" textAlignment="RIGHT">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Button>
+                  <ComboBox fx:id="etatC" layoutX="91.0" layoutY="275.0" prefWidth="150.0" promptText="en attente" />
+         </children>
+         
+      </AnchorPane>
+      <HBox layoutX="685.9000244140625" layoutY="10.899999618530273" AnchorPane.rightAnchor="14.399999999999977" AnchorPane.topAnchor="14.0" />
+         </children>
+      </VBox>
+   </center>
+</BorderPane>

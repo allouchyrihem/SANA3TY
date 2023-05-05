@@ -61,6 +61,8 @@ public class ProfileController implements Initializable {
            userNAme.setText(connectedUser.getName());
            email.setText(connectedUser.getEmail());
            name.setText(connectedUser.getName());
+           if(connectedUser.getDescription()!= null){
+           description.setText(connectedUser.getDescription());}
            if(connectedUser.getDescription()!=null){
                description.setText(connectedUser.getDescription());
            }else{

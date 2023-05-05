@@ -47,7 +47,7 @@ public class CommentDao implements ComDao<Comment>{
 
     @Override
     public void insert(Comment o) {
-        String req="insert into comment (description) values ('"+o.getDescription()+"')";
+        String req="insert into comment (description,product_id) values ('"+o.getDescription()+"','"+o.getProduct().getId()+"')";
         try {
             st.executeUpdate(req);
         } catch (SQLException ex) {
@@ -71,17 +71,20 @@ public class CommentDao implements ComDao<Comment>{
     }
 
     @Override
-    public ObservableList<Comment> displayAll() {
-        String req="select * from comment";
+    public ObservableList<Comment> displayAll(int id) {
+        String req="SELECT c.description " +
+"FROM comment c "+
+"JOIN product p ON c.product_id = p.id AND c.product_id="+id;
+        
         ObservableList<Comment> list=FXCollections.observableArrayList();       
         
         try {
             rs=st.executeQuery(req);
             while(rs.next()){
                 Comment p=new Comment();
-                p.setId(rs.getInt(1));
                 p.setDescription(rs.getString("description"));
                 list.add(p);
+                System.out.println(list);
             }
             
         } catch (SQLException ex) {
@@ -89,10 +92,10 @@ public class CommentDao implements ComDao<Comment>{
         }
         return list;
     }
-
-    public List<Comment> displayAllList() {
-        String req="select * from comment";
-        List<Comment> list=new ArrayList<>();
+@Override
+    public ObservableList<Comment> displayAllList() {
+        String req="SELECT * FROM comment";
+        ObservableList<Comment> list=FXCollections.observableArrayList();   
         
         try {
             rs=st.executeQuery(req);
@@ -116,7 +119,7 @@ public class CommentDao implements ComDao<Comment>{
             rs=st.executeQuery(req);
            // while(rs.next()){
             rs.next();
-                p.setId(rs.getInt("id"));
+
                 p.setDescription(rs.getString("description"));
             //}  
         } catch (SQLException ex) {

@@ -1,6 +1,7 @@
 package edu.esprit.dao;
 
 
+import edu.esprit.entity.Comment;
 import java.util.List;
 
 /*
@@ -16,7 +17,8 @@ import java.util.List;
 public interface ComDao <T> {
     public void insert(T o);
     public void delete(int id);
-    public List<T> displayAll();
+    public List<T> displayAll(int id);
     public T displayById(int id);
     public void update(T o);
+    public List<T> displayAllList();
 }

@@ -23,6 +23,9 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import edu.esprit.dao.EventsDao;
 import edu.esprit.entity.Events;
+import edu.esprit.entity.Product;
+import edu.esprit.entity.User;
+import edu.esprit.test.ConnexionBD;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.scene.control.Hyperlink;
@@ -156,7 +159,12 @@ public class AjouterEventsController implements Initializable {
     @FXML
     private void Addeventbtn(ActionEvent event) throws IOException {
         if (isInputValid()) {
-
+         ConnexionBD app = new ConnexionBD();
+          User connectedUser = app.getConnectedUser();
+                User userr = new User(9,"fatma Creation","fatmajrad2000@gmail.com");
+ 
+             
+               
         String name = nameid.getText();
         String adresse = adresseid.getText();
         LocalDate date = dateid.getValue();
@@ -164,6 +172,7 @@ public class AjouterEventsController implements Initializable {
         String link = linkid.getText();
        
         events = new Events(name, adresse, date,description ,link);
+        events.setUser(connectedUser);
         eventsDao.insert(events);
         // TODO     
        /* addeventbuttonid.setOnAction((ActionEvent event) -> {

@@ -93,21 +93,25 @@ public class AfficherProductController implements Initializable {
     private ObservableList<Product> productdata = FXCollections.observableArrayList();
         Product p;
     @FXML
-    private Hyperlink categoryy;
-    @FXML
     private TextField searchP;
     private Pane rootContainer;
     private ListData listData = new ListData(); // initialize listData
     private ObservableList<Product> products=FXCollections.observableArrayList();
     @FXML
     private TableColumn<Product,String> vendeur;
+    @FXML
+    private Hyperlink category;
+    @FXML
+    private Hyperlink evenement;
+    @FXML
+    private Hyperlink commande;
 
 
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-            accueil.setOnAction(e -> {
+           accueil.setOnAction(e -> {
         try {
                 Parent page1 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/Accueil1.fxml"));
                 Scene scene = new Scene(page1);
@@ -118,7 +122,7 @@ public class AfficherProductController implements Initializable {
                 Logger.getLogger(Accueil1Controller.class.getName()).log(Level.SEVERE, null, ex);
             }
 });
-        dashboard.setOnAction(e -> {
+    dashboard.setOnAction(e -> {
         try {
                 Parent page1 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/Dashboard.fxml"));
                 Scene scene = new Scene(page1);
@@ -129,6 +133,18 @@ public class AfficherProductController implements Initializable {
                 Logger.getLogger(Accueil1Controller.class.getName()).log(Level.SEVERE, null, ex);
             }
 });
+       commande.setOnAction(e -> {
+        try {
+                Parent page1 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/AfficherCommande.fxml"));
+                Scene scene = new Scene(page1);
+                Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(Accueil1Controller.class.getName()).log(Level.SEVERE, null, ex);
+            }
+});
+       
     product.setOnAction(e -> {
         try {
                 Parent page1 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/AfficherProduct.fxml"));
@@ -140,7 +156,7 @@ public class AfficherProductController implements Initializable {
                 Logger.getLogger(Accueil1Controller.class.getName()).log(Level.SEVERE, null, ex);
             }
 });
-    categoryy.setOnAction(e -> {
+    category.setOnAction(e -> {
         try {
                 Parent page1 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/AfficherCategory.fxml"));
                 Scene scene = new Scene(page1);
@@ -151,18 +167,18 @@ public class AfficherProductController implements Initializable {
                 Logger.getLogger(Accueil1Controller.class.getName()).log(Level.SEVERE, null, ex);
             }
 });
-        back.setOnAction(event -> {
-
-            try {
-                Parent page1 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/AjouterProduct.fxml"));
+     
+      evenement.setOnAction(e -> {
+        try {
+                Parent page1 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/AfficherEvents.fxml"));
                 Scene scene = new Scene(page1);
-                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
                 stage.setScene(scene);
                 stage.show();
             } catch (IOException ex) {
-                Logger.getLogger(AccueilController.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Accueil1Controller.class.getName()).log(Level.SEVERE, null, ex);
             }
-        });
+});
         productTable.setItems(listdata.getProducts());
         
         productTable.getSortOrder().add(name); // add the column to sort by
@@ -197,15 +213,18 @@ public class AfficherProductController implements Initializable {
         description.setCellValueFactory(new PropertyValueFactory<>("description"));
         price.setCellValueFactory(new PropertyValueFactory<>("price"));
         stock.setCellValueFactory(new PropertyValueFactory<>("stock"));
-        vendeur.setCellValueFactory(new PropertyValueFactory<>("user"));
+        vendeur.setCellValueFactory(cellData -> {
+        SimpleStringProperty property = new SimpleStringProperty();
+        if (cellData.getValue() != null && cellData.getValue().getUser() != null) {
+        property.setValue(cellData.getValue().getUser().getName());
+    }
+        return property;
+});
         name.setSortType(TableColumn.SortType.ASCENDING); // set the sort type
         productTable.sort(); 
-        
-        
-        
-    categoryname.setCellValueFactory(cellData -> {
-    SimpleStringProperty property = new SimpleStringProperty();
-    if (cellData.getValue() != null && cellData.getValue().getCategory() != null) {
+        categoryname.setCellValueFactory(cellData -> {
+        SimpleStringProperty property = new SimpleStringProperty();
+        if (cellData.getValue() != null && cellData.getValue().getCategory() != null) {
         property.setValue(cellData.getValue().getCategory().getName());
     }
     return property;
@@ -215,7 +234,7 @@ public class AfficherProductController implements Initializable {
             Predicate<Product> filter = item -> {
                 // Implement filter logic here
                 String query = newValue.toLowerCase();
-                return item.getName().toLowerCase().contains(query)||item.getDescription().toLowerCase().contains(query)||item.getPrice().toLowerCase().contains(query)||item.getStock().toLowerCase().contains(query);
+                return item.getName().toLowerCase().contains(query)||item.getDescription().toLowerCase().contains(query)||item.getStock().toLowerCase().contains(query);
             };
 
             // Apply filter to data and update TableView

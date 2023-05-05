@@ -86,9 +86,9 @@ public class AjouterCommentController implements Initializable {
             
              if ( isInputValid() ){
                  
-                 Comment p = new Comment( descriptionC.getText());
+                 //Comment p = new Comment( descriptionC.getText());
             CommentDao cdao = CommentDao.getInstance();
-            cdao.insert(p);
+            //cdao.insert(p);
         
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Information Dialog");
@@ -201,7 +201,7 @@ void updatebtn(ActionEvent event) {
             categoryTable.refresh();
              categoryTable.getSelectionModel().clearSelection();
         evnmdata.clear();
-    evnmdata.addAll(commentsdao.displayAll());
+    //evnmdata.addAll(commentsdao.displayAll(products.getId()));
     categoryTable.setItems(evnmdata);
         
 

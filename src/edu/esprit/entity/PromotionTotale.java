@@ -18,6 +18,16 @@ public class PromotionTotale {
     private float value;
     private LocalDate dateDebut;
     private LocalDate dateFin;
+    private User user;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+    
 
     public PromotionTotale() {
         

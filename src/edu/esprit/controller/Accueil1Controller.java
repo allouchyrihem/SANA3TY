@@ -114,7 +114,7 @@ public void initialize(URL url, ResourceBundle rb) {
 });
     sinscrire.setOnAction(e -> {
         try {
-                Parent page1 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/Dashboard.fxml"));
+                Parent page1 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/SignUp.fxml"));
                 Scene scene = new Scene(page1);
                 Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
                 stage.setScene(scene);
@@ -223,6 +223,7 @@ pagination.setPageFactory(pageIndex -> {
                     }
                 });
                 Label productNameLabel = new Label(p.getName());
+                Label productPriceLabel = new Label(Float.toString(p.getPrice()));
                 productNameLabel.setOnMouseClicked(e -> {
                     try {
                         // Navigate to the product details page when the product name is clicked
@@ -231,7 +232,7 @@ pagination.setPageFactory(pageIndex -> {
                         Logger.getLogger(Accueil1Controller.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 });
-                vbox.getChildren().addAll(productNameLabel, img, new Label(p.getDescription()));
+                vbox.getChildren().addAll(productNameLabel, productPriceLabel,img, new Label(p.getDescription()));
             } catch (IOException ex) {
                 Logger.getLogger(Accueil1Controller.class.getName()).log(Level.SEVERE, null, ex);
             }

@@ -16,19 +16,19 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<ScrollPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controller.SignUpVendeurController">
+<ScrollPane prefHeight="650.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controller.SignUpVendeurController">
    <content>
-      <AnchorPane id="AnchorPane" prefHeight="650.0" prefWidth="900.0">
+      <AnchorPane id="AnchorPane" prefHeight="650.0" prefWidth="800.0">
          <children>
-            <Button fx:id="submitBtn" layoutX="392.0" layoutY="543.0" mnemonicParsing="false" style="-fx-background-color: d19c97;" text="S'inscrire " textFill="WHITE">
+            <Button fx:id="submitBtn" layoutX="392.0" layoutY="543.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="92.0" style="-fx-background-color: d19c97;" text="S'inscrire " textFill="WHITE">
                <font>
-                  <Font size="17.0" />
+                  <Font size="16.0" />
                </font></Button>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
             <Text layoutX="241.0" layoutY="605.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vous avez déjà un compte ? " wrappingWidth="217.23779296875" />
             <Button fx:id="connectBtn" layoutX="501.0" layoutY="582.0" mnemonicParsing="false" style="-fx-background-color: d19c97;" text="Se connecter" textFill="WHITE">
                <font>
-                  <Font size="17.0" />
+                  <Font size="16.0" />
                </font></Button>
             <Text layoutX="303.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="S'inscrire " />
             <Pane prefHeight="98.0" prefWidth="901.0" style="-fx-background-color: #FFFFFF;">
@@ -42,42 +42,42 @@
                   <Button fx:id="buttonSearch" layoutX="593.0" layoutY="44.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="85.0" text="Search" textFill="#d7b2b2" />
                </children>
             </Pane>
-            <Pane layoutX="1.0" layoutY="98.0" prefHeight="36.0" prefWidth="886.0" style="-fx-background-color: #FFFFFF;">
+            <Pane layoutX="-110.0" layoutY="103.0" prefHeight="36.0" prefWidth="899.0" style="-fx-background-color: #FFFFFF;">
                <children>
-                  <Separator layoutX="2.0" layoutY="1.0" prefHeight="0.0" prefWidth="882.0" />
-                  <Text fx:id="Acceuil" fill="#d7b2b2" layoutX="28.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Acceuil">
+                  <Separator layoutX="2.0" layoutY="-8.0" prefHeight="12.0" prefWidth="882.0" />
+                  <Text fx:id="Acceuil" fill="#d7b2b2" layoutX="128.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Acceuil">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Text>
-                  <Text fx:id="Boutique" fill="#d7b2b2" layoutX="97.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Boutique">
+                  <Text fx:id="Boutique" fill="#d7b2b2" layoutX="202.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Boutique">
                      <font>
-                        <Font size="20.0" />
+                        <Font size="17.0" />
                      </font>
                   </Text>
-                  <Text fx:id="Details" fill="#d7b2b2" layoutX="196.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Détails">
+                  <Text fx:id="Details" fill="#d7b2b2" layoutX="283.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Détails">
                      <font>
-                        <Font size="20.0" />
+                        <Font size="17.0" />
                      </font>
                   </Text>
-                  <Text fx:id="Contact" fill="#d19c97" layoutX="267.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contact">
+                  <Text fx:id="Contact" fill="#d19c97" layoutX="342.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contact">
                      <font>
-                        <Font size="20.0" />
+                        <Font size="17.0" />
                      </font>
                   </Text>
-                  <Text fx:id="Réclamation" fill="#d19c97" layoutX="353.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Réclamation">
+                  <Text fx:id="Réclamation" fill="#d19c97" layoutX="412.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Réclamation">
                      <font>
-                        <Font size="20.0" />
+                        <Font size="17.0" />
                      </font>
                   </Text>
                   <Text fx:id="Seconnecter" fill="#d19c97" layoutX="661.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Se connecter">
                      <font>
-                        <Font size="20.0" />
+                        <Font size="17.0" />
                      </font>
                   </Text>
                   <Text fx:id="Sinscrire" fill="#d19c97" layoutX="790.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="S'inscrire">
                      <font>
-                        <Font size="20.0" />
+                        <Font size="17.0" />
                      </font>
                   </Text>
                </children>
@@ -104,32 +104,32 @@
                   <PasswordField fx:id="confPassField" prefHeight="36.0" prefWidth="250.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nom de votre small business:">
                      <font>
-                        <Font name="Baskerville Old Face" size="20.0" />
+                        <Font name="Baskerville Old Face" size="18.0" />
                      </font>
                   </Text>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Email:" GridPane.rowIndex="1">
                      <font>
-                        <Font name="Baskerville Old Face" size="20.0" />
+                        <Font name="Baskerville Old Face" size="18.0" />
                      </font>
                   </Text>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Description:" GridPane.rowIndex="2">
                      <font>
-                        <Font name="Baskerville Old Face" size="20.0" />
+                        <Font name="Baskerville Old Face" size="18.0" />
                      </font>
                   </Text>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Confirmer mot de passe:" GridPane.rowIndex="4">
                      <font>
-                        <Font name="Baskerville Old Face" size="20.0" />
+                        <Font name="Baskerville Old Face" size="18.0" />
                      </font>
                   </Text>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Adresse:" GridPane.rowIndex="5">
                      <font>
-                        <Font name="Baskerville Old Face" size="20.0" />
+                        <Font name="Baskerville Old Face" size="18.0" />
                      </font>
                   </Text>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Mot de passe:" GridPane.rowIndex="3">
                      <font>
-                        <Font name="Baskerville Old Face" size="20.0" />
+                        <Font name="Baskerville Old Face" size="18.0" />
                      </font>
                   </Text>
                </children>
@@ -141,7 +141,7 @@
             <ImageView fx:id="logoPicture" fitHeight="73.0" fitWidth="111.0" layoutX="514.0" layoutY="463.0" pickOnBounds="true" preserveRatio="true" />
             <Text layoutX="186.0" layoutY="494.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Logo:">
                <font>
-                  <Font name="Baskerville Old Face" size="20.0" />
+                  <Font name="Baskerville Old Face" size="18.0" />
                </font>
             </Text>
          </children>

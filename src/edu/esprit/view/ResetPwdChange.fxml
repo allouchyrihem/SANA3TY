@@ -11,13 +11,13 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="650.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controller.ResetPwdChangeController">
+<AnchorPane id="AnchorPane" maxHeight="650.0" maxWidth="800.0" minHeight="650.0" minWidth="800.0" prefHeight="650.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controller.ResetPwdChangeController">
    <children>
-      <Text layoutX="354.0" layoutY="321.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mot de passe:">
+      <Text layoutX="218.0" layoutY="330.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mot de passe:">
          <font>
             <Font name="Baskerville Old Face" size="20.0" />
          </font></Text>
-      <Pane layoutX="5.0" prefHeight="84.0" prefWidth="1129.0" style="-fx-background-color: #FFFFFF;">
+      <Pane layoutX="5.0" prefHeight="84.0" prefWidth="794.0" style="-fx-background-color: #FFFFFF;">
          <children>
             <ImageView fx:id="imageView" fitHeight="70.0" fitWidth="77.0" layoutX="14.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -28,9 +28,9 @@
             <Button fx:id="buttonSearch" layoutX="671.0" layoutY="27.0" mnemonicParsing="false" text="Search" textFill="#d7b2b2" />
          </children>
       </Pane>
-      <Pane layoutX="5.0" layoutY="84.0" prefHeight="36.0" prefWidth="1129.0" style="-fx-background-color: #FFFFFF;">
+      <Pane layoutX="5.0" layoutY="84.0" prefHeight="36.0" prefWidth="805.0" style="-fx-background-color: #FFFFFF;">
          <children>
-            <Separator layoutX="2.0" layoutY="1.0" prefHeight="0.0" prefWidth="1129.0" />
+            <Separator layoutX="2.0" layoutY="1.0" prefHeight="3.0" prefWidth="786.0" />
             <Text fx:id="Acceuil" fill="#d7b2b2" layoutX="28.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Acceuil">
                <font>
                   <Font size="17.0" />
@@ -56,32 +56,32 @@
                   <Font size="17.0" />
                </font>
             </Text>
-            <Text fx:id="Seconnecter" fill="#d19c97" layoutX="932.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Se connecter">
+            <Text fx:id="Seconnecter" fill="#d19c97" layoutX="593.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Se connecter">
                <font>
                   <Font size="17.0" />
                </font>
             </Text>
-            <Text fx:id="Sinscrire" fill="#d19c97" layoutX="1040.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="S'inscrire">
+            <Text fx:id="Sinscrire" fill="#d19c97" layoutX="704.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="S'inscrire">
                <font>
                   <Font size="17.0" />
                </font>
             </Text>
          </children>
       </Pane>
-      <Text fill="#d7b2b2" layoutX="389.0" layoutY="264.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Récuperer mot de passe ">
+      <Text fill="#d7b2b2" layoutX="234.0" layoutY="264.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Récuperer mot de passe ">
          <font>
             <Font name="System Bold Italic" size="32.0" />
          </font>
       </Text>
-      <Button fx:id="submitBtn" layoutX="493.0" layoutY="448.0" mnemonicParsing="false" style="-fx-background-color: d7b2b2;" text="Enregistrer" textFill="WHITE">
+      <Button fx:id="submitBtn" layoutX="333.0" layoutY="445.0" mnemonicParsing="false" style="-fx-background-color: d7b2b2;" text="Enregistrer" textFill="WHITE">
          <font>
             <Font size="17.0" />
          </font></Button>
-      <Text layoutX="354.0" layoutY="390.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Confirmer mot de passe:">
+      <Text layoutX="125.0" layoutY="390.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Confirmer mot de passe:">
          <font>
             <Font name="Baskerville Old Face" size="20.0" />
          </font></Text>
-      <PasswordField fx:id="mdpField" layoutX="581.0" layoutY="306.0" prefHeight="43.0" prefWidth="195.0" />
-      <PasswordField fx:id="confMdpField" layoutX="581.0" layoutY="363.0" prefHeight="43.0" prefWidth="195.0" />
+      <PasswordField fx:id="mdpField" layoutX="389.0" layoutY="301.0" prefHeight="43.0" prefWidth="195.0" />
+      <PasswordField fx:id="confMdpField" layoutX="408.0" layoutY="361.0" prefHeight="43.0" prefWidth="195.0" />
    </children>
 </AnchorPane>

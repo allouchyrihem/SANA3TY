@@ -17,7 +17,7 @@
 
 <ScrollPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controller.SignUpClientController">
    <content>
-      <AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="900.0">
+      <AnchorPane id="AnchorPane" prefHeight="650.0" prefWidth="798.0">
           <children>
             <GridPane layoutX="184.0" layoutY="213.0" prefHeight="249.0" prefWidth="468.0">
               <columnConstraints>
@@ -37,22 +37,22 @@
                   <PasswordField fx:id="confPassField" prefHeight="36.0" prefWidth="223.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nom et Prénom:">
                      <font>
-                        <Font name="Baskerville Old Face" size="20.0" />
+                        <Font name="Baskerville Old Face" size="18.0" />
                      </font>
                   </Text>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Email:" GridPane.rowIndex="1">
                      <font>
-                        <Font name="Baskerville Old Face" size="20.0" />
+                        <Font name="Baskerville Old Face" size="18.0" />
                      </font>
                   </Text>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Confirmer mot de passe:" GridPane.rowIndex="3">
                      <font>
-                        <Font name="Baskerville Old Face" size="20.0" />
+                        <Font name="Baskerville Old Face" size="18.0" />
                      </font>
                   </Text>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Mot de passe:" GridPane.rowIndex="2">
                      <font>
-                        <Font name="Baskerville Old Face" size="20.0" />
+                        <Font name="Baskerville Old Face" size="18.0" />
                      </font>
                   </Text>
                </children>
@@ -106,12 +106,12 @@
                         <Font size="14.0" />
                      </font>
                   </Text>
-                  <Text fx:id="Seconnecter" fill="#d19c97" layoutX="660.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Se connecter">
+                  <Text fx:id="Seconnecter" fill="#d19c97" layoutX="583.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Se connecter">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Text>
-                  <Text fx:id="Sinscrire" fill="#d19c97" layoutX="758.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="S'inscrire">
+                  <Text fx:id="Sinscrire" fill="#d19c97" layoutX="701.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="S'inscrire">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -120,7 +120,7 @@
             </Pane>
             <Text layoutX="172.0" layoutY="567.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vous avez déjà un compte ? ">
                <font>
-                  <Font name="Baskerville Old Face" size="20.0" />
+                  <Font name="Baskerville Old Face" size="18.0" />
                </font>
             </Text>
          </children>

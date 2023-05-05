@@ -35,8 +35,8 @@ public class EventsDao implements Edao<Events>{
     }
     @Override
     public void insert(Events o) {
-       String req = "insert into event (id, name, adresse, date, description, link) values ("+
-             o.getId()+",'"+o.getName()+"','"+o.getAdresse()+"','"+o.getDate()+"','"+o.getDescription()+"','"+o.getLink()+"')";
+       String req = "insert into event (id, name, adresse, date, description, link,user_id) values ("+
+             o.getId()+",'"+o.getName()+"','"+o.getAdresse()+"','"+o.getDate()+"','"+o.getDescription()+"','"+o.getLink()+"','"+o.getUser().getId()+"')";
         try {
             st.executeUpdate(req);
         } catch (SQLException ex) {

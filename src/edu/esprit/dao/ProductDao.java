@@ -9,6 +9,7 @@ import edu.esprit.entity.Category;
 import edu.esprit.entity.Product;
 import edu.esprit.entity.User;
 import edu.esprit.util.MyConnection;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -44,6 +45,30 @@ public class ProductDao implements Idao<Product>{
             instance=new ProductDao();
         return instance;
     }
+    public static Product find(int productId, List<Product> productList) {
+    for (Product product : productList) {
+        if (product.getId() == productId) {
+            return product;
+        }
+    }
+    return null;
+}
+public Product find(int id) {
+    Product product = null;
+    try {
+        Connection connection = MyConnection.getInstance().getCnx();
+        PreparedStatement statement = connection.prepareStatement("SELECT * FROM product WHERE id=?");
+        statement.setInt(1, id);
+        ResultSet result = statement.executeQuery();
+        if (result.next()) {
+            product = new Product(result.getInt("id"), result.getString("name"));
+        }
+        statement.close();
+    } catch (SQLException ex) {
+        System.out.println("Error while finding product with id " + id + ": " + ex.getMessage());
+    }
+    return product;
+}
 
     @Override
     public void insert(Product o) {
@@ -87,7 +112,7 @@ public ObservableList<Product> displayAll() {
             p.setId(rs.getInt("id"));
             p.setName(rs.getString("name"));
             p.setDescription(rs.getString("description"));
-            p.setPrice(rs.getString("price"));
+            p.setPrice(rs.getFloat("price"));
             p.setStock(rs.getString("stock"));
             p.setImage(rs.getString("image"));
             Category category = new Category();
@@ -116,7 +141,7 @@ public ObservableList<Product> displayAll() {
                 p.setId(rs.getInt(1));
                 p.setName(rs.getString("name"));
                 p.setDescription(rs.getString("description"));
-                p.setPrice(rs.getString("price"));
+                p.setPrice(rs.getFloat("price"));
                 p.setStock(rs.getString("stock"));
                 p.setImage(rs.getString("image"));
                 list.add(p);
@@ -138,7 +163,7 @@ public ObservableList<Product> displayAll() {
                 p.setId(rs.getInt("id"));
                 p.setName(rs.getString("name"));
                 p.setDescription(rs.getString("description"));
-                p.setPrice(rs.getString("price"));
+                p.setPrice(rs.getFloat("price"));
                 p.setStock(rs.getString("stock"));
                 p.setImage(rs.getString("image"));
             //}  
@@ -155,7 +180,7 @@ try {
     PreparedStatement pstmt = MyConnection.getInstance().getCnx().prepareStatement(requete);
     pstmt.setString(1, p.getName());
     pstmt.setString(2, p.getDescription());
-    pstmt.setString(3, p.getPrice());
+    pstmt.setFloat(3, p.getPrice());
     pstmt.setString(4, p.getStock());
     pstmt.setString(5, p.getImage());
     pstmt.setInt(6,p.getCategory().getId());

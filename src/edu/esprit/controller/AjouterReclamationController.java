@@ -68,7 +68,7 @@ public class AjouterReclamationController  implements Initializable {
             Reclamation p = new Reclamation(name.getText(), description.getText());
             ReclamationDao pdao = ReclamationDao.getInstance();
             pdao.insert(p);
-            //SendSMS.sendSms();
+            SendSMS.sendSms();
         
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Information Dialog");

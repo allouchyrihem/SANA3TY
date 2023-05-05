@@ -1,11 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package edu.esprit.controller;
 
 import edu.esprit.entity.Product;
+import edu.esprit.test.ConnexionBD;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.net.URL;
@@ -21,10 +17,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.control.Pagination;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -32,6 +30,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.shape.SVGPath;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -65,6 +64,7 @@ public class BoutiqueController implements Initializable {
     private ObservableList<Product> Filtredproducts=FXCollections.observableArrayList();
     @FXML
     private Hyperlink accueil;
+   
     @FXML
     private AnchorPane root;
     @FXML
@@ -72,6 +72,15 @@ public class BoutiqueController implements Initializable {
     /**
      * Initializes the controller class.
      */
+    private Product selectedProduct;
+TableView<Product> productTable = new TableView<>();
+    @FXML
+    private SVGPath chariot;
+  public Product getSelectedProduct() {
+        return selectedProduct;
+    }
+
+   
     @Override
     public void initialize(URL url, ResourceBundle rb) {
       dashboard.setOnAction(e -> {
@@ -106,6 +115,21 @@ public class BoutiqueController implements Initializable {
             } catch (IOException ex) {
                 Logger.getLogger(Accueil1Controller.class.getName()).log(Level.SEVERE, null, ex);
             }
+});
+       chariot.setOnMouseClicked(event -> {
+    try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/esprit/view/CartView.fxml"));
+        Parent root = loader.load();
+       // AjouterCmdController ajouterCmdController = loader.getController();
+        //ajouterCmdController.setCartProducts(products); // passer la liste des produits dans le panier
+        //ajouterCmdController.setSelectedProduct(selectedProduct); // passer le produit sélectionné
+        Scene scene = new Scene(root);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    } catch (IOException ex) {
+        Logger.getLogger(BoutiqueController.class.getName()).log(Level.SEVERE, null, ex);
+    }
 });
     boutique.setOnAction(e -> {
         try {
@@ -159,7 +183,28 @@ int numPages = (int) Math.ceil(products.size() / (double) productsPerPage); // C
                         Logger.getLogger(Accueil1Controller.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 });
+                Button acheterButton = new Button("Acheter");
+        acheterButton.setOnAction(event -> {
+   
+          ConnexionBD c = new ConnexionBD();
+          c.ajouterProduit(p);
+          System.out.println(c.contenuPanier());
+           try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/esprit/view/CartView.fxml"));
+        Parent root = loader.load();
+        CartView cartView = loader.getController();
+        cartView.setCartProducts(c.contenuPanier()); // passer la liste des produits dans le panier
+        //cartView.setSelectedProduct(selectedProduct); // passer le produit sélectionné
+        Scene scene = new Scene(root);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    } catch (IOException ex) {
+        Logger.getLogger(BoutiqueController.class.getName()).log(Level.SEVERE, null, ex);
+    }
+});
                 Label productNameLabel = new Label(p.getName());
+                Label productPriceLabel = new Label(Float.toString(p.getPrice()));
                 productNameLabel.setOnMouseClicked(e -> {
                     try {
                         // Navigate to the product details page when the product name is clicked
@@ -168,7 +213,9 @@ int numPages = (int) Math.ceil(products.size() / (double) productsPerPage); // C
                         Logger.getLogger(Accueil1Controller.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 });
-                vbox.getChildren().addAll(productNameLabel, img, new Label(p.getDescription()));
+                // Create a button "Acheter" for this product
+       
+                vbox.getChildren().addAll(productNameLabel,productPriceLabel, img, new Label(p.getDescription()),acheterButton);
             } catch (IOException ex) {
                 Logger.getLogger(Accueil1Controller.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -215,7 +262,28 @@ catbox.getSelectionModel().selectedItemProperty().addListener((observable, oldVa
                         Logger.getLogger(Accueil1Controller.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 });
+                Button acheterButton = new Button("Acheter");
+        acheterButton.setOnAction(event -> {
+   
+          ConnexionBD c = new ConnexionBD();
+          c.ajouterProduit(p);
+          System.out.println(c.contenuPanier());
+           try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/esprit/view/CartView.fxml"));
+        Parent root = loader.load();
+        CartView cartView = loader.getController();
+        cartView.setCartProducts(c.contenuPanier()); // passer la liste des produits dans le panier
+        //cartView.setSelectedProduct(selectedProduct); // passer le produit sélectionné
+        Scene scene = new Scene(root);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    } catch (IOException ex) {
+        Logger.getLogger(BoutiqueController.class.getName()).log(Level.SEVERE, null, ex);
+    }
+});
                 Label productNameLabel = new Label(p.getName());
+                Label productPriceLabel = new Label(Float.toString(p.getPrice()));
                 productNameLabel.setOnMouseClicked(e -> {
                     try {
                         // Navigate to the product details page when the product name is clicked
@@ -224,7 +292,7 @@ catbox.getSelectionModel().selectedItemProperty().addListener((observable, oldVa
                         Logger.getLogger(Accueil1Controller.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 });
-                vbox.getChildren().addAll(productNameLabel, img, new Label(p.getDescription()));
+                vbox.getChildren().addAll(productNameLabel,productPriceLabel, img, new Label(p.getDescription()),acheterButton);
             } catch (IOException ex) {
                 Logger.getLogger(Accueil1Controller.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -260,5 +328,6 @@ catbox.getSelectionModel().selectedItemProperty().addListener((observable, oldVa
 }
 
     }    
+   
     
 
