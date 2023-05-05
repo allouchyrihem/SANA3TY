@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="desktopSana3ty.jar" size="10692870" download="eager" />
+    <jar href="desktopSana3ty.jar" size="10701417" download="eager" />
     <jar href="lib\itextpdf-5.5.9.jar" size="2287148" download="eager" />
     <jar href="lib\javax.mail.jar" size="659033" download="eager" />
     <jar href="lib\javax.servlet-api-4.0.1.jar" size="95505" download="eager" />

@@ -1,23 +1,140 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.SVGPath?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controller.CartView">
-   <children>
-      <Text layoutX="200.0" layoutY="50.0" text="Cart" />
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1097.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controller.CartView">
+   <content>
+      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1085.0" prefWidth="600.0">
+         <children>
+            <Pane prefHeight="24.0" prefWidth="600.0" style="-fx-background-color: #ebf8fb;">
+               <children>
+                  <Text fx:id="text1" fill="#ababab" layoutX="214.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="On livre sur toute la tunisie" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
+            <Pane layoutY="24.0" prefHeight="84.0" prefWidth="600.0" style="-fx-background-color: #FFFFFF;">
+               <children>
+                  <ImageView fx:id="imageView" fitHeight="70.0" fitWidth="77.0" layoutX="14.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/ogo.png" />
+                     </image>
+                  </ImageView>
+                  <TextField fx:id="search" layoutX="144.0" layoutY="30.0" prefHeight="25.0" prefWidth="312.0" style="-fx-background-color: #e1e0e0;" />
+                  <Pane layoutX="475.0" layoutY="13.0" prefHeight="63.0" prefWidth="82.0">
+                     <children>
+                        <SVGPath fx:id="chariot" content="M423.936,176.316C423.94,176.205,424,176.112,424,176v-32c0-13.234-10.766-24-24-24v-17.801 c0-16.417-16.066-27.962-31.586-22.77l-16,5.332c-0.004,0-0.004,0-0.004,0c-4.364,1.455-8.036,4.116-10.83,7.483 C337.713,89.578,333.042,88,328,88h-16c-5.042,0-9.713,1.578-13.58,4.245c-2.794-3.367-6.466-6.028-10.83-7.483c0,0,0,0-0.004,0 L271.59,79.43C256.041,74.236,240,85.8,240,102.199V120c-2.819,0-5.485,0.578-8,1.474V96c0-13.234-10.766-24-24-24h-16 c-13.234,0-24,10.766-24,24v80h-17.275l-12.858-76.758C135.492,83.453,122.18,72,106.219,72H88c-8.836,0-16,7.164-16,16 s7.164,16,16,16l18.266,0.266l45.953,274.375C153.508,386.352,160.18,392,168,392h51.059c-6.72,5.87-11.059,14.397-11.059,24 c0,17.645,14.355,32,32,32s32-14.355,32-32c0-9.603-4.339-18.13-11.059-24h38.118c-6.72,5.87-11.059,14.397-11.059,24 c0,17.645,14.355,32,32,32s32-14.355,32-32c0-9.603-4.339-18.13-11.059-24H384c8.836,0,16-7.164,16-16s-7.164-16-16-16H181.547 l-5.36-32H400.96c7.84,0,14.56-5.68,15.84-13.36l20.08-120C438.322,185.843,432.333,177.825,423.936,176.316z M240,432 c-8.824,0-16-7.176-16-16s7.176-16,16-16s16,7.176,16,16S248.824,432,240,432z M320,432c-8.824,0-16-7.176-16-16s7.176-16,16-16 s16,7.176,16,16S328.824,432,320,432z M352,107.531c0-3.449,2.199-6.5,5.473-7.59l16-5.332c5.099-1.727,10.527,2.068,10.527,7.59 V120h-32v-8V107.531z M341.742,251.543c3.523,4.426,2.813,11.449-1.621,15.984c-0.008,0.008-0.012,0.012-0.016,0.016L320.191,288 l-19.961-20.441c-4.402-4.555-5.094-11.59-1.57-16.02c4.11-5.172,11.332-5.409,15.758-0.848c1.508,1.555,3.578,2.43,5.742,2.43 c0.008,0,0.012,0,0.02,0c2.172-0.004,4.246-0.891,5.75-2.457C330.233,246.175,337.577,246.385,341.742,251.543z M304,176v-40h32v40 H304z M312,104h16c4.41,0,8,3.59,8,8v8h-32v-8C304,107.59,307.59,104,312,104z M256,102.199c0-5.464,5.323-9.315,10.531-7.59 l15.996,5.332c3.273,1.09,5.473,4.141,5.473,7.59V112v8h-32V102.199z M240,136h8h40v40h-56v-32C232,139.59,235.59,136,240,136z M184,176V96c0-4.41,3.59-8,8-8h16c4.41,0,8,3.59,8,8v48v32H184z M258.72,290.48l-32.48-32.88c-11.84-12-13.92-31.2-3.6-44.64 c12.4-16.16,35.52-17.2,49.36-3.2c13.84-14,36.96-12.96,49.36,3.2c4.379,5.671,6.392,12.375,6.5,19.127 c-2.981,0.668-5.49,1.678-7.708,2.964c-4.379-2.543-9.406-3.797-14.547-3.559c-7.574,0.375-14.668,4.051-19.469,10.086 c-8.566,10.766-7.449,26.715,2.574,37.086l4.098,4.196l-7.528,7.62C277.92,297.84,266.08,297.84,258.72,290.48z M352,176v-40h40h8 c4.41,0,8,3.59,8,8v32H352z" fill="#dfa8a8" layoutX="-200.0" layoutY="-229.0" scaleX="0.075" scaleY="0.075" />
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
+            <Pane layoutY="108.0" prefHeight="36.0" prefWidth="600.0" style="-fx-background-color: #FFFFFF;">
+               <children>
+                  <Separator layoutX="2.0" layoutY="1.0" prefHeight="1.0" prefWidth="600.0" />
+                  <Hyperlink layoutX="32.0" layoutY="4.0" text="Acceuil" textFill="#d7b2b2">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Hyperlink>
+                  <Hyperlink fx:id="boutique" layoutX="100.0" layoutY="5.0" text="Boutique" textFill="#d7b2b2">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Hyperlink>
+                  <Hyperlink layoutX="176.0" layoutY="4.0" text="Détails" textFill="#d7b2b2">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Hyperlink>
+                  <Hyperlink layoutX="302.0" layoutY="4.0" text="Réclamation" textFill="#d7b2b2">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Hyperlink>
+                  <Hyperlink layoutX="236.0" layoutY="4.0" text="Contact" textFill="#d7b2b2">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Hyperlink>
+                  <Hyperlink layoutX="512.0" layoutY="5.0" text="S'inscrire" textFill="#d7b2b2">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Hyperlink>
+                  <Hyperlink fx:id="dashboard" layoutX="415.0" layoutY="5.0" text="Se connecter" textFill="#d7b2b2">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Hyperlink>
+               </children>
+            </Pane>
+<Pane layoutY="144.0" prefHeight="953.0" prefWidth="600.0" style="-fx-background-color: #FFFFFF;">
+               <children>
+                  <Separator layoutY="-1.0" prefHeight="3.0" prefWidth="600.0" />
       <TableView fx:id="cartTable" layoutX="50.0" layoutY="100.0" prefHeight="200.0" prefWidth="500.0">
          <columns>
             <TableColumn fx:id="nameCol" prefWidth="150.0" text="Name" />
             <TableColumn fx:id="descriptionCol" prefWidth="200.0" text="Description" />
             <TableColumn fx:id="priceCol" prefWidth="100.0" text="Price" />
+            <TableColumn fx:id="deleteCol" prefWidth="100.0" text="" />
          </columns>
       </TableView>
-      <Button fx:id="checkoutButton"  layoutX="250.0" layoutY="330.0" mnemonicParsing="false" text="Checkout" />
+      <Button fx:id="checkoutButton" layoutX="250.0" layoutY="330.0" mnemonicParsing="false" text="Checkout" />
+      <ImageView fx:id="img" fitHeight="144.0" fitWidth="163.0" layoutX="21.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true" />
+                  <Pane layoutY="809.0" prefHeight="132.0" prefWidth="600.0" style="-fx-background-color: #ebf8fb;">
+                     <children>
+                        <ImageView fitHeight="57.0" fitWidth="71.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../assets/ogo.png" />
+                           </image>
+                        </ImageView>
+                        <Text layoutX="75.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vitrine pour les small business afin de présenter leurs produits qui sont écologique et handmade" wrappingWidth="189.357421875">
+                           <font>
+                              <Font name="System Bold" size="11.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="313.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Espace Client">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="488.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contact">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Text>
+                        <SVGPath content="M8.489 31.975c-0.271 0-0.549-0.107-0.757-0.316-0.417-0.417-0.417-1.098 0-1.515l14.258-14.264-14.050-14.050c-0.417-0.417-0.417-1.098 0-1.515s1.098-0.417 1.515 0l14.807 14.807c0.417 0.417 0.417 1.098 0 1.515l-15.015 15.022c-0.208 0.208-0.486 0.316-0.757 0.316z" fill="#d19c97" layoutX="288.0" layoutY="50.0" />
+                        <SVGPath content="M8.489 31.975c-0.271 0-0.549-0.107-0.757-0.316-0.417-0.417-0.417-1.098 0-1.515l14.258-14.264-14.050-14.050c-0.417-0.417-0.417-1.098 0-1.515s1.098-0.417 1.515 0l14.807 14.807c0.417 0.417 0.417 1.098 0 1.515l-15.015 15.022c-0.208 0.208-0.486 0.316-0.757 0.316z" fill="#d19c97" layoutX="290.0" layoutY="90.0" />
+                        <Text layoutX="321.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mon compte" />
+                        <Text layoutX="321.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Panier" />
+                        <Text layoutX="469.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ariana essoghra" />
+                        <Text layoutX="469.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="sana3ty@gmail.com" />
+                        <Text layoutX="469.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="+21622222222" />
+                        <SVGPath content="M16.114-0.011c-6.559 0-12.114 5.587-12.114 12.204 0 6.93 6.439 14.017 10.77 18.998 0.017 0.020 0.717 0.797 1.579 0.797h0.076c0.863 0 1.558-0.777 1.575-0.797 4.064-4.672 10-12.377 10-18.998 0-6.618-4.333-12.204-11.886-12.204zM16.515 29.849c-0.035 0.035-0.086 0.074-0.131 0.107-0.046-0.032-0.096-0.072-0.133-0.107l-0.523-0.602c-4.106-4.71-9.729-11.161-9.729-17.055 0-5.532 4.632-10.205 10.114-10.205 6.829 0 9.886 5.125 9.886 10.205 0 4.474-3.192 10.416-9.485 17.657zM16.035 6.044c-3.313 0-6 2.686-6 6s2.687 6 6 6 6-2.687 6-6-2.686-6-6-6zM16.035 16.044c-2.206 0-4.046-1.838-4.046-4.044s1.794-4 4-4c2.207 0 4 1.794 4 4 0.001 2.206-1.747 4.044-3.954 4.044z" fill="#d19c97" layoutX="429.0" layoutY="46.0" />
+                        <SVGPath content="M2.8 4C1.86451 4 1.0468 4.46923 0.544325 5.16792C0.20074 5.64567 0 6.23499 0 6.86667V17.1333C0 18.682 1.21964 20 2.8 20H10.2C10.7523 20 11.2 19.5523 11.2 19C11.2 18.4477 10.7523 18 10.2 18H2.8C2.39214 18 2 17.6466 2 17.1333V7.94766L7.77948 14.3096C8.96986 15.6199 11.0301 15.6199 12.2205 14.3096L18 7.94766V12.1333C18 12.6856 18.4477 13.1333 19 13.1333C19.5523 13.1333 20 12.6856 20 12.1333V6.86667C20 6.235 19.7993 5.64567 19.4557 5.16792C18.9532 4.46923 18.1355 4 17.2 4H2.8ZM9.25983 12.9647L2.9327 6H17.0673L10.7402 12.9647C10.3434 13.4015 9.65662 13.4015 9.25983 12.9647ZM15 17.8667C15 17.4519 15.3816 17 16 17C16.6184 17 17 17.4519 17 17.8667C17 18.419 17.4477 18.8667 18 18.8667C18.5523 18.8667 19 18.419 19 17.8667C19 17.4519 19.3816 17 20 17C20.6184 17 21 17.4519 21 17.8667C21 18.4983 20.6012 19.2601 19.839 20.0984C19.285 20.7078 18.6199 21.27 18 21.7492C17.3801 21.27 16.715 20.7078 16.161 20.0984C15.3988 19.2601 15 18.4983 15 17.8667ZM16 15C16.7499 15 17.4594 15.271 18 15.73C18.5406 15.271 19.2501 15 20 15C21.5908 15 23 16.2196 23 17.8667C23 19.2681 22.1707 20.5068 21.3189 21.4438C20.4411 22.4092 19.3734 23.2328 18.5915 23.8063C18.2394 24.0646 17.7606 24.0646 17.4085 23.8063C16.6266 23.2328 15.5589 22.4092 14.6811 21.4438C13.8293 20.5068 13 19.2681 13 17.8667C13 16.2196 14.4092 15 16 15Z" fill="#d19c97" layoutX="436.0" layoutY="80.0" />
+                        <SVGPath content="M23.5,28.5L23.5,28.5c-0.9,0-1.8-0.3-2.5-0.8c-2.1-1.5-3.5-2.8-4.7-4c-1.2-1.2-2.5-2.6-4-4.7 c-1.5-2-0.9-4.6,1.4-7c0.7-0.7,1.9-0.7,2.6,0l1.4,1.4c0.3,0.3,0.5,0.8,0.5,1.3c0,0.5-0.2,1-0.5,1.3l-0.6,0.6 c-0.2,0.2-0.1,0.5,0,0.7c0.7,0.9,1.9,2.2,2.6,2.8c0.7,0.7,1.9,1.9,2.8,2.6c0.2,0.2,0.5,0.2,0.7,0l0.6-0.6c0.7-0.7,1.9-0.7,2.6,0 l1.4,1.4c0.3,0.3,0.5,0.8,0.5,1.3c0,0.5-0.2,1-0.5,1.3C26.5,27.7,25,28.5,23.5,28.5z M15,12.5c-0.2,0-0.4,0.1-0.6,0.2 c-2,2-2.4,4.1-1.3,5.7c1.5,2.1,2.7,3.4,3.9,4.6c1.2,1.2,2.5,2.4,4.6,3.9c1.6,1.1,3.7,0.7,5.7-1.3c0.2-0.2,0.2-0.4,0.2-0.6 c0-0.2-0.1-0.4-0.2-0.6L25.8,23c-0.3-0.3-0.9-0.3-1.2,0L24,23.6c-0.5,0.5-1.3,0.5-2,0c-1-0.7-2.2-2-2.9-2.7c-0.7-0.7-2-2-2.7-2.9 c-0.5-0.7-0.5-1.5,0-2l0.6-0.6c0.2-0.2,0.2-0.4,0.2-0.6c0-0.2-0.1-0.4-0.2-0.6l-1.4-1.4C15.4,12.6,15.2,12.5,15,12.5z" fill="#d19c97" layoutX="428.0" layoutY="98.0" />
+                     </children>
+                  </Pane>
+                  <Pane fx:id="rootContainer" layoutX="33.0" layoutY="78.0" prefHeight="160.0" prefWidth="139.0" />
+              
    </children>
-
-</AnchorPane>
+</Pane>
+         </children>
+      </AnchorPane>
+   </content>
+</ScrollPane>

@@ -136,7 +136,7 @@ private List<Product> products;
 });
  chariot.setOnMouseClicked(event -> {
     try {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/esprit/view/AjouterCmd.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/esprit/view/CartView.fxml"));
         Parent root = loader.load();
        // AjouterCmdController ajouterCmdController = loader.getController();
         //ajouterCmdController.setCartProducts(products); // passer la liste des produits dans le panier

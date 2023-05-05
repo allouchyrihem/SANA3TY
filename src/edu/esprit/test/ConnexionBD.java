@@ -32,7 +32,7 @@ public class ConnexionBD extends Application {
         Scene scene = new Scene(parentPage);
         this.primaryStage.setScene(scene);
         this.primaryStage.show();
-  panier.clear();
+        panier.clear();
     }
     public void ajouterProduit(Product p){
         panier.add(p);
@@ -47,6 +47,7 @@ public class ConnexionBD extends Application {
      */
   public static void main(String[] args) {
         launch(args);
+        
     }
 
 }

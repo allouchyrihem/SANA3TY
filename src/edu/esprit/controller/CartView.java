@@ -31,10 +31,17 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.Hyperlink;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
+import javafx.scene.shape.SVGPath;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class CartView implements Initializable {
@@ -51,6 +58,24 @@ public class CartView implements Initializable {
     private Button checkoutButton;
 
     private List<Product> cartProducts;
+    @FXML
+    private Text text1;
+    @FXML
+    private ImageView imageView;
+    @FXML
+    private TextField search;
+    @FXML
+    private SVGPath chariot;
+    @FXML
+    private Hyperlink boutique;
+    @FXML
+    private Hyperlink dashboard;
+   @FXML
+private TableColumn<Product, Void> deleteCol;
+    @FXML
+    private ImageView img;
+    @FXML
+    private Pane rootContainer;
 
     public void setCartProducts(List<Product> cartProducts) {
         this.cartProducts = cartProducts;
@@ -63,7 +88,28 @@ public class CartView implements Initializable {
         nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
         descriptionCol.setCellValueFactory(new PropertyValueFactory<>("description"));
         priceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
-
+         dashboard.setOnAction(e -> {
+        try {
+                Parent page1 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/Dashboard.fxml"));
+                Scene scene = new Scene(page1);
+                Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(Accueil1Controller.class.getName()).log(Level.SEVERE, null, ex);
+            }
+});
+        boutique.setOnAction(e -> {
+        try {
+                Parent page1 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/Boutique.fxml"));
+                Scene scene = new Scene(page1);
+                Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(Accueil1Controller.class.getName()).log(Level.SEVERE, null, ex);
+            }
+});
         checkoutButton.setOnAction(event -> {
             try {
                 // TODO: implémenter le traitement de paiement
@@ -141,6 +187,27 @@ public class CartView implements Initializable {
                 Logger.getLogger(CartView.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
+        deleteCol.setCellFactory(param -> new TableCell<Product, Void>() {
+    private final Button deleteButton = new Button("Supprimer");
+
+    {
+        deleteButton.setOnAction(event -> {
+            Product product = getTableView().getItems().get(getIndex());
+            cartProducts.remove(product);
+            cartTable.setItems(FXCollections.observableArrayList(cartProducts));
+        });
+    }
+
+    @Override
+    protected void updateItem(Void item, boolean empty) {
+        super.updateItem(item, empty);
+        if (empty) {
+            setGraphic(null);
+        } else {
+            setGraphic(deleteButton);
+        }
+    }
+});
     }
 
 

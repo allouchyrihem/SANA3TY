@@ -87,6 +87,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -96,6 +97,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.shape.SVGPath;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Callback;
@@ -108,22 +110,6 @@ public class CClientController implements Initializable {
 
     @FXML
     private TextField search;
-    @FXML
-    private Button buttonSearch;
-    @FXML
-    private Text Acceuil;
-    @FXML
-    private Text Boutique;
-    @FXML
-    private Text Details;
-    @FXML
-    private Text Contact;
-    @FXML
-    private Text Réclamation;
-    @FXML
-    private Text Seconnecter;
-    @FXML
-    private Text Sinscrire;
     @FXML
     private Pane BoutonValiderC;
     @FXML
@@ -141,6 +127,13 @@ public class CClientController implements Initializable {
   //  private Button back;
     private ListData listdata = new ListData();
     @FXML
+    private Hyperlink boutique;
+    @FXML
+    private Hyperlink dashboard;
+@FXML
+    private Hyperlink acceuil;
+
+    @FXML
     private TableColumn<Commande, Float> totale;
     @FXML
     private TableColumn<Commande, Date> datecmd;
@@ -148,7 +141,7 @@ public class CClientController implements Initializable {
     private ImageView imageView;
     private ComboBox<String> etatC;
     @FXML
-    private Button back;
+    private SVGPath chariot;
     /**
      * Initializes the controller class.
      */
@@ -157,7 +150,43 @@ public class CClientController implements Initializable {
         // TODO
         // commandeTable.getColumns().add(emailColumn);
        // etatC.setItems(FXCollections.observableArrayList("en attente","en cours","livré"));
-         
+         acceuil.setOnAction(e -> {
+        try {
+                Parent page1 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/Dashboard.fxml"));
+                Scene scene = new Scene(page1);
+                Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(Accueil1Controller.class.getName()).log(Level.SEVERE, null, ex);
+            }
+});
+      chariot.setOnMouseClicked(event -> {
+    try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/esprit/view/CartView.fxml"));
+        Parent root = loader.load();
+       // AjouterCmdController ajouterCmdController = loader.getController();
+        //ajouterCmdController.setCartProducts(products); // passer la liste des produits dans le panier
+        //ajouterCmdController.setSelectedProduct(selectedProduct); // passer le produit sélectionné
+        Scene scene = new Scene(root);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    } catch (IOException ex) {
+        Logger.getLogger(BoutiqueController.class.getName()).log(Level.SEVERE, null, ex);
+    }
+});
+    boutique.setOnAction(e -> {
+        try {
+                Parent page1 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/Boutique.fxml"));
+                Scene scene = new Scene(page1);
+                Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(Accueil1Controller.class.getName()).log(Level.SEVERE, null, ex);
+            }
+});
            commandeTable.setItems(listdata.getcommandes());
         adresse.setCellValueFactory(new PropertyValueFactory<>("adresse"));
         description.setCellValueFactory(new PropertyValueFactory<>("description"));
