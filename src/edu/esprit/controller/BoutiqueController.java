@@ -124,26 +124,26 @@ public class BoutiqueController implements Initializable {
 
     products = listData.getProducts();
    // Assume products is a List<Product> containing all the products to be displayed
-int productsPerPage = 9; // Number of products to display per page
+int productsPerPage = 12; // Number of products to display per page
 int numPages = (int) Math.ceil(products.size() / (double) productsPerPage); // Calculate the number of pages needed
 
     Pagination pagination = new Pagination(numPages, 0); // Create a new Pagination object with the correct number of pages
     pagination.setPageFactory(pageIndex -> {
     // Create a VBox to hold the products for the current page
     VBox vboxContainer = new VBox();
-    vboxContainer.setSpacing(10);
+    vboxContainer.setSpacing(30);
 
     // Calculate the start and end index of the products for the current page
     int startIndex = pageIndex * productsPerPage;
     int endIndex = Math.min(startIndex + productsPerPage, products.size());
 
     // Create an HBox to hold each row of products (3 per row)
-    for (int i = startIndex; i < endIndex; i += 3) {
+    for (int i = startIndex; i < endIndex; i += 4) {
         HBox hbox = new HBox();
         hbox.setSpacing(10);
 
         // Create a VBox to hold each individual product
-        for (int j = i; j < Math.min(i + 3, endIndex); j++) {
+        for (int j = i; j < Math.min(i + 4, endIndex); j++) {
             Product p = products.get(j);
             VBox vbox = new VBox();
             try {
@@ -188,18 +188,18 @@ catbox.getSelectionModel().selectedItemProperty().addListener((observable, oldVa
         pagination.setPageFactory(pageIndex -> {
     // Create a VBox to hold the products for the current page
         VBox vboxContainer = new VBox();
-        vboxContainer.setSpacing(10);
+        vboxContainer.setSpacing(30);
 
     // Calculate the start and end index of the products for the current page
         int startIndex = pageIndex * productsPerPage;
         int endIndex = Math.min(startIndex + productsPerPage, Filtredproducts.size());
     // Create an HBox to hold each row of products (3 per row)
-        for (int i = startIndex; i < endIndex; i += 3) {
+        for (int i = startIndex; i < endIndex; i += 4) {
             HBox hbox = new HBox();
             hbox.setSpacing(10);
 
         // Create a VBox to hold each individual product
-        for (int j = i; j < Math.min(i + 3, endIndex); j++) {
+        for (int j = i; j < Math.min(i + 4, endIndex); j++) {
             Product p = Filtredproducts.get(j);
             VBox vbox = new VBox();
             try {

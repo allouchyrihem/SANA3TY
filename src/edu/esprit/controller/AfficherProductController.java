@@ -96,12 +96,11 @@ public class AfficherProductController implements Initializable {
     private Hyperlink categoryy;
     @FXML
     private TextField searchP;
-    @FXML
-    private ImageView img;
-    @FXML
     private Pane rootContainer;
     private ListData listData = new ListData(); // initialize listData
     private ObservableList<Product> products=FXCollections.observableArrayList();
+    @FXML
+    private TableColumn<Product,String> vendeur;
 
 
 
@@ -198,6 +197,7 @@ public class AfficherProductController implements Initializable {
         description.setCellValueFactory(new PropertyValueFactory<>("description"));
         price.setCellValueFactory(new PropertyValueFactory<>("price"));
         stock.setCellValueFactory(new PropertyValueFactory<>("stock"));
+        vendeur.setCellValueFactory(new PropertyValueFactory<>("user"));
         name.setSortType(TableColumn.SortType.ASCENDING); // set the sort type
         productTable.sort(); 
         

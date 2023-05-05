@@ -9,6 +9,8 @@ import edu.esprit.dao.CategoryDao;
 import edu.esprit.dao.ProductDao;
 import edu.esprit.entity.Category;
 import edu.esprit.entity.Product;
+import edu.esprit.entity.User;
+import edu.esprit.test.ConnexionBD;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -132,6 +134,7 @@ public class AjouterProductController  implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO  
+        
         accueil.setOnAction(e -> {
         try {
                 Parent page1 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/Accueil1.fxml"));
@@ -233,8 +236,11 @@ public class AjouterProductController  implements Initializable {
 
               
                                 try {
-
+                ConnexionBD app = new ConnexionBD();
+                User connectedUser = app.getConnectedUser();
+                User userr = new User(9,"fatma Creation","fatmajrad2000@gmail.com");
                 p = new Product(name.getText(), description.getText(),price.getText(),stock.getText(),imageEncoderDecoder(f.getAbsolutePath()),cat.getValue());
+                p.setUser(connectedUser);
                 ProductDao pdao = ProductDao.getInstance();
                 pdao.insert(p);
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/esprit/view/AfficherProduct.fxml"));

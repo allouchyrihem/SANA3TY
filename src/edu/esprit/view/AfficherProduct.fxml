@@ -13,25 +13,26 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="513.0" prefWidth="769.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controller.AfficherProductController">
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="513.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controller.AfficherProductController">
    <content>
-      <AnchorPane id="AnchorPane" prefHeight="493.0" prefWidth="759.0">
+      <AnchorPane id="AnchorPane" prefHeight="493.0" prefWidth="900.0">
          <children>
-            <AnchorPane layoutX="-1.0" prefHeight="513.0" prefWidth="769.0" style="-fx-background-color: #FFFFFF;">
+            <AnchorPane layoutX="-1.0" prefHeight="513.0" prefWidth="900.0" style="-fx-background-color: #FFFFFF;">
                <children>
-                  <TableView fx:id="productTable" layoutX="110.0" layoutY="117.0" prefHeight="374.0" prefWidth="534.0">
+                  <TableView fx:id="productTable" layoutX="110.0" layoutY="117.0" prefHeight="374.0" prefWidth="651.0">
                      <columns>
                         <TableColumn fx:id="image" prefWidth="140.0" text="Image" />
                         <TableColumn fx:id="name" prefWidth="55.0" text="Name" />
                         <TableColumn fx:id="description" prefWidth="86.0" text="Description" />
                         <TableColumn fx:id="price" prefWidth="75.0" text="Price" />
                         <TableColumn fx:id="stock" prefWidth="75.0" text="Stock" />
-                        <TableColumn fx:id="categoryname" prefWidth="75.0" text="Catégorie" />
+                        <TableColumn fx:id="categoryname" prefWidth="95.0" text="Catégorie" />
+                        <TableColumn fx:id="vendeur" prefWidth="75.0" text="Vendeur" />
                      </columns>
                   </TableView>
                   <HBox alignment="TOP_CENTER" layoutX="525.0" layoutY="14.0" />
-                  <Button fx:id="supprimer" layoutX="647.0" layoutY="152.0" mnemonicParsing="false" onMouseClicked="#supprimer" prefHeight="30.0" prefWidth="98.0" style="-fx-background-color: #F1F1F1;" text="supprimer" textFill="#d19c97" />
-                  <Button id="updateU" fx:id="updateU" layoutX="647.0" layoutY="209.0" mnemonicParsing="false" onAction="#updatebtn" prefHeight="25.0" prefWidth="98.0" style="-fx-background-color: #F1F1F1;" text="Update" textFill="#d19c97" />
+                  <Button fx:id="supprimer" layoutX="768.0" layoutY="148.0" mnemonicParsing="false" onMouseClicked="#supprimer" prefHeight="30.0" prefWidth="98.0" style="-fx-background-color: #F1F1F1;" text="supprimer" textFill="#d19c97" />
+                  <Button id="updateU" fx:id="updateU" layoutX="768.0" layoutY="210.0" mnemonicParsing="false" onAction="#updatebtn" prefHeight="25.0" prefWidth="98.0" style="-fx-background-color: #F1F1F1;" text="Update" textFill="#d19c97" />
                   <Button fx:id="back" layoutX="583.0" layoutY="21.0" mnemonicParsing="false" style="-fx-background-color: #F1F1F1;" text="Ajouter produits" textFill="#d19c97" />
                   <Pane prefHeight="497.0" prefWidth="84.0" style="-fx-background-color: #D19C97;">
                      <children>

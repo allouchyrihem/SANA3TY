@@ -5,6 +5,8 @@
  */
 package edu.esprit.controller;
 
+import edu.esprit.entity.User;
+import edu.esprit.test.ConnexionBD;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -46,6 +48,8 @@ public class DashboardController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        ConnexionBD app = new ConnexionBD();
+        User connectedUser = app.getConnectedUser();
         accueil.setOnAction(e -> {
         try {
                 Parent page1 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/Accueil1.fxml"));

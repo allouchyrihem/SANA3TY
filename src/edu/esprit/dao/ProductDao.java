@@ -7,6 +7,7 @@ package edu.esprit.dao;
 
 import edu.esprit.entity.Category;
 import edu.esprit.entity.Product;
+import edu.esprit.entity.User;
 import edu.esprit.util.MyConnection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -46,7 +47,9 @@ public class ProductDao implements Idao<Product>{
 
     @Override
     public void insert(Product o) {
-        String req="insert into product (name,description,price,stock,image,category_id) values ('"+o.getName()+"','"+o.getDescription()+"','"+o.getPrice()+"','"+o.getStock()+"','"+o.getImage()+"','"+o.getCategory().getId()+"')";
+        System.out.println(o.getUser().getId());
+        String req="insert into product (name,description,price,stock,image,category_id,user_id) values ('"+o.getName()+"','"+o.getDescription()+"','"+o.getPrice()+"','"+o.getStock()+"','"+o.getImage()+"','"+o.getCategory().getId()+"','"+o.getUser().getId()+"')";
+        
         try {
             st.executeUpdate(req);
         } catch (SQLException ex) {
@@ -71,9 +74,10 @@ public class ProductDao implements Idao<Product>{
 
   @Override
 public ObservableList<Product> displayAll() {
-    String req="SELECT p.id, p.name, p.description, p.price, p.stock, p.image, c.name AS category_name " +
+    String req="SELECT p.id, p.name, p.description, p.price, p.stock, p.image,u.name AS user_name, c.name AS category_name " +
                "FROM product p " +
-               "JOIN category c ON p.category_id = c.id";
+               "JOIN category c ON p.category_id = c.id "+
+                "JOIN user u ON p.user_id=u.id";
     ObservableList<Product> list=FXCollections.observableArrayList();
 
     try {
@@ -88,6 +92,8 @@ public ObservableList<Product> displayAll() {
             p.setImage(rs.getString("image"));
             Category category = new Category();
             category.setName(rs.getString("category_name"));
+            User user = new User();
+            user.setName(rs.getString("user_name"));
             p.setCategory(category);
             list.add(p);
         }

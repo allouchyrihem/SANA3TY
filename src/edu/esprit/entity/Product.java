@@ -19,8 +19,7 @@ import javax.persistence.ManyToOne;
  */
 public class Product {
     
-     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    
     private SimpleIntegerProperty id;
     private SimpleStringProperty name;
     private SimpleStringProperty description;   
@@ -31,11 +30,15 @@ public class Product {
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
     
     public Product() {
     }
 
-    public Product(int id, String name, String description, String price, String stock, String image,Category category) {
+    public Product(int id, String name, String description, String price, String stock, String image,Category category){
         this.id = new SimpleIntegerProperty(id);
         this.name = new SimpleStringProperty(name);
         this.description = new SimpleStringProperty(description);
@@ -43,8 +46,18 @@ public class Product {
         this.stock = new SimpleStringProperty(stock);
         this.image = new SimpleStringProperty(image);
         this.category = category;
+        
          }
     public Product(String name, String description, String price, String stock, String image,Category category) {
+        this.name = new SimpleStringProperty(name);
+        this.description = new SimpleStringProperty(description);
+        this.price = new SimpleStringProperty(price);
+        this.stock = new SimpleStringProperty(stock);
+        this.image = new SimpleStringProperty(image);
+        this.category = category;
+       
+    }
+       public Product(String name, String description, String price, String stock, String image,Category category,User user) {
         this.name = new SimpleStringProperty(name);
         this.description = new SimpleStringProperty(description);
         this.price = new SimpleStringProperty(price);
@@ -128,6 +141,17 @@ public class Product {
     public Category getCategoryProperty(){
         return category;
     }
+    public User getUserProperty(){
+        return user;
+    }
+    
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
     @Override
     public String toString() {
         return "Product{" + "id=" + id + ", name=" + name + ", description=" + description + ", price=" + price + ", stock=" + stock + ", image=" + image +", category=" + category +'}';
@@ -160,9 +184,6 @@ public class Product {
         return true;
     }
 
-    public void categoryProperty() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
 
     

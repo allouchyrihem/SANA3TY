@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="468.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+     <children>
+      <Pane fx:id="BoutonValider" prefHeight="484.0" prefWidth="600.0" style="-fx-background-color: #FFFFFF;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label layoutX="111.0" layoutY="177.0" prefHeight="17.0" prefWidth="80.0" text="Name :" textAlignment="CENTER" />
+            <Label layoutX="111.0" layoutY="214.0" text="Description :" />
+            <Button id="valider" fx:id="btnC" layoutX="398.0" layoutY="289.0" mnemonicParsing="false" style="-fx-background-color: #F1F1F1;" text="Valider" textFill="#d19c97">
+               
+            </Button>
+            <TextField id="name" fx:id="name" layoutX="187.0" layoutY="165.0" />
+            <TextField id="description" fx:id="description" layoutX="187.0" layoutY="210.0" />
+            <Button fx:id="back" layoutX="513.0" layoutY="28.0" mnemonicParsing="false" style="-fx-background-color: #F1F1F1;" text="Retour" textFill="#d19c97" />
+            <Button fx:id="listc" layoutX="94.0" layoutY="28.0" mnemonicParsing="false" style="-fx-background-color: #F1F1F1;" text="Liste des catégories" textFill="#d19c97" />
+         </children>
+      </Pane>
+      <Text fill="#d19c97" layoutX="187.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajouter une catégorie">
+         <font>
+            <Font name="System Bold Italic" size="30.0" />
+         </font>
+      </Text>
+      <Pane layoutY="-1.0" prefHeight="497.0" prefWidth="84.0" style="-fx-background-color: #D19C97;">
+         <children>
+            <ImageView fitHeight="90.0" fitWidth="73.0" layoutX="6.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/ogo.png" />
+               </image>
+            </ImageView>
+            <Hyperlink fx:id="dashboard" layoutX="5.0" layoutY="156.0" text="Dashboard" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Hyperlink>
+            <Hyperlink fx:id="product" layoutX="13.0" layoutY="226.0" text="Product" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Hyperlink>
+            <Hyperlink fx:id="category" layoutX="7.0" layoutY="299.0" text="Catégorie" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Hyperlink>
+            <Hyperlink fx:id="accueil" layoutX="25.0" layoutY="459.0" text="Back" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Hyperlink>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

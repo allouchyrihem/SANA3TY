@@ -67,8 +67,6 @@ public class Accueil1Controller implements Initializable {
     @FXML
     private ImageView imageView;
     @FXML
-    private TextField search;
-    @FXML
     private ComboBox<String> catbox;
     @FXML
     private ImageView img;
@@ -95,6 +93,8 @@ public class Accueil1Controller implements Initializable {
     private Hyperlink reclamation;
     @FXML
     private Hyperlink evenement;
+    @FXML
+    private Hyperlink sinscrire;
 
     /**
      * Initializes the controller class.
@@ -102,6 +102,17 @@ public class Accueil1Controller implements Initializable {
 @Override
 public void initialize(URL url, ResourceBundle rb) {
     dashboard.setOnAction(e -> {
+        try {
+                Parent page1 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/Login.fxml"));
+                Scene scene = new Scene(page1);
+                Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(Accueil1Controller.class.getName()).log(Level.SEVERE, null, ex);
+            }
+});
+    sinscrire.setOnAction(e -> {
         try {
                 Parent page1 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/Dashboard.fxml"));
                 Scene scene = new Scene(page1);
@@ -166,7 +177,7 @@ catbox.setItems(categories);
 products = listData.getProducts();
 
 // Assume products is a List<Product> containing all the products to be displayed
-int productsPerPage = 3; // Number of products to display per page
+int productsPerPage = 4; // Number of products to display per page
 int numPages = (int) Math.ceil(products.size() / (double) productsPerPage); // Calculate the number of pages needed
 
 Pagination pagination = new Pagination(numPages, 0);
@@ -183,19 +194,19 @@ catbox.setOnAction(e -> {
 pagination.setPageFactory(pageIndex -> {
     // Create a VBox to hold the products for the current page
     VBox vboxContainer = new VBox();
-    vboxContainer.setSpacing(10);
+    vboxContainer.setSpacing(50);
 
     // Calculate the start and end index of the products for the current page
     int startIndex = pageIndex * productsPerPage;
     int endIndex = Math.min(startIndex + productsPerPage,filteredProducts.size());
 
     // Create an HBox to hold each row of products (3 per row)
-    for (int i = startIndex; i < endIndex; i += 3) {
+    for (int i = startIndex; i < endIndex; i += 4) {
         HBox hbox = new HBox();
-        hbox.setSpacing(10);
+        hbox.setSpacing(30);
 
         // Create a VBox to hold each individual product
-        for (int j = i; j < Math.min(i + 3, endIndex); j++) {
+        for (int j = i; j < Math.min(i + 4, endIndex); j++) {
             Product p = filteredProducts.get(j);
             VBox vbox = new VBox();
             try {

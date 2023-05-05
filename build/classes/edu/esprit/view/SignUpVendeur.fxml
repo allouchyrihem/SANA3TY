@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<ScrollPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controller.SignUpVendeurController">
+   <content>
+      <AnchorPane id="AnchorPane" prefHeight="650.0" prefWidth="900.0">
+         <children>
+            <Button fx:id="submitBtn" layoutX="392.0" layoutY="543.0" mnemonicParsing="false" style="-fx-background-color: d19c97;" text="S'inscrire " textFill="WHITE">
+               <font>
+                  <Font size="17.0" />
+               </font></Button>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+            <Text layoutX="241.0" layoutY="605.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vous avez déjà un compte ? " wrappingWidth="217.23779296875" />
+            <Button fx:id="connectBtn" layoutX="501.0" layoutY="582.0" mnemonicParsing="false" style="-fx-background-color: d19c97;" text="Se connecter" textFill="WHITE">
+               <font>
+                  <Font size="17.0" />
+               </font></Button>
+            <Text layoutX="303.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="S'inscrire " />
+            <Pane prefHeight="98.0" prefWidth="901.0" style="-fx-background-color: #FFFFFF;">
+               <children>
+                  <ImageView fx:id="imageView" fitHeight="70.0" fitWidth="77.0" layoutX="14.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/ogo.png" />
+                     </image>
+                  </ImageView>
+                  <TextField fx:id="search" layoutX="227.0" layoutY="48.0" prefHeight="25.0" prefWidth="312.0" style="-fx-background-color: #e1e0e0;" />
+                  <Button fx:id="buttonSearch" layoutX="593.0" layoutY="44.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="85.0" text="Search" textFill="#d7b2b2" />
+               </children>
+            </Pane>
+            <Pane layoutX="1.0" layoutY="98.0" prefHeight="36.0" prefWidth="886.0" style="-fx-background-color: #FFFFFF;">
+               <children>
+                  <Separator layoutX="2.0" layoutY="1.0" prefHeight="0.0" prefWidth="882.0" />
+                  <Text fx:id="Acceuil" fill="#d7b2b2" layoutX="28.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Acceuil">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="Boutique" fill="#d7b2b2" layoutX="97.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Boutique">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="Details" fill="#d7b2b2" layoutX="196.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Détails">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="Contact" fill="#d19c97" layoutX="267.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contact">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="Réclamation" fill="#d19c97" layoutX="353.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Réclamation">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="Seconnecter" fill="#d19c97" layoutX="661.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Se connecter">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="Sinscrire" fill="#d19c97" layoutX="790.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="S'inscrire">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
+            <GridPane layoutX="182.0" layoutY="148.0" prefHeight="314.0" prefWidth="636.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="240.0" minWidth="10.0" prefWidth="240.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="250.0" minWidth="10.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <TextField fx:id="nameField" prefHeight="36.0" prefWidth="250.0" GridPane.columnIndex="1" />
+                  <TextField fx:id="emailField" prefHeight="36.0" prefWidth="250.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="addField" prefHeight="33.0" prefWidth="250.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <TextArea fx:id="descField" prefHeight="80.0" prefWidth="250.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <PasswordField fx:id="passField" prefHeight="37.0" prefWidth="250.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <PasswordField fx:id="confPassField" prefHeight="36.0" prefWidth="250.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nom de votre small business:">
+                     <font>
+                        <Font name="Baskerville Old Face" size="20.0" />
+                     </font>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Email:" GridPane.rowIndex="1">
+                     <font>
+                        <Font name="Baskerville Old Face" size="20.0" />
+                     </font>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Description:" GridPane.rowIndex="2">
+                     <font>
+                        <Font name="Baskerville Old Face" size="20.0" />
+                     </font>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Confirmer mot de passe:" GridPane.rowIndex="4">
+                     <font>
+                        <Font name="Baskerville Old Face" size="20.0" />
+                     </font>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Adresse:" GridPane.rowIndex="5">
+                     <font>
+                        <Font name="Baskerville Old Face" size="20.0" />
+                     </font>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Mot de passe:" GridPane.rowIndex="3">
+                     <font>
+                        <Font name="Baskerville Old Face" size="20.0" />
+                     </font>
+                  </Text>
+               </children>
+            </GridPane>
+            <Button fx:id="uploadPicture" layoutX="426.0" layoutY="476.0" mnemonicParsing="false" onAction="#SingleImage" style="-fx-background-color: d19c97;" text="upload" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font></Button>
+            <ImageView fx:id="logoPicture" fitHeight="73.0" fitWidth="111.0" layoutX="514.0" layoutY="463.0" pickOnBounds="true" preserveRatio="true" />
+            <Text layoutX="186.0" layoutY="494.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Logo:">
+               <font>
+                  <Font name="Baskerville Old Face" size="20.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+   </content>
+</ScrollPane>
