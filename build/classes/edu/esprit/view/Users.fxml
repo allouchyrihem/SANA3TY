@@ -10,79 +10,92 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<ScrollPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controller.UsersController">
+<ScrollPane prefHeight="720.0" prefWidth="1129.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.controller.UsersController">
    <content>
-      <AnchorPane id="AnchorPane" prefHeight="650.0" prefWidth="850.0">
+      <AnchorPane id="AnchorPane" prefHeight="686.0" prefWidth="961.0">
          <children>
-            <TableView fx:id="usersList" layoutX="220.0" layoutY="239.0" prefHeight="240.0" prefWidth="614.0">
+            <TableView fx:id="usersList" layoutX="254.0" layoutY="245.0" prefHeight="319.0" prefWidth="804.0">
               <columns>
-                <TableColumn fx:id="nameCol" prefWidth="146.0" text="Name" />
-                <TableColumn fx:id="emailCol" prefWidth="173.0" text="Email" />
-                  <TableColumn fx:id="roleCol" prefWidth="102.0" text="Role" />
-                  <TableColumn fx:id="statusCol" minWidth="0.0" prefWidth="75.0" text="Statut" />
-                  <TableColumn fx:id="pictureCol" minWidth="0.0" prefWidth="117.0" text="Image" />
+                  <TableColumn fx:id="pictureCol" minWidth="0.0" prefWidth="128.0" text="Image" />
+                <TableColumn fx:id="nameCol" prefWidth="151.0" text="Name" />
+                <TableColumn fx:id="emailCol" prefWidth="187.0" text="Email" />
+                  <TableColumn fx:id="roleCol" prefWidth="183.0" text="Role" />
+                  <TableColumn fx:id="statusCol" minWidth="0.0" prefWidth="154.0" text="Statut" />
               </columns>
             </TableView>
-            <Button fx:id="validateBtn" layoutX="752.0" layoutY="493.0" mnemonicParsing="false" onAction="#validateUser" style="-fx-background-color: d19c97;" text="Valider" textFill="WHITE">
+            <Button fx:id="validateBtn" layoutX="927.0" layoutY="581.0" mnemonicParsing="false" onAction="#validateUser" style="-fx-background-color: d19c97;" text="Valider" textFill="WHITE">
                <font>
                   <Font size="17.0" />
                </font></Button>
-            <Button fx:id="rejectBtn" layoutX="647.0" layoutY="495.0" mnemonicParsing="false" onAction="#refuseUser" style="-fx-background-color: d19c97;" text="Refuser" textFill="WHITE">
+            <Button fx:id="rejectBtn" layoutX="810.0" layoutY="581.0" mnemonicParsing="false" onAction="#refuseUser" style="-fx-background-color: d19c97;" text="Refuser" textFill="WHITE">
                <font>
                   <Font size="17.0" />
                </font></Button>
-            <Button fx:id="detailsBtn" layoutX="556.0" layoutY="495.0" mnemonicParsing="false" style="-fx-background-color: d19c97;" text="Détails" textFill="WHITE">
+            <Button fx:id="detailsBtn" layoutX="698.0" layoutY="581.0" mnemonicParsing="false" style="-fx-background-color: d19c97;" text="Détails" textFill="WHITE">
                <font>
                   <Font size="17.0" />
                </font></Button>
-            <Pane layoutX="1.0" prefHeight="84.0" prefWidth="898.0" style="-fx-background-color: #FFFFFF;">
+            <Pane layoutX="1.0" prefHeight="92.0" prefWidth="1129.0" style="-fx-background-color: #FFFFFF;">
                <children>
                   <ImageView fx:id="imageView" fitHeight="70.0" fitWidth="77.0" layoutX="14.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../assets/ogo.png" />
                      </image>
                   </ImageView>
-                  <Hyperlink fx:id="profileBtn" layoutX="695.0" layoutY="10.0" prefHeight="38.0" prefWidth="130.0" text="Profile" textFill="#d19c97">
+                  <Hyperlink fx:id="profileBtn" layoutX="961.0" layoutY="37.0" prefHeight="38.0" prefWidth="130.0" text="Profile" textFill="#d19c97">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Hyperlink>
                </children>
             </Pane>
-            <Pane layoutX="2.0" layoutY="89.0" prefHeight="36.0" prefWidth="902.0" style="-fx-background-color: #FFFFFF;" />
-            <TextField fx:id="searchP" layoutX="683.0" layoutY="195.0" />
-            <Text fill="#d19c97" layoutX="224.0" layoutY="212.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Liste des utilisateurs ">
+            <TextField fx:id="searchP" layoutX="872.0" layoutY="197.0" />
+            <Text fill="#d19c97" layoutX="254.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Liste des utilisateurs ">
                <font>
-                  <Font size="20.0" />
+                  <Font name="System Bold" size="20.0" />
                </font>
             </Text>
-            <Pane prefHeight="652.0" prefWidth="119.0" style="-fx-background-color: #D19C97;">
+            <Pane prefHeight="689.0" prefWidth="174.0" style="-fx-background-color: #FFFFFF;">
                <children>
-                  <ImageView fitHeight="90.0" fitWidth="73.0" layoutX="6.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="104.0" fitWidth="180.0" layoutX="40.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../assets/ogo.png" />
                      </image>
                   </ImageView>
-                  <Hyperlink fx:id="utilisateur" layoutX="10.0" layoutY="164.0" text="Utilisateurs" textFill="WHITE">
+                  <Hyperlink fx:id="utilisateur" layoutX="17.0" layoutY="155.0" text="Utilisateurs" textAlignment="CENTER" textFill="#212020c9">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </Hyperlink>
+                  <Hyperlink fx:id="accueil" layoutX="22.0" layoutY="598.0" text="Back" textFill="#212020">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Hyperlink>
-                  <Hyperlink fx:id="accueil" layoutX="22.0" layoutY="598.0" text="Back" textFill="WHITE">
+                  <Hyperlink fx:id="decBtn" layoutX="10.0" layoutY="326.0" prefHeight="34.0" prefWidth="142.0" text="Se deconnecter" textFill="#212020c9">
                      <font>
-                        <Font name="System Bold" size="14.0" />
+                        <Font name="System Bold" size="17.0" />
                      </font>
                   </Hyperlink>
-                  <Hyperlink fx:id="decBtn" layoutX="3.0" layoutY="561.0" prefHeight="25.0" prefWidth="99.0" text="Deconnexion" textFill="WHITE">
+                  <Line endX="100.0" layoutX="13.0" layoutY="308.0" startX="-7.0" stroke="#d3cece" />
+                  <Line endX="99.0" endY="-55.0" layoutX="13.0" layoutY="178.0" startY="-55.0" stroke="#d3cece" />
+                  <Hyperlink fx:id="category" layoutX="13.0" layoutY="204.0" prefHeight="25.0" prefWidth="99.0" text="Categories" textAlignment="CENTER" textFill="#212020c9">
                      <font>
-                        <Font name="System Bold" size="13.0" />
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </Hyperlink>
+                  <Hyperlink layoutX="14.0" layoutY="257.0" prefHeight="25.0" prefWidth="99.0" text="Produits" textAlignment="CENTER" textFill="#212020c9">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
                      </font>
                   </Hyperlink>
                </children>
             </Pane>
+            <Text layoutX="746.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dashboard  / utilisateurs / Liste des utilisateurs " />
          </children>
       </AnchorPane>
    </content>

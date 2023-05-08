@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="desktopSana3ty.jar" size="10861013" download="eager" />
+    <jar href="desktopSana3ty.jar" size="10870500" download="eager" />
     <jar href="lib\commons-codec-1.15.jar" size="353793" download="eager" />
     <jar href="lib\commons-io-2.7.jar" size="276413" download="eager" />
     <jar href="lib\commons-logging-1.2.jar" size="61829" download="eager" />
@@ -31,7 +31,6 @@
     <jar href="lib\jjwt-jackson-0.11.2.jar" size="8400" download="eager" />
     <jar href="lib\json-20220320.jar" size="70939" download="eager" />
     <jar href="lib\mysql-connector-java-5.1.23-bin.jar" size="834126" download="eager" />
-    <jar href="lib\okhttp-3.9.1.jar" size="406252" download="eager" />
     <jar href="lib\servlet-api-5.0.0.jar" size="12756" download="eager" />
     <jar href="lib\slf4j-api-1.7.30.jar" size="41472" download="eager" />
     <jar href="lib\stax2-api-4.2.1.jar" size="195909" download="eager" />

@@ -5,12 +5,15 @@
  */
 package edu.esprit.controller;
 
-
+import static edu.esprit.controller.AfficherProductController.decodeBase64Image;
 import edu.esprit.dao.UserDao;
+import edu.esprit.entity.Product;
 import edu.esprit.entity.User;
 import edu.esprit.test.ConnexionBD;
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Base64;
 import java.util.Properties;
 import java.util.ResourceBundle;
 import java.util.function.Predicate;
@@ -24,11 +27,14 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Hyperlink;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -70,7 +76,7 @@ public class UsersController implements Initializable {
     private TableColumn<User, String> statusCol;
 
     @FXML
-    private TableColumn<User, ImageView> pictureCol;
+    private TableColumn<User, String> pictureCol;
 
     @FXML
     private Button validateBtn;
@@ -78,25 +84,29 @@ public class UsersController implements Initializable {
     @FXML
     private Button rejectBtn;
 
-
     @FXML
     private Button detailsBtn;
 
-
-     @FXML
+    @FXML
     private Hyperlink profileBtn;
 
-       @FXML
+    @FXML
     private Hyperlink decBtn;
-    
+
     @FXML
     private TextField searchP;
-    
+
+    @FXML
+    private Hyperlink category;
 
     private ListData listdata = new ListData();
     @FXML
     private ImageView imageView;
-      
+    @FXML
+    private Hyperlink utilisateur;
+    @FXML
+    private Hyperlink accueil;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         usersList.setItems(listdata.getPersons());
@@ -109,9 +119,37 @@ public class UsersController implements Initializable {
         roleCol.setCellValueFactory(cell -> cell.
                 getValue().getRoleProperty());
         pictureCol.setCellValueFactory(new PropertyValueFactory<>("picture"));
+        pictureCol.setCellFactory(column -> {
+            return new TableCell<User, String>() {
+                private final ImageView imageView = new ImageView();
+
+                {
+                    setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
+                    setGraphic(imageView);
+                }
+
+                @Override
+                protected void updateItem(String item, boolean empty) {
+                    super.updateItem(item, empty);
+                    if (empty || item == null) {
+                        imageView.setImage(null);
+
+                    } else {
+                        try {
+                            Image image = decodeBase64Image(item);
+                            imageView.setImage(image);
+                            imageView.setFitWidth(70);
+                            imageView.setFitHeight(50);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            };
+        });
         ConnexionBD app = new ConnexionBD();
         User connectedUser = app.getConnectedUser();
-        
+
         profileBtn.setText(connectedUser.getName());
         detailsBtn.setOnAction(event -> {
             try {
@@ -124,7 +162,17 @@ public class UsersController implements Initializable {
                 Logger.getLogger(ShowUserController.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
-        
+        category.setOnAction(e -> {
+            try {
+                Parent page1 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/AfficherCategory.fxml"));
+                Scene scene = new Scene(page1);
+                Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(Accueil1Controller.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
         profileBtn.setOnAction(event -> {
             try {
                 Parent page1 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/Profile.fxml"));
@@ -144,47 +192,46 @@ public class UsersController implements Initializable {
             }
 
         });
-        
-       searchP.textProperty().addListener((observable, oldValue, newValue) -> {
-    // Create filter Predicate
-    Predicate<User> filter = item -> {
-        // Implement filter logic here
-        String query = newValue.toLowerCase();
-        boolean nameMatch = item.getName().toLowerCase().contains(query);
-        boolean emailMatch = item.getEmail().toLowerCase().contains(query);
-        boolean roleMatch = item.getRoles().stream().anyMatch(role -> role.toLowerCase().contains(query));
-        boolean statusMatch = item.getStatusProperty2().get().toLowerCase().contains(query); // Using getStatusProperty2() function to get the status as a string
-        return nameMatch || emailMatch || roleMatch || statusMatch;
-    };
 
-    // Apply filter to data and update TableView
-    usersList.setItems(listdata.getPersons().filtered(filter));
-});   
-        
+        searchP.textProperty().addListener((observable, oldValue, newValue) -> {
+            // Create filter Predicate
+            Predicate<User> filter = item -> {
+                // Implement filter logic here
+                String query = newValue.toLowerCase();
+                boolean nameMatch = item.getName().toLowerCase().contains(query);
+                boolean emailMatch = item.getEmail().toLowerCase().contains(query);
+                boolean roleMatch = item.getRoles().stream().anyMatch(role -> role.toLowerCase().contains(query));
+                boolean statusMatch = item.getStatusProperty2().get().toLowerCase().contains(query); // Using getStatusProperty2() function to get the status as a string
+                return nameMatch || emailMatch || roleMatch || statusMatch;
+            };
+
+            // Apply filter to data and update TableView
+            usersList.setItems(listdata.getPersons().filtered(filter));
+        });
+
     }
 
     @FXML
     public void validateUser() {
-        try{
-           
-           User selectedUser = usersList.getSelectionModel().getSelectedItem();
-        if (selectedUser != null) {
-            UserDao u = UserDao.getInstance();
-            u.validateUSer(selectedUser);
-            String obj = " Inscription à Sana3ty";
-            String core = "Votre inscription à Sana3ty a ete acceptée";
-            this.EnvoyerMail(selectedUser.getEmail(),obj,core);
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Information Dialog");
-            alert.setHeaderText(null);
-            alert.setContentText("Inscription validé avec succés!");
-            alert.show();
-        }
-        }catch( Exception e){
+        try {
+
+            User selectedUser = usersList.getSelectionModel().getSelectedItem();
+            if (selectedUser != null) {
+                UserDao u = UserDao.getInstance();
+                u.validateUSer(selectedUser);
+                String obj = " Inscription à Sana3ty";
+                String core = "Votre inscription à Sana3ty a ete acceptée";
+                this.EnvoyerMail(selectedUser.getEmail(), obj, core);
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Information Dialog");
+                alert.setHeaderText(null);
+                alert.setContentText("Inscription validé avec succés!");
+                alert.show();
+            }
+        } catch (Exception e) {
             System.out.println("hhhhhhhhhh");
         }
-        
-      
+
     }
 
     @FXML
@@ -193,7 +240,10 @@ public class UsersController implements Initializable {
         if (selectedUser != null) {
             String obj = " Inscription à Sana3ty";
             String core = "Votre inscription à Sana3ty n'a pas ete acceptée";
-            try{this.EnvoyerMail(selectedUser.getEmail(),obj,core);}catch(Exception e ){}
+            try {
+                this.EnvoyerMail(selectedUser.getEmail(), obj, core);
+            } catch (Exception e) {
+            }
             UserDao u = UserDao.getInstance();
             u.refuseUser(selectedUser);
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -205,7 +255,7 @@ public class UsersController implements Initializable {
 
     }
 
-    void EnvoyerMail(String emailDestination , String obj , String core) throws IOException {
+    void EnvoyerMail(String emailDestination, String obj, String core) throws IOException {
 
         try {
             Properties p = new Properties();
@@ -236,21 +286,25 @@ public class UsersController implements Initializable {
             MimeBodyPart attachment2 = new MimeBodyPart();
 
             MimeBodyPart m = new MimeBodyPart();
-                m.setContent("<h1> \n"
-                        + " Bonjour : "  +" </h1>"
-                        + "<h3> Nous avons reçu une demande de D'inscription à Sana3ty.\n"
-                        + core+"\n " +  "</h3>", "text/html");
-                mutipart.addBodyPart(m);
-              
-                message.setContent(mutipart);
-                Transport.send(message);
-              
-              
+            m.setContent("<h1> \n"
+                    + " Bonjour : " + " </h1>"
+                    + "<h3> Nous avons reçu une demande de D'inscription à Sana3ty.\n"
+                    + core + "\n " + "</h3>", "text/html");
+            mutipart.addBodyPart(m);
 
-            
+            message.setContent(mutipart);
+            Transport.send(message);
+
         } catch (MessagingException ex) {
-            
+
         }
+
+    }
+
+    public static Image decodeBase64Image(String imageString) throws IOException {
+        byte[] imageData = Base64.getDecoder().decode(imageString);
+        ByteArrayInputStream stream = new ByteArrayInputStream(imageData);
+        return new Image(stream);
 
     }
 

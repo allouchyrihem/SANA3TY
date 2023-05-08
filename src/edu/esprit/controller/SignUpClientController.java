@@ -5,7 +5,6 @@
  */
 package edu.esprit.controller;
 
-
 import edu.esprit.dao.UserDao;
 import edu.esprit.entity.User;
 import java.io.IOException;
@@ -22,13 +21,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
-
 
 /**
  * FXML Controller class
@@ -55,24 +51,97 @@ public class SignUpClientController implements Initializable {
     @FXML
     private Button submitBtn;
 
+   @FXML
+    private Hyperlink acceuil;
+
     @FXML
-    private Button connectBtn;
+    private Hyperlink boutique;
+
+    @FXML
+    private Hyperlink details;
+
+    @FXML
+    private Hyperlink reclamation;
+
+    @FXML
+    private Hyperlink seConnecter;
+
+    @FXML
+    private Hyperlink sinscrire;
+
+    @FXML
+    private Hyperlink evenement;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
-        connectBtn.setOnAction(event -> {
+        sinscrire.setOnAction(e -> {
             try {
-                Parent page1 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/Login.fxml"));
+                Parent page1 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/SignUp.fxml"));
                 Scene scene = new Scene(page1);
-                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
                 stage.setScene(scene);
                 stage.show();
             } catch (IOException ex) {
-                Logger.getLogger(SignUpClientController.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Accueil1Controller.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+        seConnecter.setOnAction(e -> {
+            try {
+                Parent page1 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/Login.fxml"));
+                Scene scene = new Scene(page1);
+                Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(Accueil1Controller.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
 
+        evenement.setOnAction(e -> {
+            try {
+                Parent page1 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/AfficherEventClient.fxml"));
+                Scene scene = new Scene(page1);
+                Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(Accueil1Controller.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+        acceuil.setOnAction(e -> {
+            try {
+                Parent page1 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/Accueil1.fxml"));
+                Scene scene = new Scene(page1);
+                Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(Accueil1Controller.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+        boutique.setOnAction(e -> {
+            try {
+                Parent page1 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/Boutique.fxml"));
+                Scene scene = new Scene(page1);
+                Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(Accueil1Controller.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+
+        reclamation.setOnAction(e -> {
+            try {
+                Parent page1 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/AjouterReclamation.fxml"));
+                Scene scene = new Scene(page1);
+                Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(Accueil1Controller.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
         submitBtn.setOnAction(event -> {
             if (nameField.getText().trim().length() < 3 || emailField.getText().trim().length() < 3
                     || passField.getText().trim().length() < 8 || confPassField.getText().trim().length() < 8) {
@@ -87,14 +156,14 @@ public class SignUpClientController implements Initializable {
                 alert.setHeaderText(null);
                 alert.setContentText("Les mots de passe saisis ne correspondent pas.");
                 alert.show();
-           } else if (!isValidEmailFormat(emailField.getText())) {
+            } else if (!isValidEmailFormat(emailField.getText())) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Information Dialog");
                 alert.setHeaderText(null);
                 alert.setContentText("L'email fournit n'est pas valide.");
                 alert.show();
             } else {
-               /* try {
+                /* try {
                     checkEmailValidity(emailField.getText());
                 } catch (IOException ex) {
                     Logger.getLogger(SignUpClientController.class.getName()).log(Level.SEVERE, null, ex);
@@ -148,5 +217,4 @@ public class SignUpClientController implements Initializable {
             throw new IOException("Unexpected code " + response);
         }
     }*/
-
 }

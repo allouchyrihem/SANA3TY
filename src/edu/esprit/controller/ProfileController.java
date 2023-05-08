@@ -19,6 +19,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -52,7 +53,17 @@ public class ProfileController implements Initializable {
     @FXML
     private Button updateProfile;
     
-    
+     @FXML
+    private Hyperlink utilisateur;
+
+    @FXML
+    private Hyperlink accueil;
+
+    @FXML
+    private Hyperlink decBtn;
+
+    @FXML
+    private Hyperlink category;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -68,6 +79,19 @@ public class ProfileController implements Initializable {
            }else{
                description.setText("");
            }
+           
+        
+        category.setOnAction(e -> {
+            try {
+                Parent page1 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/AfficherCategory.fxml"));
+                Scene scene = new Scene(page1);
+                Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(Accueil1Controller.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
          updateProfile.setOnAction(event -> {
             try {
                 Parent page1 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/UpdateProfile.fxml"));

@@ -28,6 +28,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -63,33 +64,115 @@ public class SignUpVendeurController implements Initializable {
     @FXML
     private Button submitBtn;
 
-    @FXML
-    private Button connectBtn;
+    
    
     @FXML
-    private Button uploadPicture;
-    private File f = null;
+    private ImageView logoPicture;
+    @FXML
+    private ImageView imageView;
+    @FXML
+    private TextField search;
+    @FXML
+    private Button buttonSearch;
+    @FXML
+    private Hyperlink acceuil;
 
     @FXML
-    private ImageView logoPicture;
+    private Hyperlink boutique;
+
+    @FXML
+    private Hyperlink details;
+
+    @FXML
+    private Hyperlink reclamation;
+
+    @FXML
+    private Hyperlink seConnecter;
+
+    @FXML
+    private Hyperlink sinscrire;
+
+    @FXML
+    private Hyperlink evenement;
+    private Button addImage;
+    @FXML
+    private ImageView ImageView;
+    private File f = null;
     List<String> lstFile;
-    
+        
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        connectBtn.setOnAction(event -> {
-
-            try {
-                Parent page1 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/Login.fxml"));
+      
+        sinscrire.setOnAction(e -> {
+        try {
+                Parent page1 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/SignUp.fxml"));
                 Scene scene = new Scene(page1);
-                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
                 stage.setScene(scene);
                 stage.show();
             } catch (IOException ex) {
-                Logger.getLogger(SignUpClientController.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Accueil1Controller.class.getName()).log(Level.SEVERE, null, ex);
             }
-        });
-        
+});
+        seConnecter.setOnAction(e -> {
+        try {
+                Parent page1 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/Login.fxml"));
+                Scene scene = new Scene(page1);
+                Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(Accueil1Controller.class.getName()).log(Level.SEVERE, null, ex);
+            }
+});
+    
+    evenement.setOnAction(e -> {
+        try {
+                Parent page1 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/AfficherEventClient.fxml"));
+                Scene scene = new Scene(page1);
+                Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(Accueil1Controller.class.getName()).log(Level.SEVERE, null, ex);
+            }
+});
+    acceuil.setOnAction(e -> {
+        try {
+                Parent page1 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/Accueil1.fxml"));
+                Scene scene = new Scene(page1);
+                Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(Accueil1Controller.class.getName()).log(Level.SEVERE, null, ex);
+            }
+});
+    boutique.setOnAction(e -> {
+        try {
+                Parent page1 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/Boutique.fxml"));
+                Scene scene = new Scene(page1);
+                Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(Accueil1Controller.class.getName()).log(Level.SEVERE, null, ex);
+            }
+});
+    
+     reclamation.setOnAction(e -> {
+        try {
+                Parent page1 = FXMLLoader.load(getClass().getResource("/edu/esprit/view/AjouterReclamation.fxml"));
+                Scene scene = new Scene(page1);
+                Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException ex) {
+                Logger.getLogger(Accueil1Controller.class.getName()).log(Level.SEVERE, null, ex);
+            }
+});
+     
           submitBtn.setOnAction(event -> {
               
         
@@ -137,6 +220,8 @@ public class SignUpVendeurController implements Initializable {
                 emailField.setText("");
                 passField.setText("");
                 confPassField.setText("");
+                addImage.setText("");
+        ImageView.setImage(null);
                 addField.setText("");
                 descField.setText("");
             
@@ -171,7 +256,7 @@ public class SignUpVendeurController implements Initializable {
         }
         return false;
     }
-    public String imageEncoderDecoder(String path) throws IOException {
+   public String imageEncoderDecoder(String path) throws IOException {
 
     // read image from file
     FileInputStream stream = new FileInputStream(path);
@@ -194,15 +279,14 @@ public class SignUpVendeurController implements Initializable {
     stream.close();
     return imageString;
 }
-    
-    @FXML
+  @FXML
     void SingleImage(ActionEvent event){
         FileChooser fc = new FileChooser();
         fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("jpg and png file",lstFile));
         f = fc.showOpenDialog(null);
         if (f!= null ){
-            uploadPicture.setText(f.getName());
-            logoPicture.setImage(new Image("file:" + f));
+            addImage.setText(f.getName());
+            ImageView.setImage(new Image("file:" + f));
             
         }
     }
